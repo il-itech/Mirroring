@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p $PORT",
     "test": "jest -c ./jest.config.js --colors",
     "test:coverage": "jest -c ./jest.config.js --coverage --colors",
     "eslint": "eslint --ext js,jsx,ts,tsx src",

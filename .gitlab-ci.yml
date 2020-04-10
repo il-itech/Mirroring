@@ -5,6 +5,7 @@ cache:
   key: "$CI_BUILD_REF_NAME"
   paths:
     - node_modules/
+    - .next/cache/
 
 stages:
   - install
@@ -19,6 +20,7 @@ Install:
     key: "$CI_BUILD_REF_NAME"
     paths:
       - node_modules/
+      - .next/cache/
 
 Lint:
   stage: lint
@@ -27,6 +29,7 @@ Lint:
     key: "$CI_BUILD_REF_NAME"
     paths:
       - node_modules/
+      - .next/cache/
 
 Build Production:
   stage: build_production
@@ -35,7 +38,7 @@ Build Production:
     key: "$CI_BUILD_REF_NAME"
     paths:
       - node_modules/
-      - dist/
+      - .next/cache/
   only:
     - staging
     - master
@@ -47,7 +50,7 @@ Deploy:
     key: "$CI_BUILD_REF_NAME"
     paths:
       - node_modules/
-      - dist/
+      - .next/cache/
   services:
     - docker:dind
   before_script:

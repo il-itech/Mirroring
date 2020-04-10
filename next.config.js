@@ -1,5 +1,4 @@
 const withSass = require('@zeit/next-sass');
-const withCss = require('@zeit/next-css');
 const withImages = require('next-images');
 const withBundleAnalyzer = require('@next/bundle-analyzer');
 const withPlugins = require('next-compose-plugins');
@@ -13,7 +12,6 @@ const nextConfig = {
 };
 
 module.exports = withPlugins([
-  withCss,
   withImages,
   [withSass, {
     test: /\.s?css$/,
