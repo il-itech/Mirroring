@@ -1,0 +1,50 @@
+// Font mixins
+@mixin h1() {
+  color: $black;
+  font-family: $font-family-helvetica;
+  font-size: $h1-font-size;
+  font-weight: $font-weight-bolder;
+  letter-spacing: 0.1em;
+  line-height: $h1-line-height;
+  text-transform: uppercase;
+}
+
+@mixin h2() {
+  color: $black;
+  font-family: $font-family-helvetica;
+  font-size: $h2-font-size;
+  font-weight: $font-weight-bolder;
+  letter-spacing: 0.1em;
+  line-height: $h2-line-height;
+  text-transform: uppercase;
+}
+
+@mixin h3() {
+  color: $black;
+  font-family: $font-family-helvetica;
+  font-size: $h3-font-size;
+  font-weight: $font-weight-bolder;
+  letter-spacing: 0.1em;
+  line-height: $h3-line-height;
+  text-transform: uppercase;
+}
+
+@mixin h4() {
+  color: $black;
+  font-family: $font-family-helvetica;
+  font-size: $h4-font-size;
+  font-weight: $font-weight-bolder;
+  letter-spacing: 0.1em;
+  line-height: $h4-line-height;
+  text-transform: uppercase;
+}
+
+@mixin h5() {
+  color: $black;
+  font-family: $font-family-helvetica;
+  font-size: $h5-line-height;
+  font-weight: $font-weight-bolder;
+  letter-spacing: 0.1em;
+  line-height: $h5-line-height;
+  text-transform: uppercase;
+}

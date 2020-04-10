@@ -1,0 +1,6 @@
+.global-coronavirus-stats-list {
+  display: grid;
+  grid-column-gap: 0;
+  grid-row-gap: 5px;
+  grid-template-columns: repeat(3, 1fr);
+}

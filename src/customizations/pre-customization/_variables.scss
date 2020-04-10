@@ -1,0 +1,103 @@
+@import '../grid-breakpoints';
+
+$default-bg: $white;
+$text-color: $black;
+
+$grid-breakpoints: (
+  xs: $xs,
+  sm: $sm,
+  md: $md,
+  lg: $lg,
+  xl: $xl
+);
+
+// $container-max-widths: (
+//   sm: 100%,
+//   md: 100%,
+//   lg: $container-lg-width,
+//   xl: $container-lg-width
+// );
+
+// Backgrounds
+$body-bg: $default-bg;
+$body-color: $black;
+
+$link-color: $text-color;
+$link-hover-color: $text-color;
+
+$theme-colors: (
+  // custom
+  'light':                          $light,
+  'maire':                          $maire,
+  'swans-down':                     $swans-down,
+  'jagged-ice':                     $jagged-ice,
+  'half-baked':                     $half-baked,
+  'dark':                           $dark,
+  'cinnabar':                       $cinnabar,
+  'tranquil':                       $tranquil,
+  'albescent-white':                $albescent-white,
+  'brown':                          $brown,
+  'concrete':                       $concrete,
+  'astral':                         $astral,
+  'pattens-blue':                   $pattens-blue,
+  'jelly-bean':                     $jelly-bean,
+  'purple':                         $purple,
+  'gray':                           $gray,
+  'panache':                        $panache,
+  'ironside':                       $ironside,
+  'granny-apple':                   $granny-apple,
+  'vulcan':                         $vulcan,
+);
+
+// Spaces
+$spacer: 1rem; // 16 px
+$spacers: (
+  '0': 0,
+  '0_25': ($spacer * 0.125),
+  '0_5':  ($spacer * 0.25),
+  '1':    ($spacer * 0.5),
+  '1_5':  ($spacer * 0.75),
+  '2':    ($spacer * 1),
+  '2_5':  ($spacer * 1.25),
+  '3':    ($spacer * 1.5),
+  '3_5':  ($spacer * 1.75),
+  '4':    ($spacer * 2),
+  '4_5':  ($spacer * 2.25),
+  '5':    ($spacer * 2.5),
+  '5_5':  ($spacer * 2.75),
+  '6':    ($spacer * 3),
+  '6_5':  ($spacer * 3.25),
+  '7':    ($spacer * 3.5),
+  '7_5':  ($spacer * 3.75),
+  '8':    ($spacer * 4),
+  '8_5':  ($spacer * 4.25),
+  '9':    ($spacer * 4.5),
+  '9_5':  ($spacer * 4.75),
+  '10':   ($spacer * 5),
+  '10_5': ($spacer * 5.25),
+  '11':   ($spacer * 5.5),
+  '11_5': ($spacer * 5.75),
+  '12':   ($spacer * 6),
+  '12_5': ($spacer * 6.25),
+  '13':   ($spacer * 6.5),
+  '13_5': ($spacer * 6.75),
+  '14':   ($spacer * 7),
+);
+
+// Fonts
+$font-family-base: $font-family-helvetica;
+
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-bold: 700;
+$font-weight-bolder: 900;
+
+// Typography
+$font-size-base: 1rem;
+
+// Headings
+$h1-font-size: $font-size-base * 6.25;  // 100px
+$h2-font-size: $font-size-base * 5;     // 80px
+$h3-font-size: $font-size-base * 2.5;   // 40px
+$h4-font-size: $font-size-base * 1.875; // 30px
+$h5-font-size: $font-size-base * 1.25; // 30px

@@ -1,0 +1,48 @@
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  outline: 0;
+}
+
+h1,
+.h1 {
+  @include h1();
+  margin-bottom: 0;
+}
+
+h2,
+.h2 {
+  @include h2();
+  margin-bottom: 0;
+}
+
+h3,
+.h3 {
+  @include h3();
+  margin-bottom: 0;
+}
+
+h4,
+.h4 {
+  @include h4();
+  margin-bottom: 0;
+}
+
+h5,
+.h5 {
+  @include h5();
+  margin-bottom: 0;
+}
+
+// Font family
+.font-family-montserrat {
+  font-family: $font-family-montserrat;
+}
+
+.font-family-helvetica {
+  font-family: $font-family-helvetica;
+}
+
+.font-family-sf {
+  font-family: $font-family-sf;
+}

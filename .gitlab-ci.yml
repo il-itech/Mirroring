@@ -1,0 +1,62 @@
+image: node:latest
+
+cache:
+  untracked: true
+  key: "$CI_BUILD_REF_NAME"
+  paths:
+    - node_modules/
+
+stages:
+  - install
+  - lint
+  - build_production
+  - deploy
+
+Install:
+  stage: install
+  script: yarn
+  cache:
+    key: "$CI_BUILD_REF_NAME"
+    paths:
+      - node_modules/
+
+Lint:
+  stage: lint
+  script: yarn lint
+  cache:
+    key: "$CI_BUILD_REF_NAME"
+    paths:
+      - node_modules/
+
+Build Production:
+  stage: build_production
+  script: yarn build
+  cache:
+    key: "$CI_BUILD_REF_NAME"
+    paths:
+      - node_modules/
+      - dist/
+  only:
+    - staging
+    - master
+
+Deploy:
+  stage: deploy
+  image: docker:latest
+  cache:
+    key: "$CI_BUILD_REF_NAME"
+    paths:
+      - node_modules/
+      - dist/
+  services:
+    - docker:dind
+  before_script:
+    - apk add curl nodejs bash
+    - curl https://cli-assets.heroku.com/install.sh | sh
+  script:
+    - heroku container:login
+    - heroku container:push web
+    - heroku container:release web -a $HEROKU_APP
+  only:
+    - staging
+    - master

@@ -1,0 +1,73 @@
+* {
+  box-sizing: border-box;
+  outline: 0;
+}
+
+html {
+  font-size: 16px;
+  min-height: 100%;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+}
+
+a {
+  color: $black;
+
+  &:hover {
+    color: $black;
+    text-decoration: none;
+  }
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  &:focus {
+    outline: 0;
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.rounded {
+  border-radius: 0.5rem;
+}
+
+.default-border {
+  border: 1px solid $black;
+}
+
+.v-none {
+  visibility: hidden;
+}
+
+.v-visible {
+  visibility: visible;
+}
+
+.w-100vw {
+  width: 100vw;
+}
+
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+
+.overflow-y-hidden {
+  overflow-y: hidden;
+}
+
+.scroll-disable {
+  overflow: hidden;
+  pointer-events: none;
+  position: fixed;
+  width: 100%;
+}
+
+.flex-none {
+  flex: none;
+}

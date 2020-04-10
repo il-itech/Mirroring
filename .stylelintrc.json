@@ -1,0 +1,14 @@
+{
+  "extends": "stylelint-config-sass-guidelines",
+  "plugins": [
+		"stylelint-order"
+	],
+  "rules": {
+    "max-nesting-depth": null,
+    "selector-max-compound-selectors": null,
+    "scss/at-import-no-partial-leading-underscore": null,
+    "scss/at-mixin-pattern": null,
+    "selector-class-pattern": null
+  },
+  "ignoreFiles": "src/customizations/**"
+}
