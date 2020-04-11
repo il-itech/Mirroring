@@ -12,7 +12,7 @@ export const allCountryStats = handleActions(
   {
     [setCoronavirusAllCountryStats]: (state, { payload }) => ({
       ...state,
-      allCountryStats: payload,
+      stats: payload,
     }),
     ...getCommonReducers(REDUCER_TYPES.CORONAVIRUS.ALL_COUNTRY_STATS, additionalState),
   },

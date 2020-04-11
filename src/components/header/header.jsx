@@ -5,6 +5,8 @@ import Button from '@material-ui/core/Button';
 
 import { RouteLink } from '../route-link/route-link';
 
+import './header.scss';
+
 const ROUTE_LIST = [
   { id: 1, value: 'Home', href: '/' },
   { id: 2, value: 'Messenger', href: '/messenger' },
@@ -12,9 +14,14 @@ const ROUTE_LIST = [
 ];
 
 export const Header = () => (
-  <AppBar position="static">
+  <AppBar
+    classes={{
+      root: 'next-header',
+    }}
+    position="fixed"
+  >
     <Toolbar classes={{
-      root: 'd-flex justify-content-between bg-vulcan',
+      root: 'd-flex justify-content-between bg-ebony',
     }}
     >
       <div className="d-flex">

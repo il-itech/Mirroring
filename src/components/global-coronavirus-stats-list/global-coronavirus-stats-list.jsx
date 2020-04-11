@@ -11,17 +11,17 @@ export const GlobalCoronavirusStatsList = ({ stats }) => {
   const statsList = R.compose(R.dropLast(1), R.toPairs)(stats);
 
   return (
-    <div className="global-coronavirus-stats-list">
+    <div className="mt-1 global-coronavirus-stats-list">
       {statsList.map(([title, value]) => (
         <Paper
           key={title}
-          className="d-flex flex-column p-3 text-center"
+          className="d-flex flex-column p-3 bg-ebony text-center"
           elevation={1}
         >
-          <Typography variant="overline">
+          <Typography className="text-white" variant="overline">
             {R.replace(/_/g, ' ', title)}
           </Typography>
-          <Typography variant="h4">
+          <Typography className="text-white" variant="h4">
             {getMonetaryValue(value)}
           </Typography>
         </Paper>
