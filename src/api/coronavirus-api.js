@@ -15,3 +15,13 @@ export const getAllCountryCoronavirusStats = ajax => ajax({
   url: 'https://api.thevirustracker.com/free-api?countryTotals=ALL',
   method: 'GET',
 });
+
+/**
+ * API for receive the current accumulated stats for country by code
+ * @param {Object} ajax
+ * @param {String} code
+ */
+export const getCountryCoronavirusStats = (ajax, code) => ajax({
+  url: `https://api.thevirustracker.com/free-api?countryTotal=${code}`,
+  method: 'GET',
+});

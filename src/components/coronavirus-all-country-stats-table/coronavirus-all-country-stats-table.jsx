@@ -1,3 +1,4 @@
+import Router from 'next/router';
 import PropTypes from 'prop-types';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import MUIDataTable from 'mui-datatables';
@@ -5,14 +6,11 @@ import NoSsr from '@material-ui/core/NoSsr';
 import * as R from 'ramda';
 
 import { getMuiTheme } from './theme';
-
-const options = {
-  filterType: 'dropdown',
-  rowsPerPageOptions: [10, 20, 30],
-};
+import { serializeTable } from '../../helpers/coronavirus';
 
 const TABLE_HEADS_COMPANIES = [
   'Country name',
+  'Code',
   'Total cases',
   'Total recovered',
   'Total unresolved',
@@ -23,14 +21,20 @@ const TABLE_HEADS_COMPANIES = [
   'Total serious cases',
 ];
 
-export const serializeTable = R.compose(
-  R.dropLast(1),
-  R.map(R.values),
-  R.map(R.omit(['ourid', 'source', 'code'])),
-  R.values,
-);
+const options = {
+  filterType: 'dropdown',
+  rowsPerPageOptions: [10, 20, 30],
+  onRowClick: (rowData) => {
+    const code = R.nth(1, rowData);
 
-export const CustomTable = ({ tableData }) => (
+    Router.push(
+      '/country-coronavirus-stats/[code]',
+      `/country-coronavirus-stats/${code}`,
+    );
+  },
+};
+
+export const CoronavirusAllCountryStatsTable = ({ tableData }) => (
   <NoSsr>
     <MuiThemeProvider theme={getMuiTheme()}>
       <MUIDataTable
@@ -43,6 +47,6 @@ export const CustomTable = ({ tableData }) => (
   </NoSsr>
 );
 
-CustomTable.propTypes = {
+CoronavirusAllCountryStatsTable.propTypes = {
   tableData: PropTypes.shape({}).isRequired,
 };

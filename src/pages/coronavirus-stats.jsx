@@ -10,8 +10,8 @@ import {
 } from '../actions/coronavirus';
 import { setIntervalActions, clearIntervalActions } from '../actions/common';
 import { Main } from '../components/main/main';
-import { GlobalCoronavirusStatsList } from '../components/global-coronavirus-stats-list/global-coronavirus-stats-list';
-import { CustomTable } from '../components/custom-table/custom-table';
+import { PaperList } from '../components/paper-list/paper-list';
+import { CoronavirusAllCountryStatsTable } from '../components/coronavirus-all-country-stats-table/coronavirus-all-country-stats-table';
 
 const CoronavirusStats = ({
   coronavirus: {
@@ -30,10 +30,12 @@ const CoronavirusStats = ({
     return R.compose(dispatch, clearIntervalActions);
   }, [dispatch]);
 
+  const statsList = R.compose(R.dropLast(1), R.toPairs)(globalStats);
+
   return (
     <Main className="mt-10_5">
-      <GlobalCoronavirusStatsList stats={globalStats} />
-      <CustomTable tableData={allCountryStats} />
+      <PaperList list={statsList} />
+      <CoronavirusAllCountryStatsTable tableData={allCountryStats} />
     </Main>
   );
 };
