@@ -1,0 +1,13 @@
+.chat-messaging-text {
+  .outilned-input {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    &:hover {
+      border-color: inherit;
+    }
+  }
+
+  .icon-send {
+    fill: #adb0bb;
+  }
+}

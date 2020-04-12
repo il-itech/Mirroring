@@ -6,6 +6,7 @@ const {
   colors: {
     white,
     ebony,
+    mischka,
   },
 } = scssVariables;
 
@@ -83,7 +84,7 @@ export const getMuiTheme = () =>
       },
       MUIDataTableViewCol: {
         title: {
-          color: '#adb0bb',
+          color: mischka,
         },
         label: {
           color: white,
@@ -104,12 +105,12 @@ export const getMuiTheme = () =>
       },
       MuiFormLabel: {
         root: {
-          color: '#adb0bb',
+          color: mischka,
         },
       },
       MuiSvgIcon: {
         root: {
-          fill: '#adb0bb',
+          fill: mischka,
         },
       },
     },

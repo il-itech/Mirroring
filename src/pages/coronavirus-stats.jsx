@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { resolveActions } from 'next-redux-observable';
+import { Typography } from '@material-ui/core';
 import * as R from 'ramda';
 
 import {
@@ -34,7 +35,13 @@ const CoronavirusStats = ({
 
   return (
     <Main className="mt-10_5">
+      <Typography className="text-white" variant="h5">
+        Global Stats
+      </Typography>
       <PaperList list={statsList} />
+      <Typography className="mt-3 mb-2 text-white" variant="h5">
+        Country Stats
+      </Typography>
       <CoronavirusAllCountryStatsTable tableData={allCountryStats} />
     </Main>
   );

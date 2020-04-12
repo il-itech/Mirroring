@@ -10,7 +10,7 @@ import { ErrorBoundary } from '../error-boundary/error-boundary';
 import { GlobalAlert } from '../global-alert/global-alert';
 import { isEmptyOrNil } from '../../helpers/utils';
 
-export const MainUI = ({ children, className }) => {
+export const MainUI = ({ children, className, disableGutters }) => {
   const { errorId } = useSelector(R.path(['system', 'globalError']));
   const dispatch = useDispatch();
   const dismissGlobalAlert = useCallback(
@@ -20,6 +20,7 @@ export const MainUI = ({ children, className }) => {
 
   return (
     <Container
+      disableGutters={disableGutters}
       maxWidth="xl"
       className={classnames(className)}
     >
@@ -40,10 +41,12 @@ export const MainUI = ({ children, className }) => {
 MainUI.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node.isRequired,
+  disableGutters: PropTypes.bool,
 };
 
 MainUI.defaultProps = {
   className: null,
+  disableGutters: false,
 };
 
 export const Main = memo(MainUI);

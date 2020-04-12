@@ -53,6 +53,10 @@ button {
   height: 100vh;
 }
 
+.h-100vhh {
+  height: calc(100vh - #{$header-height});
+}
+
 .w-100vw {
   width: 100vw;
 }
