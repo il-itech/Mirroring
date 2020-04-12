@@ -23,6 +23,11 @@ export const getMuiTheme = () =>
           backgroundColor: ebony,
         },
       },
+      MuiTableRow: {
+        root: {
+          cursor: 'pointer',
+        },
+      },
       MUIDataTableSelectCell: {
         headerCell: {
           backgroundColor: ebony,
@@ -74,6 +79,32 @@ export const getMuiTheme = () =>
       MuiTablePagination: {
         root: {
           color: white,
+        },
+      },
+      MUIDataTableViewCol: {
+        title: {
+          color: '#adb0bb',
+        },
+        label: {
+          color: white,
+        },
+      },
+      MUIDataTableFilter: {
+        root: {
+          backgroundColor: ebony,
+        },
+        title: {
+          color: white,
+        },
+      },
+      MuiInputBase: {
+        fullWidth: {
+          color: white,
+        },
+      },
+      MuiFormLabel: {
+        root: {
+          color: '#adb0bb',
         },
       },
       MuiSvgIcon: {
