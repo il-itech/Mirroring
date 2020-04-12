@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { resolveActions } from 'next-redux-observable';
+import { Typography } from '@material-ui/core';
 import * as R from 'ramda';
 
 import { getCoronavirusCountryStats } from '../../actions/coronavirus';
@@ -11,10 +12,14 @@ const CountryStats = ({
     countryStats: { stats },
   },
 }) => {
+  const { info: { title } } = stats;
   const statsList = R.compose(R.drop(1), R.toPairs)(stats);
 
   return (
     <Main className="mt-10_5">
+      <Typography className="text-white" variant="h5">
+        {title}
+      </Typography>
       <PaperList list={statsList} />
     </Main>
   );
@@ -27,7 +32,11 @@ CountryStats.getInitialProps = ctx => resolveActions([
 CountryStats.propTypes = {
   coronavirus: PropTypes.shape({
     countryStats: PropTypes.shape({
-      stats: PropTypes.shape({}).isRequired,
+      stats: PropTypes.shape({
+        info: PropTypes.shape({
+          title: PropTypes.string,
+        }),
+      }).isRequired,
     }).isRequired,
   }).isRequired,
 };

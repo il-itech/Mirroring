@@ -41,7 +41,6 @@ export const CoronavirusAllCountryStatsTable = ({ tableData }) => (
         data={serializeTable(tableData)}
         columns={TABLE_HEADS_COMPANIES}
         options={options}
-        className="mt-3"
       />
     </MuiThemeProvider>
   </NoSsr>
