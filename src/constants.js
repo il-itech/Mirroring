@@ -30,6 +30,10 @@ export const ERRORS = {
   AUTH_ERROR: 'AUTH_ERROR',
 };
 
+export const FORM_TYPES = {
+  MESSENGER: 'messenger',
+};
+
 export const FORM_FIELD_TYPES = {
   TEXT: 'text',
   TEXTAREA: 'textarea',
@@ -98,4 +102,5 @@ export const REDUCER_TYPES = {
     FULL_TIMELINE_STATS: 'fullTimelineStats',
     COUNTRY_TIMELINE_STATS: 'countryTimelineStats',
   },
+  MESSENGER: 'messenger',
 };
