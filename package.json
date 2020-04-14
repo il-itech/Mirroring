@@ -12,7 +12,7 @@
     "test": "jest -c ./jest.config.js --colors",
     "test:coverage": "jest -c ./jest.config.js --coverage --colors",
     "eslint": "eslint --ext js,jsx,ts,tsx src",
-    "stylelint": "stylelint --fix '**/*.scss' && stylelint '**/*.scss'",
+    "stylelint": "stylelint '**/*.scss'",
     "lint": "yarn eslint && yarn stylelint",
     "jsdoc": "jsdoc src -r -d docs",
     "clean": "node ./resources/yarn/clean"
@@ -114,6 +114,7 @@
   "husky": {
     "hooks": {
       "commit-msg": "[[ -n $HUSKY_BYPASS ]] || commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "stylelint --fix '**/*.scss'",
       "pre-push": "yarn lint"
     }
   },

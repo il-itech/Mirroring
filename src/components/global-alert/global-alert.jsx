@@ -1,8 +1,10 @@
 import React, { useState, memo } from 'react';
 import PropTypes from 'prop-types';
 import Alert from '@material-ui/lab/Alert';
-import Button from '@material-ui/core/Button';
+import CloseIcon from '@material-ui/icons/Close';
 import clasnames from 'classnames';
+
+import './global-alert.scss';
 
 export const GlobalAlertUI = ({ dismissGlobalAlert, errorId }) => {
   const [isVisible, setVisible] = useState(true);
@@ -29,14 +31,10 @@ export const GlobalAlertUI = ({ dismissGlobalAlert, errorId }) => {
         <span className="my-auto">
           {`Error: ${errorId}`}
         </span>
-        <Button
-          variant="contained"
-          type="button"
-          className="py-0_5"
+        <CloseIcon
+          className="cursor-pointer"
           onClick={onDismiss}
-        >
-          dismiss
-        </Button>
+        />
       </Alert>
     </div>
   );
