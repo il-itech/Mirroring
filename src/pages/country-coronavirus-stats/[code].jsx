@@ -5,6 +5,7 @@ import * as R from 'ramda';
 
 import { getCoronavirusCountryStats } from '../../actions/coronavirus';
 import { Main } from '../../components/main/main';
+import { Header } from '../../components/header/header';
 import { PaperList } from '../../components/paper-list/paper-list';
 
 const CountryStats = ({
@@ -17,6 +18,7 @@ const CountryStats = ({
 
   return (
     <Main className="mt-10_5">
+      <Header />
       <Typography className="text-white" variant="h5">
         {title}
       </Typography>
