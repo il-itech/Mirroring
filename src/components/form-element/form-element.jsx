@@ -40,6 +40,7 @@ export const FormElement = ({
   className,
   elementProps,
   parentProps,
+  variant,
   customHandleChange,
   handleBlur,
   value,
@@ -67,6 +68,7 @@ export const FormElement = ({
       formType={formType}
       className={className}
       field={field}
+      variant={variant}
       handleChange={customHandleChange || handleChange}
       handleBlur={handleBlur}
       value={value}
@@ -89,6 +91,7 @@ FormElement.propTypes = {
     inputProps: PropTypes.shape({}),
   }).isRequired,
   parentProps: PropTypes.shape({}),
+  variant: PropTypes.string,
   value: PropTypes.string,
   isChecked: PropTypes.bool,
 };
@@ -97,6 +100,7 @@ FormElement.defaultProps = {
   customHandleChange: null,
   className: null,
   parentProps: null,
+  variant: 'standard',
   handleBlur: null,
   value: '',
   isChecked: false,

@@ -2,7 +2,7 @@ import { handleActions } from 'redux-actions';
 
 import { getCommonReducers, getInitialState } from '../common';
 import { setCoronavirusGlobalStats } from '../../actions/coronavirus';
-import { REDUCER_TYPES } from '../../constants';
+import { CORONAVIRUS_REDUCER_TYPES } from '../../constants';
 
 export const additionalState = {
   stats: {},
@@ -14,7 +14,7 @@ export const globalStats = handleActions(
       ...state,
       stats: payload,
     }),
-    ...getCommonReducers(REDUCER_TYPES.CORONAVIRUS.GLOBAL_STATS, additionalState),
+    ...getCommonReducers(CORONAVIRUS_REDUCER_TYPES.GLOBAL_STATS, additionalState),
   },
   getInitialState(additionalState),
 );

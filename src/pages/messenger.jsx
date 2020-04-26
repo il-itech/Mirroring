@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import * as R from 'ramda';
 
 import { Main } from '../components/main/main';
+import { Header } from '../components/header/header';
 import { ChatList } from '../components/chat-list/chat-list';
 import { ChatMessaging } from '../components/chat-messaging/chat-messaging';
 import { REDUCER_TYPES } from '../constants';
@@ -16,6 +17,7 @@ const Messenger = () => {
       disableGutters
       className="h-100vhh d-flex d-flex justify-content-center align-items-center mt-8"
     >
+      <Header />
       {IS_IN_DEVELOPMENT ? (
         <div className="h4 text-white">
           Section in development
