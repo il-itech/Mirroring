@@ -35,7 +35,13 @@ export const Header = () => (
           </RouteLink>
         ))}
       </div>
-      <Button color="inherit">Login</Button>
+      <RouteLink
+        to="/sign-in"
+        component={Button}
+        copmonentClassName="text-white"
+      >
+        Login
+      </RouteLink>
     </Toolbar>
   </AppBar>
 );

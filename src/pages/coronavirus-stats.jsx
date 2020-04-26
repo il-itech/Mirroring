@@ -11,6 +11,7 @@ import {
 } from '../actions/coronavirus';
 import { setIntervalActions, clearIntervalActions } from '../actions/common';
 import { Main } from '../components/main/main';
+import { Header } from '../components/header/header';
 import { PaperList } from '../components/paper-list/paper-list';
 import { CoronavirusAllCountryStatsTable } from '../components/coronavirus-all-country-stats-table/coronavirus-all-country-stats-table';
 
@@ -35,6 +36,7 @@ const CoronavirusStats = ({
 
   return (
     <Main className="mt-10_5">
+      <Header />
       <Typography className="text-white" variant="h5">
         Global Stats
       </Typography>

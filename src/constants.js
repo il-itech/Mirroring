@@ -31,7 +31,8 @@ export const ERRORS = {
 };
 
 export const FORM_TYPES = {
-  MESSENGER: 'messenger',
+  SIGN_IN: 'signIn',
+  SIGN_UP: 'signUp',
 };
 
 export const FORM_FIELD_TYPES = {
@@ -65,7 +66,6 @@ export const VALIDATION_TYPES = {
   REQUIRED: 'required',
   PASSWORD_EQUALITY: 'password_equality',
   PASSWORD_CONFIRMATION: 'password_confirmation',
-  MAX_METRICS_VALUES: 'max_metrics_values',
   MIN_VALUE: 'min_value',
 };
 
@@ -95,12 +95,15 @@ export const VALIDATION_ERRORS_MESSAGES = {
 
 export const REDUCER_TYPES = {
   SYSTEM: 'system',
-  CORONAVIRUS: {
-    GLOBAL_STATS: 'globalStats',
-    ALL_COUNTRY_STATS: 'allCountryStats',
-    COUNTRY_STATS: 'countryStats',
-    FULL_TIMELINE_STATS: 'fullTimelineStats',
-    COUNTRY_TIMELINE_STATS: 'countryTimelineStats',
-  },
   MESSENGER: 'messenger',
+  CORONAVIRUS: 'coronavirus',
+  FORMS: 'forms',
+};
+
+export const CORONAVIRUS_REDUCER_TYPES = {
+  GLOBAL_STATS: 'globalStats',
+  ALL_COUNTRY_STATS: 'allCountryStats',
+  COUNTRY_STATS: 'countryStats',
+  FULL_TIMELINE_STATS: 'fullTimelineStats',
+  COUNTRY_TIMELINE_STATS: 'countryTimelineStats',
 };

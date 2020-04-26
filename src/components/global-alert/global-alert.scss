@@ -1,4 +1,6 @@
+@import '../../customizations/pre-customization';
+
 .global-alert {
-  top: 70px;
+  top: $header-height + 6px;
   width: calc(100% - 48px);
 }

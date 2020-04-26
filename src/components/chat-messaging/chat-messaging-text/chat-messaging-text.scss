@@ -1,5 +1,7 @@
+@import '../../../customizations/pre-customization';
+
 .chat-messaging-text {
-  .outilned-input {
+  .outlined-input {
     border: 1px solid rgba(255, 255, 255, 0.12);
 
     &:hover {
@@ -8,6 +10,6 @@
   }
 
   .icon-send {
-    fill: #adb0bb;
+    fill: $mischka;
   }
 }
