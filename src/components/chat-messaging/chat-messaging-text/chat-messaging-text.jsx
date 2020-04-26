@@ -29,7 +29,7 @@ export const ChatMessagingText = ({ messages }) => {
           InputProps: {
             classes: {
               root: 'text-white',
-              notchedOutline: 'outilned-input',
+              notchedOutline: 'outlined-input',
             },
           },
         }}
