@@ -1,0 +1,31 @@
+@import '../../../customizations/pre-customization';
+
+.app-sign-in {
+  width: 600px;
+
+  .back-home-button {
+    width: 150px;
+
+    &:hover {
+      background-color: $ebony;
+    }
+  }
+
+  .form-sign-in {
+    .form-icon {
+      height: 64px;
+      top: -32px;
+      width: 64px;
+    }
+
+    .input-root {
+      .input-outline {
+        border-color: rgba(255, 255, 255, 0.23);
+      }
+  
+      &:hover .input-outline {
+        border-color: $white;
+      }
+    }
+  }
+}

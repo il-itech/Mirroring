@@ -16,7 +16,7 @@ const nextConfig = {
 };
 
 module.exports = withPlugins([
-  withImages,
+  [withImages],
   [withSass, {
     test: /\.scss$/,
     use: [
@@ -43,7 +43,7 @@ module.exports = withPlugins([
       },
     ],
   }],
-  [withBundleAnalyzer, {
+  [withBundleAnalyzer({
     enabled: process.env.ANALYZE === 'true',
-  }],
+  }), {}],
 ], nextConfig);

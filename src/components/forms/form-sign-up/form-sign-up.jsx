@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
+import NoSsr from '@material-ui/core/NoSsr';
 
 import { FormElement } from '../../form-element/form-element';
 import { RouteLink } from '../../route-link/route-link';
@@ -24,34 +25,38 @@ export const FormSignUp = ({ formType, fields, formData }) => (
       <Typography className="mb-2">
         Sign up on the internal platform
       </Typography>
-      {Object.entries(fields).map(([field, item]) => (
-        <FormElement
-          key={field}
-          formType={formType}
-          field={field}
-          variant="outlined"
-          value={formData[field]}
-          elementProps={{
-            ...item,
-            autoFocus: false,
-            classes: {
-              root: 'w-100 mt-2 mb-1',
-            },
-            InputProps: {
+
+      <NoSsr>
+        {Object.entries(fields).map(([field, item]) => (
+          <FormElement
+            key={field}
+            formType={formType}
+            field={field}
+            variant="outlined"
+            value={formData[field]}
+            elementProps={{
+              ...item,
+              autoFocus: false,
               classes: {
-                root: 'input-root',
-                input: 'text-white',
-                notchedOutline: 'input-outline',
+                root: 'w-100 mt-2 mb-1',
               },
-            },
-            InputLabelProps: {
-              classes: {
-                root: 'text-mischka',
+              InputProps: {
+                classes: {
+                  root: 'input-root',
+                  input: 'text-white input-custom-autocomplete',
+                  notchedOutline: 'input-outline',
+                },
               },
-            },
-          }}
-        />
-      ))}
+              InputLabelProps: {
+                classes: {
+                  root: 'text-mischka',
+                },
+              },
+            }}
+          />
+        ))}
+      </NoSsr>
+
       <Button
         classes={{
           root: 'mt-2 py-1 px-3 text-white bg-blue',
@@ -70,6 +75,12 @@ export const FormSignUp = ({ formType, fields, formData }) => (
     </div>
   </div>
 );
+
+FormSignUp.propTypes = {
+  formType: PropTypes.string.isRequired,
+  fields: PropTypes.shape({}).isRequired,
+  formData: PropTypes.shape({}).isRequired,
+};
 
 FormSignUp.propTypes = {
   formType: PropTypes.string.isRequired,

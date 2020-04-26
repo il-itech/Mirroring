@@ -1,6 +1,6 @@
-import Head from 'next/head';
 import { Provider } from 'react-redux';
 import PropTypes from 'prop-types';
+import Head from 'next/head';
 import withRedux from 'next-redux-wrapper';
 import { withObservable } from 'next-redux-observable';
 import * as R from 'ramda';
@@ -10,16 +10,27 @@ import configureStore from '../store/store';
 
 import '../customizations/entrypoints.scss';
 
-const App = ({ Component, pageProps, store }) => (
-  <>
-    <Head>
-      <title>NextJS Project</title>
-    </Head>
-    <Provider store={store}>
-      <Component {...pageProps} />
-    </Provider>
-  </>
-);
+const App = ({ Component, pageProps, store }) => {
+  React.useEffect(() => {
+    // Remove the server-side injected CSS.
+    const jssStyles = document.querySelector('#jss-server-side');
+
+    if (jssStyles) {
+      jssStyles.parentElement.removeChild(jssStyles);
+    }
+  }, []);
+
+  return (
+    <>
+      <Head>
+        <title>NextJS Project</title>
+      </Head>
+      <Provider store={store}>
+        <Component {...pageProps} />
+      </Provider>
+    </>
+  );
+};
 
 App.getInitialProps = async (props) => {
   const { Component, ctx } = props;
