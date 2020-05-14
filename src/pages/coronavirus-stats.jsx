@@ -12,6 +12,7 @@ import {
 import { setIntervalActions, clearIntervalActions } from '../actions/common';
 import { Main } from '../components/main/main';
 import { Header } from '../components/header/header';
+import { DrawerSideBar } from '../components/drawers/drawer-side-bar/drawer-side-bar';
 import { PaperList } from '../components/paper-list/paper-list';
 import { CoronavirusAllCountryStatsTable } from '../components/coronavirus-all-country-stats-table/coronavirus-all-country-stats-table';
 
@@ -35,8 +36,9 @@ const CoronavirusStats = ({
   const statsList = R.compose(R.dropLast(1), R.toPairs)(globalStats);
 
   return (
-    <Main className="mt-10_5">
+    <Main isShowSideBar className="mt-10_5">
       <Header />
+      <DrawerSideBar />
       <Typography className="text-white" variant="h5">
         Global Stats
       </Typography>

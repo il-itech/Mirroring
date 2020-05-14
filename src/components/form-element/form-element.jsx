@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 import * as R from 'ramda';
 
 import elements from './elements';
-import { setFormData } from '../../actions/forms/common';
+import { setFormData, setFormError, clearFormError } from '../../actions/forms/common';
+import { checkErrors } from '../../helpers/form';
+import { isEmptyOrNil } from '../../helpers/utils';
 import { FORM_FIELD_TYPES, FORM_TARGET_VALUES_SERIALIZE } from '../../constants';
 
 const {
@@ -42,14 +44,14 @@ export const FormElement = ({
   parentProps,
   variant,
   customHandleChange,
-  handleBlur,
+  customHandleBlur,
   value,
   isChecked,
-  // errors,
 }) => {
-  const { type: elementType } = elementProps;
+  const { type: elementType, validation } = elementProps;
   const Element = getElement(elementType);
   const dispatch = useDispatch();
+
   const handleChange = useCallback(
     R.compose(
       dispatch,
@@ -63,6 +65,19 @@ export const FormElement = ({
     [dispatch],
   );
 
+  const handleBlur = useCallback(
+    () => {
+      const error = checkErrors({ [field]: { validation } }, { [field]: value });
+
+      if (isEmptyOrNil(error)) {
+        R.compose(dispatch, clearFormError)(formType, field);
+      } else {
+        R.compose(dispatch, setFormError)(formType, error);
+      }
+    },
+    [dispatch, field, formType, validation, value],
+  );
+
   return (
     <Element
       formType={formType}
@@ -70,12 +85,11 @@ export const FormElement = ({
       field={field}
       variant={variant}
       handleChange={customHandleChange || handleChange}
-      handleBlur={handleBlur}
+      handleBlur={customHandleBlur || handleBlur}
       value={value}
       checked={isChecked}
       {...elementProps}
       {...parentProps}
-      // errors={errors}
     />
   );
 };
@@ -84,11 +98,13 @@ FormElement.propTypes = {
   formType: PropTypes.string.isRequired,
   field: PropTypes.string.isRequired,
   customHandleChange: PropTypes.func,
+  customHandleBlur: PropTypes.func,
   handleBlur: PropTypes.func,
   className: PropTypes.string,
   elementProps: PropTypes.shape({
     type: PropTypes.string.isRequired,
     inputProps: PropTypes.shape({}),
+    validation: PropTypes.arrayOf(PropTypes.shape({})),
   }).isRequired,
   parentProps: PropTypes.shape({}),
   variant: PropTypes.string,
@@ -98,6 +114,7 @@ FormElement.propTypes = {
 
 FormElement.defaultProps = {
   customHandleChange: null,
+  customHandleBlur: null,
   className: null,
   parentProps: null,
   variant: 'standard',

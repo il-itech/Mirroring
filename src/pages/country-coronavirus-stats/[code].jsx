@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { resolveActions } from 'next-redux-observable';
 import { Typography } from '@material-ui/core';
@@ -6,6 +7,7 @@ import * as R from 'ramda';
 import { getCoronavirusCountryStats } from '../../actions/coronavirus';
 import { Main } from '../../components/main/main';
 import { Header } from '../../components/header/header';
+import { DrawerSideBar } from '../../components/drawers/drawer-side-bar/drawer-side-bar';
 import { PaperList } from '../../components/paper-list/paper-list';
 
 const CountryStats = ({
@@ -14,11 +16,15 @@ const CountryStats = ({
   },
 }) => {
   const { info: { title } } = stats;
-  const statsList = R.compose(R.drop(1), R.toPairs)(stats);
+  const statsList = useMemo(() => R.compose(R.drop(1), R.toPairs)(stats), [stats]);
 
   return (
-    <Main className="mt-10_5">
+    <Main
+      isShowSideBar
+      className="mt-10_5"
+    >
       <Header />
+      <DrawerSideBar />
       <Typography className="text-white" variant="h5">
         {title}
       </Typography>

@@ -7,10 +7,11 @@ import {
 import {
   setFormData,
   replaceFormData,
+  setFormError,
   setFormErrors,
   clearFormData,
   clearFormErrors,
-  clearFormFieldError,
+  clearFormError,
   clearForm,
 } from '../../actions/forms/common';
 
@@ -35,17 +36,20 @@ export const getFormsCommonReducer = (reducerFormName, additionalState) => ({
   [replaceFormData]: (state, { payload: { formName, formData } }) =>
     reducerChecker(reducerFormName, state, formName, { formData }),
 
+  [setFormError]: (state, { payload: { formName, error } }) =>
+    reducerChecker(reducerFormName, state, formName, { errors: { ...state.errors, ...error } }),
+
   [setFormErrors]: (state, { payload: { formName, errors } }) =>
     reducerChecker(reducerFormName, state, formName, { errors }),
 
   [clearFormData]: (state, { payload: { formName } }) =>
     reducerChecker(reducerFormName, state, formName, { formData: getInitialState(additionalState).formData }),
 
+  [clearFormError]: (state, { payload: { formName, field } }) =>
+    reducerChecker(reducerFormName, state, formName, { errors: R.dissoc(field, state.errors) }),
+
   [clearFormErrors]: (state, { payload: { formName } }) =>
     reducerChecker(reducerFormName, state, formName, { errors: getInitialState(additionalState).errors }),
-
-  [clearFormFieldError]: (state, { payload: { formName, field } }) =>
-    reducerChecker(reducerFormName, state, formName, { errors: R.dissoc(field, state.errors) }),
 
   [clearForm]: (state, { payload: { formName } }) =>
     reducerChecker(reducerFormName, state, formName, getInitialState(additionalState)),

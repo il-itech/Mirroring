@@ -27,6 +27,7 @@ $link-hover-color: $text-color;
 
 $theme-colors: (
   // custom
+  'white-23':                       $white-23,
   'light':                          $light,
   'maire':                          $maire,
   'swans-down':                     $swans-down,
@@ -107,3 +108,4 @@ $h4-font-size: $font-size-base * 1.875; // 30px
 $h5-font-size: $font-size-base * 1.25;  // 30px
 
 $header-height: 64px;
+$side-bar-width: 235px;
