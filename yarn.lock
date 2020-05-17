@@ -8177,6 +8177,18 @@ next-images@^1.4.0:
     file-loader "^6.0.0"
     url-loader "^4.0.0"
 
+<<<<<<< HEAD
+=======
+next-redux-observable@^1.0.1:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/next-redux-observable/-/next-redux-observable-1.0.2.tgz#cfddce36b54b34150033c9c6ca8cdda0f8c56ef3"
+  integrity sha512-4vx7ZzfqVtjqMGTpe8nSwi2Yf1E/pI9jtfmP21fLJyYFkSZI2nR/Gn1/AFNnNIw8KRSOGvcp8ncaq9rM3bZ9sw==
+  dependencies:
+    react "^16.13.0"
+    redux-observable "^1.2.0"
+    rxjs "^6.5.4"
+
+>>>>>>> origin/staging
 next-redux-wrapper@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/next-redux-wrapper/-/next-redux-wrapper-5.0.0.tgz#0f36f94ea00581fbdc94f2405594f6360beb08dc"
