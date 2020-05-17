@@ -1,10 +1,5 @@
-import { Header } from '../components/header/header';
+import { Index as IndexLayout } from '../layouts';
 
-const Index = () => (
-  <div>
-    <Header />
-    <p>Hello NextJS</p>
-  </div>
-);
+const Index = IndexLayout;
 
 export default Index;

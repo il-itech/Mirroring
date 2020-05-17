@@ -8177,6 +8177,8 @@ next-images@^1.4.0:
     file-loader "^6.0.0"
     url-loader "^4.0.0"
 
+<<<<<<< HEAD
+=======
 next-redux-observable@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/next-redux-observable/-/next-redux-observable-1.0.2.tgz#cfddce36b54b34150033c9c6ca8cdda0f8c56ef3"
@@ -8186,6 +8188,7 @@ next-redux-observable@^1.0.1:
     redux-observable "^1.2.0"
     rxjs "^6.5.4"
 
+>>>>>>> origin/staging
 next-redux-wrapper@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/next-redux-wrapper/-/next-redux-wrapper-5.0.0.tgz#0f36f94ea00581fbdc94f2405594f6360beb08dc"
@@ -10143,7 +10146,7 @@ react-transition-group@^4.3.0:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-react@^16.13.0, react@^16.13.1:
+react@^16.13.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react/-/react-16.13.1.tgz#2e818822f1a9743122c063d6410d85c1e3afe48e"
   integrity sha512-YMZQQq32xHLX0bz5Mnibv1/LHb3Sqzngu7xstSM+vrkE5Kzr9xE0yMByK5kMoTK30YVJE61WfbxIFFvfeDKT1w==

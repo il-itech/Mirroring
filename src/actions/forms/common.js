@@ -3,9 +3,10 @@ import { createActions } from 'redux-actions';
 export const {
   setFormData,
   replaceFormData,
+  setFormError,
   setFormErrors,
   clearFormData,
-  clearFormFieldError,
+  clearFormError,
   clearFormErrors,
   clearForm,
 } = createActions(
@@ -18,6 +19,10 @@ export const {
       formName,
       formData,
     }),
+    SET_FORM_ERROR: (formName, error) => ({
+      formName,
+      error,
+    }),
     SET_FORM_ERRORS: (formName, errors) => ({
       formName,
       errors,
@@ -25,7 +30,7 @@ export const {
     CLEAR_FORM_DATA: formName => ({
       formName,
     }),
-    CLEAR_FORM_FIELD_ERROR: (formName, field) => ({
+    CLEAR_FORM_ERROR: (formName, field) => ({
       formName,
       field,
     }),
