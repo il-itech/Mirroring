@@ -10,16 +10,4 @@
       background-color: $ebony;
     }
   }
-
-  .form-sign-up {
-    .input-root {
-      .input-outline {
-        border-color: rgba(255, 255, 255, 0.23);
-      }
-  
-      &:hover .input-outline {
-        border-color: $white;
-      }
-    }
-  }
 }

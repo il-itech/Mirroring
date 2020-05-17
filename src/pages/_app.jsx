@@ -2,9 +2,10 @@ import { Provider } from 'react-redux';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import withRedux from 'next-redux-wrapper';
-import { withObservable } from 'next-redux-observable';
 import * as R from 'ramda';
 
+import { withObservable } from '../hocs/with-observable';
+import { AuthProvider } from '../context/auth-provider';
 import { rootEpic } from '../epics';
 import configureStore from '../store/store';
 
@@ -26,7 +27,9 @@ const App = ({ Component, pageProps, store }) => {
         <title>NextJS Project</title>
       </Head>
       <Provider store={store}>
-        <Component {...pageProps} />
+        <AuthProvider>
+          <Component {...pageProps} />
+        </AuthProvider>
       </Provider>
     </>
   );

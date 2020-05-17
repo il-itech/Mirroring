@@ -1,17 +1,25 @@
 import React, { memo, useCallback } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Container from '@material-ui/core/Container';
 import * as R from 'ramda';
 
+import { useShallowSelector } from '../../hooks/use-shallow-selector';
 import { clearError } from '../../actions/system';
 import { ErrorBoundary } from '../error-boundary/error-boundary';
 import { GlobalAlert } from '../global-alert/global-alert';
 import { isEmptyOrNil } from '../../helpers/utils';
 
-export const MainUI = ({ children, className, disableGutters }) => {
-  const { errorId } = useSelector(R.path(['system', 'globalError']));
+import './main.scss';
+
+export const MainUI = ({
+  children,
+  className,
+  disableGutters,
+  isShowSideBar,
+}) => {
+  const { errorId } = useShallowSelector(R.path(['system', 'globalError']));
   const dispatch = useDispatch();
   const dismissGlobalAlert = useCallback(
     R.compose(dispatch, clearError),
@@ -22,7 +30,9 @@ export const MainUI = ({ children, className, disableGutters }) => {
     <Container
       disableGutters={disableGutters}
       maxWidth="xl"
-      className={classnames(className)}
+      className={classnames('main-container', className, {
+        'side-bar-indent': isShowSideBar,
+      })}
     >
       {!isEmptyOrNil(errorId) && (
         <GlobalAlert
@@ -42,11 +52,13 @@ MainUI.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node.isRequired,
   disableGutters: PropTypes.bool,
+  isShowSideBar: PropTypes.bool,
 };
 
 MainUI.defaultProps = {
   className: null,
   disableGutters: false,
+  isShowSideBar: false,
 };
 
 export const Main = memo(MainUI);

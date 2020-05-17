@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 
@@ -11,6 +10,8 @@ export const CustomTextField = ({
   placeholder,
   variant,
   autoFocus,
+  hasError,
+  helperText,
   classes,
   className,
   InputProps,
@@ -24,6 +25,8 @@ export const CustomTextField = ({
     id={field}
     name={field}
     type={type}
+    error={hasError}
+    helperText={hasError && helperText}
     variant={variant}
     multiline={type === FORM_FIELD_TYPES.TEXTAREA}
     value={value}
@@ -45,6 +48,8 @@ CustomTextField.propTypes = {
   type: PropTypes.string.isRequired,
   field: PropTypes.string.isRequired,
   label: PropTypes.string,
+  hasError: PropTypes.bool,
+  helperText: PropTypes.string,
   placeholder: PropTypes.string,
   variant: PropTypes.string.isRequired,
   autoFocus: PropTypes.bool,
@@ -62,6 +67,8 @@ CustomTextField.defaultProps = {
   classes: null,
   className: null,
   label: '',
+  hasError: false,
+  helperText: null,
   placeholder: '',
   autoFocus: true,
   InputProps: {},

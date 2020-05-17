@@ -1,0 +1,9 @@
+@import '../../../customizations/pre-customization';
+
+.drawer-side-bar {
+  &-paper {
+    top: $header-height !important;
+    width: $side-bar-width;
+    z-index: 1 !important;
+  }
+}
