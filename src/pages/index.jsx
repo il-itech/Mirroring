@@ -1,12 +1,5 @@
-import { Header } from '../components/header/header';
-import { DrawerSideBar } from '../components/drawers/drawer-side-bar/drawer-side-bar';
+import { Index as IndexLayout } from '../layouts';
 
-const Index = () => (
-  <div>
-    <Header />
-    <DrawerSideBar />
-    <p>Hello NextJS</p>
-  </div>
-);
+const Index = IndexLayout;
 
 export default Index;
