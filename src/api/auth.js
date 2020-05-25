@@ -7,7 +7,7 @@ const host = getConfig('HOST');
  * @param {Object} ajax
  */
 export const signIn = (ajax, body) => ajax({
-  url: `${host}/api/sign-in`,
+  url: `${host}/auth/sign-in`,
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
@@ -20,7 +20,7 @@ export const signIn = (ajax, body) => ajax({
  * @param {Object} ajax
  */
 export const signUp = (ajax, body) => ajax({
-  url: `${host}/api/sign-up`,
+  url: `${host}/auth/sign-up`,
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',

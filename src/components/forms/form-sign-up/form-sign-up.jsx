@@ -8,6 +8,7 @@ import classnames from 'classnames';
 import { useSignUp } from '../../../hooks/use-sign-up';
 import { FormElement } from '../../form-element/form-element';
 import { RouteLink } from '../../route-link/route-link';
+import { CircularLoader } from '../../progress-bar/circular-loader/circular-loader';
 import { isEmptyOrNil } from '../../../helpers/utils';
 
 import './form-sign-up.scss';
@@ -17,6 +18,7 @@ export const FormSignUp = ({
   fields,
   formData,
   errors,
+  isInProgress,
 }) => {
   const {
     onSubmit,
@@ -82,11 +84,22 @@ export const FormSignUp = ({
 
         <Button
           classes={{
-            root: 'mt-2 py-1 px-3 text-white bg-blue',
+            root: classnames('mt-2 py-1 px-3 text-white', {
+              'bg-blue': !isInProgress,
+              'bg-vulcan bg-hover-none': isInProgress,
+            }),
           }}
           onClick={onSubmit}
+          disabled={isInProgress}
         >
           Create account
+          {isInProgress && (
+            <CircularLoader
+              colorPrimary={classnames({
+                'text-muted': isInProgress,
+              })}
+            />
+          )}
         </Button>
         <Divider className="my-2 bg-vulcan" />
         <RouteLink
@@ -106,4 +119,5 @@ FormSignUp.propTypes = {
   fields: PropTypes.shape({}).isRequired,
   formData: PropTypes.shape({}).isRequired,
   errors: PropTypes.shape({}).isRequired,
+  isInProgress: PropTypes.bool.isRequired,
 };
