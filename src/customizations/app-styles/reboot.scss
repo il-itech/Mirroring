@@ -41,7 +41,7 @@ button {
   border: 1px solid $black;
 }
 
-.v-none {
+.v-hidden {
   visibility: hidden;
 }
 
@@ -61,12 +61,16 @@ button {
   width: 100vw;
 }
 
-.overflow-x-hidden {
+.ov-x-hidden {
   overflow-x: hidden;
 }
 
-.overflow-y-hidden {
+.ov-y-hidden {
   overflow-y: hidden;
+}
+
+.flex-none {
+  flex: none;
 }
 
 .scroll-disable {
@@ -74,8 +78,4 @@ button {
   pointer-events: none;
   position: fixed;
   width: 100%;
-}
-
-.flex-none {
-  flex: none;
 }
