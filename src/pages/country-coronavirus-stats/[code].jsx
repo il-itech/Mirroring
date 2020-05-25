@@ -22,12 +22,8 @@ CountryStats.getInitialProps = ctx => resolveActions([
 CountryStats.propTypes = {
   coronavirus: PropTypes.shape({
     countryStats: PropTypes.shape({
-      stats: PropTypes.shape({
-        info: PropTypes.shape({
-          title: PropTypes.string,
-        }),
-      }).isRequired,
-    }).isRequired,
+      stats: PropTypes.shape({}).isRequired,
+    }),
   }).isRequired,
 };
 

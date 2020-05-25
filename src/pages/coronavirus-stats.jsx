@@ -46,11 +46,11 @@ CoronavirusStats.getInitialProps = resolveActions([
 CoronavirusStats.propTypes = {
   coronavirus: PropTypes.shape({
     globalStats: PropTypes.shape({
-      stats: PropTypes.shape({}),
-    }),
+      stats: PropTypes.shape({}).isRequired,
+    }).isRequired,
     allCountryStats: PropTypes.shape({
-      stats: PropTypes.shape({}),
-    }),
+      stats: PropTypes.shape({}).isRequired,
+    }).isRequired,
   }).isRequired,
 };
 
