@@ -15,8 +15,8 @@ export const signUpEpic = action$ =>
     switchMap(({ payload }) => concat(
       setInProgressStatusAction(FORM_TYPES.SIGN_UP, true),
       signUpApi(ajax, payload).pipe(
-        map(({ response: { result } }) => {
-          store.set('user', result);
+        map(({ response }) => {
+          store.set('user', response);
 
           return setAuthStatus(true);
         }),

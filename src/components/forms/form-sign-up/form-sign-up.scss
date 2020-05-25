@@ -10,4 +10,11 @@
       background-color: $ebony;
     }
   }
+
+  .bg-hover-none {
+    &:focus,
+    &:hover {
+      background-color: $vulcan !important;
+    }
+  }
 }

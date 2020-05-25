@@ -8,11 +8,7 @@ import { Header } from '../components/header/header';
 import { DrawerSideBar } from '../components/drawers/drawer-side-bar/drawer-side-bar';
 import { PaperList } from '../components/paper-list/paper-list';
 
-export const CountryCoronavirusStats = ({
-  coronavirus: {
-    countryStats: { stats },
-  },
-}) => {
+export const CountryCoronavirusStats = ({ stats }) => {
   const { info: { title } } = stats;
   const statsList = useMemo(() => R.compose(R.drop(1), R.toPairs)(stats), [stats]);
 
@@ -32,13 +28,9 @@ export const CountryCoronavirusStats = ({
 };
 
 CountryCoronavirusStats.propTypes = {
-  coronavirus: PropTypes.shape({
-    countryStats: PropTypes.shape({
-      stats: PropTypes.shape({
-        info: PropTypes.shape({
-          title: PropTypes.string,
-        }),
-      }).isRequired,
-    }).isRequired,
+  stats: PropTypes.shape({
+    info: PropTypes.shape({
+      title: PropTypes.string,
+    }),
   }).isRequired,
 };
