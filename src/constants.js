@@ -33,6 +33,7 @@ export const ERRORS = {
 export const FORM_TYPES = {
   SIGN_IN: 'signIn',
   SIGN_UP: 'signUp',
+  CHAT_MESSAGE: 'chatMessage',
 };
 
 export const FORM_FIELD_TYPES = {

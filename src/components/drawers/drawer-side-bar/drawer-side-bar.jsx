@@ -3,7 +3,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 
-import { RouteLink } from '../../route-link/route-link';
+import { RouteLink } from 'components/route-link/route-link';
 
 import './drawer-side-bar.scss';
 
@@ -18,7 +18,7 @@ export const DrawerSideBar = () => (
     variant="permanent"
     classes={{
       root: 'drawer-side-bar',
-      paper: 'position-fixed bg-ebony drawer-side-bar-paper',
+      paper: 'position-fixed bg-ebony drawer-side-bar-paper border-white-12',
     }}
   >
     <List

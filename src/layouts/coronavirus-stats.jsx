@@ -8,17 +8,22 @@ import { PaperList } from '../components/paper-list/paper-list';
 import { CoronavirusAllCountryStatsTable } from '../components/coronavirus-all-country-stats-table/coronavirus-all-country-stats-table';
 
 export const CoronavirusStats = ({ statsList, allCountryStats }) => (
-  <Main isShowSideBar className="mt-10_5">
-    <Header />
-    <DrawerSideBar />
-    <Typography className="text-white" variant="h5">
-      Global Stats
-    </Typography>
-    <PaperList list={statsList} />
-    <Typography className="mt-3 mb-2 text-white" variant="h5">
-      Country Stats
-    </Typography>
-    <CoronavirusAllCountryStatsTable tableData={allCountryStats} />
+  <Main
+    isShowSideBar
+    className="mt-10_5 pr-0"
+  >
+    <div className="px-3">
+      <Header />
+      <DrawerSideBar />
+      <Typography className="text-white" variant="h5">
+        Global Stats
+      </Typography>
+      <PaperList list={statsList} />
+      <Typography className="mt-3 mb-2 text-white" variant="h5">
+        Country Stats
+      </Typography>
+      <CoronavirusAllCountryStatsTable tableData={allCountryStats} />
+    </div>
   </Main>
 );
 

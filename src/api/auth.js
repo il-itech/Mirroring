@@ -1,13 +1,13 @@
 import { getConfig } from '../helpers/env';
 
-const host = getConfig('HOST');
+const api = getConfig('HTTP_API_URL');
 
 /**
  * API for sign in
  * @param {Object} ajax
  */
 export const signIn = (ajax, body) => ajax({
-  url: `${host}/auth/sign-in`,
+  url: `${api}/auth/sign-in`,
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
@@ -20,7 +20,7 @@ export const signIn = (ajax, body) => ajax({
  * @param {Object} ajax
  */
 export const signUp = (ajax, body) => ajax({
-  url: `${host}/auth/sign-up`,
+  url: `${api}/auth/sign-up`,
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',

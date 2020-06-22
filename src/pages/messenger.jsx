@@ -1,11 +1,8 @@
-import * as R from 'ramda';
-
-import { Messenger as MessengerLayout } from '../layouts/messenger';
-import { useShallowSelector } from '../hooks/use-shallow-selector';
-import { REDUCER_TYPES } from '../constants';
+import { useChat } from 'hooks/chat/use-chat';
+import { Messenger as MessengerLayout } from 'layouts/messenger/messenger';
 
 const Messenger = () => {
-  const { messages } = useShallowSelector(R.path([REDUCER_TYPES.MESSENGER]));
+  const { messages } = useChat();
 
   return (
     <MessengerLayout

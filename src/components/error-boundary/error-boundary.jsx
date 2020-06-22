@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import { GlobalAlert } from '../global-alert/global-alert';
-import { logError } from '../../helpers/error-logger';
+import { logError } from '../../helpers/logger';
 
 export class ErrorBoundary extends PureComponent {
   static propTypes = {

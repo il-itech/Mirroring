@@ -17,12 +17,14 @@ export const CountryCoronavirusStats = ({ stats }) => {
       isShowSideBar
       className="mt-10_5"
     >
-      <Header />
-      <DrawerSideBar />
-      <Typography className="text-white" variant="h5">
-        {title}
-      </Typography>
-      <PaperList list={statsList} />
+      <div className="px-3">
+        <Header />
+        <DrawerSideBar />
+        <Typography className="text-white" variant="h5">
+          {title}
+        </Typography>
+        <PaperList list={statsList} />
+      </div>
     </Main>
   );
 };

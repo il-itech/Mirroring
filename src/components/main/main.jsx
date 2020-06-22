@@ -30,7 +30,7 @@ export const MainUI = ({
     <Container
       disableGutters={disableGutters}
       maxWidth="xl"
-      className={classnames('main-container', className, {
+      className={classnames('main-container pr-0', className, {
         'side-bar-indent': isShowSideBar,
       })}
     >

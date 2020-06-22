@@ -63,7 +63,6 @@ export const FormSignUp = ({
                   },
                   InputProps: {
                     classes: {
-                      root: 'input-root',
                       input: 'text-white input-custom-autocomplete',
                       notchedOutline: classnames({
                         'border-white-23': !hasError,
