@@ -4,9 +4,9 @@ import Head from 'next/head';
 import withRedux from 'next-redux-wrapper';
 import * as R from 'ramda';
 
-import { withObservable } from '../hocs/with-observable';
-import { AuthProvider } from '../context/auth-provider';
-import { rootEpic } from '../epics';
+import { withObservable } from 'hocs/with-observable';
+import { AuthProvider } from 'context/auth-provider';
+import { rootEpic } from 'epics';
 import configureStore from '../store/store';
 
 import '../customizations/entrypoints.scss';

@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import { Typography } from '@material-ui/core';
 
-import { Main } from '../components/main/main';
-import { Header } from '../components/header/header';
-import { DrawerSideBar } from '../components/drawers/drawer-side-bar/drawer-side-bar';
-import { PaperList } from '../components/paper-list/paper-list';
-import { CoronavirusAllCountryStatsTable } from '../components/coronavirus-all-country-stats-table/coronavirus-all-country-stats-table';
+import { Main } from 'components/main/main';
+import { Header } from 'components/header/header';
+import { DrawerSideBar } from 'components/drawers/drawer-side-bar/drawer-side-bar';
+import { PaperList } from 'components/paper-list/paper-list';
+import { CoronavirusAllCountryStatsTable } from 'components/coronavirus-all-country-stats-table/coronavirus-all-country-stats-table';
 
 export const CoronavirusStats = ({ statsList, allCountryStats }) => (
   <Main

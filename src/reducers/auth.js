@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
 
-import { setAuthStatus } from '../actions/auth';
+import { setAuthStatus } from 'actions/auth';
 
 const initialState = {
   isUserAuth: false,

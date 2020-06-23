@@ -1,4 +1,4 @@
-import { getConfig } from '../helpers/env';
+import { getConfig } from 'helpers/env';
 
 const api = getConfig('HTTP_API_URL');
 

@@ -4,8 +4,8 @@ import {
   globalError,
   setGlobalInProgressStatus,
   clearError,
-} from '../actions/system';
-import { ERRORS } from '../constants';
+} from 'actions/system';
+import { ERRORS } from 'constants';
 
 const initialState = {
   globalError: {},

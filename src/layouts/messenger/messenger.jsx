@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 
-import { Main } from '../../components/main/main';
-import { Header } from '../../components/header/header';
-import { DrawerSideBar } from '../../components/drawers/drawer-side-bar/drawer-side-bar';
+import { Main } from 'components/main/main';
+import { Header } from 'components/header/header';
+import { DrawerSideBar } from 'components/drawers/drawer-side-bar/drawer-side-bar';
 import { ChatList } from './chat-list/chat-list';
 import { ChatMessaging } from './chat-messaging/chat-messaging';
 

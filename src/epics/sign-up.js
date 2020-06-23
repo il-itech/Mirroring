@@ -4,10 +4,10 @@ import { switchMap, map } from 'rxjs/operators';
 import { ajax } from 'rxjs/ajax';
 import store from 'store';
 
-import { signUp, setAuthStatus } from '../actions/auth';
-import { signUp as signUpApi } from '../api/auth';
+import { signUp, setAuthStatus } from 'actions/auth';
+import { signUp as signUpApi } from 'api/auth';
+import { FORM_TYPES } from 'constants';
 import { setInProgressStatusAction, catchGlobalErrorWithUndefinedId } from './common-operators';
-import { FORM_TYPES } from '../constants';
 
 export const signUpEpic = action$ =>
   action$.pipe(

@@ -1,6 +1,7 @@
 import io from 'socket.io-client';
 import { Observable } from 'rxjs';
-import { logInfo, logError } from '../helpers/logger';
+
+import { logInfo, logError } from 'helpers/logger';
 
 export class SocketService {
   socket;
@@ -37,10 +38,10 @@ export class SocketService {
   }
 
   static connected() {
-    logInfo('Has been connected...');
+    logInfo('Socket has been connected...');
   }
 
   static disconnected() {
-    logInfo('Was disconnected!');
+    logInfo('Socket was disconnected!');
   }
 }

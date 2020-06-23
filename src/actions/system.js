@@ -1,6 +1,6 @@
 import { createActions } from 'redux-actions';
 
-import { logError } from '../helpers/logger';
+import { logError } from 'helpers/logger';
 
 export const {
   redirectTo,

@@ -2,7 +2,7 @@ import React, { useEffect, createContext } from 'react';
 import Router from 'next/router';
 import PropTypes from 'prop-types';
 
-import { useShallowSelector } from '../hooks/use-shallow-selector';
+import { useShallowSelector } from 'hooks/use-shallow-selector';
 
 export const UserContext = createContext();
 

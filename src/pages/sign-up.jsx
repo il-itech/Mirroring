@@ -1,9 +1,9 @@
 import * as R from 'ramda';
 
-import { getConfig } from '../helpers/env';
-import { useShallowSelector } from '../hooks/use-shallow-selector';
-import { REDUCER_TYPES, FORM_TYPES } from '../constants';
-import { SignUp as SignUpLayout } from '../layouts/sign-up';
+import { getConfig } from 'helpers/env';
+import { useShallowSelector } from 'hooks/use-shallow-selector';
+import { SignUp as SignUpLayout } from 'layouts/sign-up';
+import { REDUCER_TYPES, FORM_TYPES } from 'constants';
 
 const { FORM_TYPE, FIELDS } = getConfig('FORMS.SIGN_UP');
 

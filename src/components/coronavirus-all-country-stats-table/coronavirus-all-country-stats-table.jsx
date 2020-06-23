@@ -5,8 +5,8 @@ import MUIDataTable from 'mui-datatables';
 import NoSsr from '@material-ui/core/NoSsr';
 import * as R from 'ramda';
 
+import { serializeTable } from 'helpers/coronavirus';
 import { getMuiTheme } from './theme';
-import { serializeTable } from '../../helpers/coronavirus';
 
 const TABLE_HEADS_COMPANIES = [
   'Country name',

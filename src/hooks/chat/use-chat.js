@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
+import { getChatSocketServiceSingleton } from 'services/sockets';
 import { useShallowSelector } from '../use-shallow-selector';
-import { getChatSocketServiceSingleton } from '../../services/socket';
 
 export const useChat = () => {
   const { messages } = useShallowSelector(state => state?.messenger);

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
-import { Main } from '../components/main/main';
-import { FormSignIn } from '../components/forms/form-sign-in/form-sign-in';
+import { Main } from 'components/main/main';
+import { FormSignIn } from 'components/forms/form-sign-in/form-sign-in';
 
 export const SignIn = ({
   formType,

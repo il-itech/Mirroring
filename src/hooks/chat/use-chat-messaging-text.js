@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { map } from 'rxjs/operators';
 import * as R from 'ramda';
 
-import { getChatSocketServiceSingleton } from '../../services/socket';
-import { setMessage } from '../../actions/messenger';
+import { getChatSocketServiceSingleton } from 'services/sockets';
+import { setMessage } from 'actions/messenger';
 
 export const useChatMessagingText = () => {
   const { chatMessage } = useSelector(state => state?.forms?.chatMessage?.formData);

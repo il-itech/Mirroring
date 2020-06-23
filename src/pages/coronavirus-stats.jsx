@@ -6,10 +6,10 @@ import * as R from 'ramda';
 import {
   getCoronavirusGlobalStats,
   getCoronavirusAllCountryStats,
-} from '../actions/coronavirus';
-import { setIntervalActions, clearIntervalActions } from '../actions/common';
-import { resolveActions } from '../helpers/resolve-actions';
-import { CoronavirusStats as CoronavirusStatsLayout } from '../layouts/coronavirus-stats';
+} from 'actions/coronavirus';
+import { setIntervalActions, clearIntervalActions } from 'actions/common';
+import { resolveActions } from 'helpers/resolve-actions';
+import { CoronavirusStats as CoronavirusStatsLayout } from 'layouts/coronavirus-stats';
 
 const CoronavirusStats = ({
   coronavirus: {

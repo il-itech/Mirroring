@@ -1,7 +1,7 @@
 import { handleActions } from 'redux-actions';
 
+import { FORM_TYPES } from 'constants';
 import { getFormsCommonReducer, getInitialState } from './common';
-import { FORM_TYPES } from '../../constants';
 
 const additionalState = {
   formData: {

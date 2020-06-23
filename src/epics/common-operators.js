@@ -3,9 +3,9 @@ import { of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ActionsObservable } from 'redux-observable';
 
-import { setInProgressStatus } from '../actions/common';
-import { redirectTo, globalError, setGlobalInProgressStatus } from '../actions/system';
-import { ERRORS } from '../constants';
+import { setInProgressStatus } from 'actions/common';
+import { redirectTo, globalError, setGlobalInProgressStatus } from 'actions/system';
+import { ERRORS } from 'constants';
 
 export const getGlobalErrorObservable = R.compose(of, globalError);
 export const setGlobalInProgressStatusAction = R.compose(of, setGlobalInProgressStatus);

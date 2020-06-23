@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types';
 
-import { resolveActions } from '../../helpers/resolve-actions';
-
-import { getCoronavirusCountryStats } from '../../actions/coronavirus';
-import { CountryCoronavirusStats as CountryCoronavirusStatsLayout } from '../../layouts/country-coronavirus-stats';
+import { resolveActions } from 'helpers/resolve-actions';
+import { getCoronavirusCountryStats } from 'actions/coronavirus';
+import { CountryCoronavirusStats as CountryCoronavirusStatsLayout } from 'layouts/country-coronavirus-stats';
 
 const CountryStats = ({
   coronavirus: {

@@ -2,8 +2,8 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 
-import { RouteLink } from '../route-link/route-link';
-import { IconLogo } from '../icons/icon-logo';
+import { RouteLink } from 'components/route-link/route-link';
+import { IconLogo } from 'components/icons/icon-logo';
 
 import './header.scss';
 

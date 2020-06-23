@@ -5,11 +5,11 @@ import Divider from '@material-ui/core/Divider';
 import NoSsr from '@material-ui/core/NoSsr';
 import classnames from 'classnames';
 
-import { useSignUp } from '../../../hooks/use-sign-up';
-import { FormElement } from '../../form-element/form-element';
-import { RouteLink } from '../../route-link/route-link';
-import { CircularLoader } from '../../progress-bar/circular-loader/circular-loader';
-import { isEmptyOrNil } from '../../../helpers/utils';
+import { useSignUp } from 'hooks/use-sign-up';
+import { FormElement } from 'components/form-element/form-element';
+import { RouteLink } from 'components/route-link/route-link';
+import { CircularLoader } from 'components/progress-bar/circular-loader/circular-loader';
+import { isEmptyOrNil } from 'helpers/utils';
 
 import './form-sign-up.scss';
 
