@@ -8,7 +8,7 @@ import { ChatMessaging } from './chat-messaging/chat-messaging';
 
 const IS_IN_DEVELOPMENT = false;
 
-export const Messenger = () => (
+export const Chat = () => (
   <Main
     isShowSideBar
     disableGutters
@@ -29,6 +29,6 @@ export const Messenger = () => (
   </Main>
 );
 
-Messenger.propTypes = {
+Chat.propTypes = {
   messages: PropTypes.shape({}).isRequired,
 };

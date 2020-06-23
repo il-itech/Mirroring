@@ -9,7 +9,7 @@ import {
 } from 'actions/coronavirus';
 import { setIntervalActions, clearIntervalActions } from 'actions/common';
 import { resolveActions } from 'helpers/resolve-actions';
-import { CoronavirusStats as CoronavirusStatsLayout } from 'layouts/coronavirus-stats';
+import { CoronavirusStats as CoronavirusStatsLayout } from 'layouts/coronavirus-stats/coronavirus-stats';
 
 const CoronavirusStats = ({
   coronavirus: {

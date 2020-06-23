@@ -34,7 +34,7 @@ const options = {
   },
 };
 
-export const CoronavirusAllCountryStatsTable = ({ tableData }) => (
+export const CoronavirusCountryStatsTable = ({ tableData }) => (
   <NoSsr>
     <MuiThemeProvider theme={getMuiTheme()}>
       <MUIDataTable
@@ -46,6 +46,6 @@ export const CoronavirusAllCountryStatsTable = ({ tableData }) => (
   </NoSsr>
 );
 
-CoronavirusAllCountryStatsTable.propTypes = {
+CoronavirusCountryStatsTable.propTypes = {
   tableData: PropTypes.shape({}).isRequired,
 };

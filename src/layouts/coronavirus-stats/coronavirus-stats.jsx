@@ -5,7 +5,7 @@ import { Main } from 'components/main/main';
 import { Header } from 'components/header/header';
 import { DrawerSideBar } from 'components/drawers/drawer-side-bar/drawer-side-bar';
 import { PaperList } from 'components/paper-list/paper-list';
-import { CoronavirusAllCountryStatsTable } from 'components/coronavirus-all-country-stats-table/coronavirus-all-country-stats-table';
+import { CoronavirusCountryStatsTable } from './coronavirus-country-stats-table/coronavirus-country-stats-table';
 
 export const CoronavirusStats = ({ statsList, allCountryStats }) => (
   <Main
@@ -22,7 +22,7 @@ export const CoronavirusStats = ({ statsList, allCountryStats }) => (
       <Typography className="mt-3 mb-2 text-white" variant="h5">
         Country Stats
       </Typography>
-      <CoronavirusAllCountryStatsTable tableData={allCountryStats} />
+      <CoronavirusCountryStatsTable tableData={allCountryStats} />
     </div>
   </Main>
 );
