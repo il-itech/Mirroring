@@ -1,18 +1,20 @@
+import { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import withRedux from 'next-redux-wrapper';
+import { SnackbarProvider } from 'notistack';
 import * as R from 'ramda';
 
-import { withObservable } from '../hocs/with-observable';
-import { AuthProvider } from '../context/auth-provider';
-import { rootEpic } from '../epics';
+import { withObservable } from 'hocs/with-observable';
+import { GeneralProvider } from 'context/general-provider';
+import { rootEpic } from 'epics';
 import configureStore from '../store/store';
 
 import '../customizations/entrypoints.scss';
 
 const App = ({ Component, pageProps, store }) => {
-  React.useEffect(() => {
+  useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
 
@@ -27,9 +29,11 @@ const App = ({ Component, pageProps, store }) => {
         <title>NextJS Project</title>
       </Head>
       <Provider store={store}>
-        <AuthProvider>
-          <Component {...pageProps} />
-        </AuthProvider>
+        <SnackbarProvider preventDuplicate>
+          <GeneralProvider>
+            <Component {...pageProps} />
+          </GeneralProvider>
+        </SnackbarProvider>
       </Provider>
     </>
   );

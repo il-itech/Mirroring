@@ -31,9 +31,10 @@
     "dayjs": "^1.8.23",
     "js-cookie": "^2.2.1",
     "mui-datatables": "^2.14.0",
-    "next": "^9.3.2",
+    "next": "^9.4.4",
     "next-redux-wrapper": "^5.0.0",
     "node-sass": "^4.13.1",
+    "notistack": "^0.9.17",
     "ramda": "^0.27.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -45,8 +46,8 @@
     "redux-observable": "^1.2.0",
     "reselect": "4.0.0",
     "rxjs": "^6.5.4",
+    "socket.io-client": "^2.3.0",
     "store": "2.0.12",
-    "styled-components": "^5.1.0",
     "universal-rxjs-ajax": "^2.0.4",
     "validator": "^13.0.0"
   },
@@ -68,9 +69,8 @@
     "@typescript-eslint/parser": "^2.25.0",
     "@zeit/next-css": "^1.0.1",
     "autoprefixer": "^9.7.5",
-    "babel-plugin-styled-components": "^1.10.7",
-    "cache-loader": "^4.1.0",
-    "clean-webpack-plugin": "^3.0.0",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "babel-plugin-ramda": "^2.0.0",
     "dotenv": "^8.2.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
@@ -107,9 +107,7 @@
     "stylelint-scss": "^3.16.0",
     "typescript": "^3.8.3",
     "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11",
-    "webpack-merge": "^4.2.2",
-    "webpack-node-externals": "1.7.2"
+    "webpack-cli": "^3.3.11"
   },
   "browserslist": [
     "defaults"

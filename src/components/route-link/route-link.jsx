@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 
 export const RouteLink = ({
   to,
+  as,
   children,
   component: Component,
   copmonentClassName,
@@ -14,6 +15,7 @@ export const RouteLink = ({
 }) => (
   <Link
     href={to}
+    as={as}
     {...linkProps}
   >
     <Component
@@ -31,6 +33,10 @@ export const RouteLink = ({
 
 RouteLink.propTypes = {
   to: PropTypes.string.isRequired,
+  as: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.any,
+  ]),
   children: PropTypes.node.isRequired,
   component: PropTypes.shape({}),
   copmonentClassName: PropTypes.string,
@@ -41,6 +47,7 @@ RouteLink.propTypes = {
 
 RouteLink.defaultProps = {
   linkProps: null,
+  as: null,
   component: Button,
   copmonentClassName: null,
   disabled: false,

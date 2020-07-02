@@ -1,8 +1,8 @@
 import { handleActions } from 'redux-actions';
 
+import { setMessage } from 'actions/messenger';
+import { REDUCER_TYPES } from 'constants';
 import { getCommonReducers, getInitialState } from '../common';
-import { setMessage } from '../../actions/messenger';
-import { REDUCER_TYPES } from '../../constants';
 
 const additionalState = {
   messages: {},

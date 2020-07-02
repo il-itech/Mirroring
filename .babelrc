@@ -1,10 +1,26 @@
 {
   "presets": ["next/babel"],
   "plugins": [
-    ["styled-components", {
-      "ssr": true,
-      "displayName": true,
-      "preprocess": false
+    "ramda",
+    ["module-resolver", {
+      "root": ["./"],
+      "alias": {
+        "modules": "./node_modules",
+        "components": "./src/components",
+        "pages": "./src/pages",
+        "helpers": "./src/helpers",
+        "hooks": "./src/hooks",
+        "hocs": "./src/hocs",
+        "api": "./src/api",
+        "customizations": "./src/customizations",
+        "context": "./src/context",
+        "epics": "./src/epics",
+        "actions": "./src/actions",
+        "reducers": "./src/reducers",
+        "layouts": "./src/layouts",
+        "services": "./src/services",
+        "constants": "./src/constants.js"
+      }
     }]
   ]
 }

@@ -5,8 +5,8 @@ import MUIDataTable from 'mui-datatables';
 import NoSsr from '@material-ui/core/NoSsr';
 import * as R from 'ramda';
 
+import { serializeTable } from 'helpers/coronavirus';
 import { getMuiTheme } from './theme';
-import { serializeTable } from '../../helpers/coronavirus';
 
 const TABLE_HEADS_COMPANIES = [
   'Country name',
@@ -34,7 +34,7 @@ const options = {
   },
 };
 
-export const CoronavirusAllCountryStatsTable = ({ tableData }) => (
+export const CoronavirusCountryStatsTable = ({ tableData }) => (
   <NoSsr>
     <MuiThemeProvider theme={getMuiTheme()}>
       <MUIDataTable
@@ -46,6 +46,6 @@ export const CoronavirusAllCountryStatsTable = ({ tableData }) => (
   </NoSsr>
 );
 
-CoronavirusAllCountryStatsTable.propTypes = {
+CoronavirusCountryStatsTable.propTypes = {
   tableData: PropTypes.shape({}).isRequired,
 };

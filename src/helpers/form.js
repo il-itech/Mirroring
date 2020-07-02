@@ -1,3 +1,4 @@
+import { VALIDATION_TYPES } from 'constants';
 import {
   validateMinLength,
   validateMaxLength,
@@ -7,7 +8,6 @@ import {
   validateRequired,
 } from './validate';
 import { isEmptyOrNil } from './utils';
-import { VALIDATION_TYPES } from '../constants';
 
 export const FIELD_VALIDATIONS = {
   [VALIDATION_TYPES.REQUIRED]: validateRequired,

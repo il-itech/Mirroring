@@ -5,6 +5,7 @@ import { coronavirus } from './coronavirus';
 import { messenger } from './messenger';
 import { forms } from './forms';
 import { auth } from './auth';
+import { profile } from './profile';
 
 export const rootReducer = combineReducers({
   system,
@@ -12,4 +13,5 @@ export const rootReducer = combineReducers({
   messenger,
   forms,
   auth,
+  profile,
 });
