@@ -6,7 +6,7 @@ import { DrawerSideBar } from 'components/drawers/drawer-side-bar/drawer-side-ba
 import { ChatList } from './chat-list/chat-list';
 import { ChatMessaging } from './chat-messaging/chat-messaging';
 
-const IS_IN_DEVELOPMENT = false;
+const IS_IN_DEVELOPMENT = true;
 
 export const Chat = () => (
   <Main

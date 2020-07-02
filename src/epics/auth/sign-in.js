@@ -5,6 +5,7 @@ import { ajax } from 'rxjs/ajax';
 import store from 'store';
 
 import { showNotification } from 'actions/system';
+import { setProfile } from 'actions/profile';
 import { signIn, setAuthStatus } from 'actions/auth';
 import { signIn as signInApi } from 'api/auth';
 import { FORM_TYPES, SNACKBAR_VARIANTS } from 'constants';
@@ -16,10 +17,11 @@ export const signInEpic = action$ =>
     switchMap(({ payload }) => concat(
       setInProgressStatusAction(FORM_TYPES.SIGN_IN, true),
       signInApi(ajax, payload).pipe(
-        mergeMap(({ response }) => {
-          store.set('user', response);
+        mergeMap(({ response: user }) => {
+          store.set('user', user);
 
           return of(
+            setProfile(user),
             setAuthStatus(true),
             showNotification({ variant: SNACKBAR_VARIANTS.SUCCESS, message: 'Authentication has been success' }),
           );

@@ -5,6 +5,7 @@ import { ajax } from 'rxjs/ajax';
 import store from 'store';
 
 import { showNotification } from 'actions/system';
+import { setProfile } from 'actions/profile';
 import { confirmEmail, setAuthStatus } from 'actions/auth';
 import { confirmEmail as confirmEmailApi } from 'api/auth';
 import { SNACKBAR_VARIANTS } from 'constants';
@@ -15,10 +16,11 @@ export const confirmEmailEpic = action$ =>
     ofType(confirmEmail),
     switchMap(({ payload: token }) =>
       confirmEmailApi(ajax, token).pipe(
-        mergeMap(({ response }) => {
-          store.set('user', response);
+        mergeMap(({ response: user }) => {
+          store.set('user', user);
 
           return of(
+            setProfile(user),
             showNotification({ variant: SNACKBAR_VARIANTS.SUCCESS, message: 'Email has been confirmed!' }),
             setAuthStatus(true),
           );

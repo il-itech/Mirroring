@@ -100,6 +100,7 @@ export const REDUCER_TYPES = {
   CORONAVIRUS: 'coronavirus',
   FORMS: 'forms',
   AUTH: 'auth',
+  PROFILE: 'profile',
 };
 
 export const CORONAVIRUS_REDUCER_TYPES = {
