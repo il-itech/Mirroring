@@ -5,11 +5,11 @@ import classnames from 'classnames';
 import Container from '@material-ui/core/Container';
 import * as R from 'ramda';
 
-import { useShallowSelector } from '../../hooks/use-shallow-selector';
-import { clearError } from '../../actions/system';
-import { ErrorBoundary } from '../error-boundary/error-boundary';
-import { GlobalAlert } from '../global-alert/global-alert';
-import { isEmptyOrNil } from '../../helpers/utils';
+import { useShallowSelector } from 'hooks/use-shallow-selector';
+import { clearError } from 'actions/system';
+import { ErrorBoundary } from 'components/error-boundary/error-boundary';
+import { GlobalAlert } from 'components/global-alert/global-alert';
+import { isEmptyOrNil } from 'helpers/utils';
 
 import './main.scss';
 
@@ -30,7 +30,7 @@ export const MainUI = ({
     <Container
       disableGutters={disableGutters}
       maxWidth="xl"
-      className={classnames('main-container', className, {
+      className={classnames('main-container pr-0', className, {
         'side-bar-indent': isShowSideBar,
       })}
     >

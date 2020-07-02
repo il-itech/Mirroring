@@ -1,7 +1,7 @@
 import isEmail from 'validator/lib/isEmail';
 
+import { VALIDATION_ERRORS, VALIDATION_ERRORS_MESSAGES } from 'constants';
 import { isEmptyOrNil, toString } from './utils';
-import { VALIDATION_ERRORS, VALIDATION_ERRORS_MESSAGES } from '../constants';
 
 /**
  * @param {String} error

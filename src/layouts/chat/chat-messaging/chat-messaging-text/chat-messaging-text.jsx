@@ -1,24 +1,25 @@
-import PropTypes from 'prop-types';
 import SendIcon from '@material-ui/icons/Send';
 
-import { useChatMessagingText } from '../../../hooks/use-chat-messaging-text';
-import { FormElement } from '../../form-element/form-element';
+import { useChatMessagingText } from 'hooks/chat/use-chat-messaging-text';
+import { FormElement } from 'components/form-element/form-element';
 
 import './chat-messaging-text.scss';
 
-export const ChatMessagingText = ({ messages }) => {
+export const ChatMessagingText = () => {
   const {
-    handleChange,
+    chatMessage,
+    // socket,
+    // handleChange,
+    onSubmit,
   } = useChatMessagingText();
-  const { user: userMessage } = messages;
 
   return (
     <div className="d-flex align-items-center p-2 bg-ebony chat-messaging-text">
       <FormElement
-        formType="messenger"
-        field="message"
-        customHandleChange={handleChange}
-        value={userMessage}
+        formType="chatMessage"
+        field="chatMessage"
+        // customHandleChange={handleChange}
+        value={chatMessage}
         elementProps={{
           type: 'text',
           placeholder: 'Leave a message',
@@ -29,7 +30,7 @@ export const ChatMessagingText = ({ messages }) => {
           InputProps: {
             classes: {
               root: 'text-white',
-              notchedOutline: 'outlined-input',
+              notchedOutline: 'border-white-23',
             },
           },
         }}
@@ -38,13 +39,8 @@ export const ChatMessagingText = ({ messages }) => {
         classes={{
           root: 'ml-1 cursor-pointer icon-send',
         }}
+        onClick={onSubmit}
       />
     </div>
   );
-};
-
-ChatMessagingText.propTypes = {
-  messages: PropTypes.shape({
-    user: PropTypes.string,
-  }).isRequired,
 };

@@ -3,7 +3,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import * as R from 'ramda';
 
-import { getMonetaryValue } from '../../helpers/utils';
+import { getMonetaryValue } from 'helpers/utils';
 
 import './paper-list.scss';
 

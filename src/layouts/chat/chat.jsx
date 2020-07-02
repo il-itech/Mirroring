@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types';
 
-import { Main } from '../components/main/main';
-import { Header } from '../components/header/header';
-import { DrawerSideBar } from '../components/drawers/drawer-side-bar/drawer-side-bar';
-import { ChatList } from '../components/chat-list/chat-list';
-import { ChatMessaging } from '../components/chat-messaging/chat-messaging';
+import { Main } from 'components/main/main';
+import { Header } from 'components/header/header';
+import { DrawerSideBar } from 'components/drawers/drawer-side-bar/drawer-side-bar';
+import { ChatList } from './chat-list/chat-list';
+import { ChatMessaging } from './chat-messaging/chat-messaging';
 
 const IS_IN_DEVELOPMENT = true;
 
-export const Messenger = ({ messages }) => (
+export const Chat = () => (
   <Main
     isShowSideBar
     disableGutters
@@ -23,14 +23,12 @@ export const Messenger = ({ messages }) => (
     ) : (
       <>
         <ChatList />
-        <ChatMessaging
-          messages={messages}
-        />
+        <ChatMessaging />
       </>
     )}
   </Main>
 );
 
-Messenger.propTypes = {
+Chat.propTypes = {
   messages: PropTypes.shape({}).isRequired,
 };

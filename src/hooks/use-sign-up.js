@@ -2,12 +2,12 @@ import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import * as R from 'ramda';
 
+import { signUp } from 'actions/auth';
+import { setFormErrors, clearFormErrors } from 'actions/forms/common';
+import { checkErrors } from 'helpers/form';
+import { isEmptyOrNil } from 'helpers/utils';
+import { REDUCER_TYPES, FORM_TYPES } from 'constants';
 import { useShallowSelector } from './use-shallow-selector';
-import { signUp } from '../actions/auth';
-import { setFormErrors, clearFormErrors } from '../actions/forms/common';
-import { checkErrors } from '../helpers/form';
-import { isEmptyOrNil } from '../helpers/utils';
-import { REDUCER_TYPES, FORM_TYPES } from '../constants';
 
 export const useSignUp = (formType, fields) => {
   const { formData } = useShallowSelector(R.path([REDUCER_TYPES.FORMS, FORM_TYPES.SIGN_UP]));

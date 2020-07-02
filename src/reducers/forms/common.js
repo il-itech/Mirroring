@@ -1,10 +1,6 @@
 import * as R from 'ramda';
 
 import {
-  getCommonReducers,
-  getInitialState as getCommonState,
-} from '../common';
-import {
   setFormData,
   replaceFormData,
   setFormError,
@@ -13,7 +9,11 @@ import {
   clearFormErrors,
   clearFormError,
   clearForm,
-} from '../../actions/forms/common';
+} from 'actions/forms/common';
+import {
+  getCommonReducers,
+  getInitialState as getCommonState,
+} from '../common';
 
 export const getInitialState = additionalState => R.mergeDeepLeft(
   {

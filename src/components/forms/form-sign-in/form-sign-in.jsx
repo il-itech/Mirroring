@@ -7,11 +7,12 @@ import LockIcon from '@material-ui/icons/Lock';
 import NoSsr from '@material-ui/core/NoSsr';
 import classnames from 'classnames';
 
-import { useSignIn } from '../../../hooks/use-sign-in';
-import { FormElement } from '../../form-element/form-element';
-import { RouteLink } from '../../route-link/route-link';
-import { CircularLoader } from '../../progress-bar/circular-loader/circular-loader';
-import { isEmptyOrNil } from '../../../helpers/utils';
+import { useSignIn } from 'hooks/use-sign-in';
+import { BackHome } from 'components/back-home/back-home';
+import { FormElement } from 'components/form-element/form-element';
+import { RouteLink } from 'components/route-link/route-link';
+import { CircularLoader } from 'components/progress-bar/circular-loader/circular-loader';
+import { isEmptyOrNil } from 'helpers/utils';
 
 import './form-sign-in.scss';
 
@@ -28,13 +29,7 @@ export const FormSignIn = ({
 
   return (
     <div className="m-auto app-sign-in">
-      <RouteLink
-        to="/"
-        component={Button}
-        copmonentClassName="text-white mb-7 back-home-button"
-      >
-        Back To Home
-      </RouteLink>
+      <BackHome className="mb-7" />
 
       <div className="w-100 d-flex flex-column position-relative px-4 pt-8 pb-3 bg-ebony form-sign-in">
         <Avatar
@@ -74,7 +69,6 @@ export const FormSignIn = ({
                   },
                   InputProps: {
                     classes: {
-                      root: 'input-root',
                       input: 'text-white input-custom-autocomplete',
                       notchedOutline: classnames({
                         'border-white-23': !hasError,

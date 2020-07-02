@@ -1,6 +1,6 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
-import scssVariables from '../../customizations/js/variables';
+import scssVariables from '../../../customizations/js/variables';
 
 const {
   colors: {

@@ -5,11 +5,12 @@ import Divider from '@material-ui/core/Divider';
 import NoSsr from '@material-ui/core/NoSsr';
 import classnames from 'classnames';
 
-import { useSignUp } from '../../../hooks/use-sign-up';
-import { FormElement } from '../../form-element/form-element';
-import { RouteLink } from '../../route-link/route-link';
-import { CircularLoader } from '../../progress-bar/circular-loader/circular-loader';
-import { isEmptyOrNil } from '../../../helpers/utils';
+import { useSignUp } from 'hooks/use-sign-up';
+import { BackHome } from 'components/back-home/back-home';
+import { FormElement } from 'components/form-element/form-element';
+import { RouteLink } from 'components/route-link/route-link';
+import { CircularLoader } from 'components/progress-bar/circular-loader/circular-loader';
+import { isEmptyOrNil } from 'helpers/utils';
 
 import './form-sign-up.scss';
 
@@ -26,13 +27,7 @@ export const FormSignUp = ({
 
   return (
     <div className="d-flex flex-column m-auto app-sign-up">
-      <RouteLink
-        to="/"
-        component={Button}
-        copmonentClassName="mb-2 text-white back-home-button"
-      >
-        Back To Home
-      </RouteLink>
+      <BackHome className="mb-2" />
       <div className="w-100 d-flex flex-column m-auto p-2 bg-ebony form-sign-up">
         <Typography className="mb-2 text-white" variant="h5">
           Sign up
@@ -63,7 +58,6 @@ export const FormSignUp = ({
                   },
                   InputProps: {
                     classes: {
-                      root: 'input-root',
                       input: 'text-white input-custom-autocomplete',
                       notchedOutline: classnames({
                         'border-white-23': !hasError,

@@ -29,7 +29,7 @@ export const GlobalAlertUI = ({ dismissGlobalAlert, errorId }) => {
         }}
       >
         <span className="my-auto">
-          {`Error: ${errorId}`}
+          {`Error: ${errorId}. Please, reload the page`}
         </span>
         <CloseIcon
           className="cursor-pointer"
