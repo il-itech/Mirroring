@@ -3,14 +3,6 @@
 .app-sign-up {
   width: 600px;
 
-  .back-home-button {
-    width: 150px;
-
-    &:hover {
-      background-color: $ebony;
-    }
-  }
-
   .bg-hover-none {
     &:focus,
     &:hover {

@@ -99,6 +99,7 @@ export const REDUCER_TYPES = {
   MESSENGER: 'messenger',
   CORONAVIRUS: 'coronavirus',
   FORMS: 'forms',
+  AUTH: 'auth',
 };
 
 export const CORONAVIRUS_REDUCER_TYPES = {
@@ -107,4 +108,11 @@ export const CORONAVIRUS_REDUCER_TYPES = {
   COUNTRY_STATS: 'countryStats',
   FULL_TIMELINE_STATS: 'fullTimelineStats',
   COUNTRY_TIMELINE_STATS: 'countryTimelineStats',
+};
+
+export const SNACKBAR_VARIANTS = {
+  SUCCESS: 'success',
+  ERROR: 'error',
+  WARNING: 'warning',
+  INFO: 'info',
 };

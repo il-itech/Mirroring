@@ -1,9 +1,6 @@
-import * as R from 'ramda';
-
 import { useShallowSelector } from 'hooks/use-shallow-selector';
 import { getConfig } from 'helpers/env';
 import { SignIn as SignInLayout } from 'layouts/sign-in';
-import { REDUCER_TYPES, FORM_TYPES } from 'constants';
 
 const { FORM_TYPE, FIELDS } = getConfig('FORMS.SIGN_IN');
 
@@ -12,7 +9,7 @@ const SignIn = () => {
     isInProgress,
     formData,
     errors,
-  } = useShallowSelector(R.path([REDUCER_TYPES.FORMS, FORM_TYPES.SIGN_IN]));
+  } = useShallowSelector(state => state?.forms?.signIn);
 
   return (
     <SignInLayout

@@ -6,6 +6,7 @@ import NoSsr from '@material-ui/core/NoSsr';
 import classnames from 'classnames';
 
 import { useSignUp } from 'hooks/use-sign-up';
+import { BackHome } from 'components/back-home/back-home';
 import { FormElement } from 'components/form-element/form-element';
 import { RouteLink } from 'components/route-link/route-link';
 import { CircularLoader } from 'components/progress-bar/circular-loader/circular-loader';
@@ -26,13 +27,7 @@ export const FormSignUp = ({
 
   return (
     <div className="d-flex flex-column m-auto app-sign-up">
-      <RouteLink
-        to="/"
-        component={Button}
-        copmonentClassName="mb-2 text-white back-home-button"
-      >
-        Back To Home
-      </RouteLink>
+      <BackHome className="mb-2" />
       <div className="w-100 d-flex flex-column m-auto p-2 bg-ebony form-sign-up">
         <Typography className="mb-2 text-white" variant="h5">
           Sign up

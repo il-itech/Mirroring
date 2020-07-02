@@ -6,6 +6,7 @@ export const {
   redirectTo,
   globalError,
   setGlobalInProgressStatus,
+  showNotification,
   clearError,
 } = createActions(
   {
@@ -24,5 +25,6 @@ export const {
     },
   },
   'SET_GLOBAL_IN_PROGRESS_STATUS',
+  'SHOW_NOTIFICATION',
   'CLEAR_ERROR',
 );

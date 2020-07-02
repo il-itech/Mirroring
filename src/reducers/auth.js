@@ -1,8 +1,10 @@
 import { handleActions } from 'redux-actions';
 
 import { setAuthStatus } from 'actions/auth';
+import { REDUCER_TYPES } from 'constants';
+import { getCommonReducers, getInitialState } from './common';
 
-const initialState = {
+const additionalState = {
   isUserAuth: false,
 };
 
@@ -12,6 +14,7 @@ export const auth = handleActions(
       ...state,
       isUserAuth: payload,
     }),
+    ...getCommonReducers(REDUCER_TYPES.AUTH, additionalState),
   },
-  initialState,
+  getInitialState(additionalState),
 );

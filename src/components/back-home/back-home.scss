@@ -1,0 +1,9 @@
+@import '../../customizations/pre-customization';
+
+.back-home {
+  width: 150px;
+
+  &:hover {
+    background-color: $ebony !important;
+  }
+}
