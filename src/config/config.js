@@ -2,8 +2,8 @@ import FORMS from './forms';
 
 const config = {
   DEFAULT_LANGUAGE: 'en',
-  HTTP_API_URL: process.env.NEXT_PUBLIC_HTTP_API_URL,
-  WEBSOCKET_API_URL: process.env.NEXT_PUBLIC_WEBSOCKET_API_URL,
+  HTTP_API_URL: 'https://nest-staging-app.herokuapp.com',
+  WEBSOCKET_API_URL: 'wss://nest-staging-app.herokuapp.com',
   FORMS,
 };
 
