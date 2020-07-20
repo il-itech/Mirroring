@@ -9,7 +9,22 @@
     }
   }
 
-  .icon-send {
-    fill: $mischka;
+  .send-button {
+    border-radius: 50%;
+    height: 50px;
+    min-width: 50px;
+
+    &:hover {
+      background-color: $white-4;
+      transition: 0.1s linear;
+    }
+
+    &:hover .icon-send {
+      fill: $blue;
+    }
+
+    .icon-send {
+      fill: $mischka;
+    }
   }
 }

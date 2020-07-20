@@ -27,8 +27,9 @@ export const {
       formName,
       errors,
     }),
-    CLEAR_FORM_DATA: formName => ({
+    CLEAR_FORM_DATA: (formName, field) => ({
       formName,
+      field,
     }),
     CLEAR_FORM_ERROR: (formName, field) => ({
       formName,

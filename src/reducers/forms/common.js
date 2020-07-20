@@ -42,8 +42,8 @@ export const getFormsCommonReducer = (reducerFormName, additionalState) => ({
   [setFormErrors]: (state, { payload: { formName, errors } }) =>
     reducerChecker(reducerFormName, state, formName, { errors }),
 
-  [clearFormData]: (state, { payload: { formName } }) =>
-    reducerChecker(reducerFormName, state, formName, { formData: getInitialState(additionalState).formData }),
+  [clearFormData]: (state, { payload: { formName, field } }) =>
+    reducerChecker(reducerFormName, state, formName, { formData: R.dissoc(field, state.formData) }),
 
   [clearFormError]: (state, { payload: { formName, field } }) =>
     reducerChecker(reducerFormName, state, formName, { errors: R.dissoc(field, state.errors) }),

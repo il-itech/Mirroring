@@ -14,7 +14,7 @@ export const CountryCoronavirusStats = ({ stats }) => {
 
   return (
     <Main
-      isShowSideBar
+      showSideBar
       className="mt-10_5"
     >
       <div className="px-3">

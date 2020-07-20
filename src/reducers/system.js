@@ -2,9 +2,11 @@ import { handleActions } from 'redux-actions';
 
 import {
   globalError,
+  redirectTo,
   setGlobalInProgressStatus,
   showNotification,
   clearError,
+  clearSystem,
 } from 'actions/system';
 import { ERRORS } from 'constants';
 
@@ -13,6 +15,7 @@ const initialState = {
   globalInProgressStatus: false,
   notification: { variant: null, message: null },
   is404: false,
+  redirectTo: null,
 };
 
 export const system = handleActions(
@@ -25,6 +28,10 @@ export const system = handleActions(
         status,
       },
     }),
+    [redirectTo]: (state, { payload }) => ({
+      ...state,
+      redirectTo: payload,
+    }),
     [setGlobalInProgressStatus]: (state, { payload }) => ({
       ...state,
       globalInProgressStatus: payload,
@@ -36,6 +43,9 @@ export const system = handleActions(
     [clearError]: (state) => ({
       ...state,
       globalError: {},
+    }),
+    [clearSystem]: () => ({
+      ...initialState,
     }),
   },
   initialState,

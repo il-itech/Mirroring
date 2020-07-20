@@ -1,10 +1,10 @@
 import FORMS from './forms';
 
-export default {
+const config = {
   DEFAULT_LANGUAGE: 'en',
-  // HTTP_API_URL: 'http://localhost:3005',
-  // WEBSOCKET_API_URL: 'ws://localhost:3006',
-  HTTP_API_URL: 'https://nest-staging-app.herokuapp.com',
-  WEBSOCKET_API_URL: 'ws://nest-staging-app.herokuapp.com',
+  HTTP_API_URL: process.env.NEXT_PUBLIC_HTTP_API_URL,
+  WEBSOCKET_API_URL: process.env.NEXT_PUBLIC_WEBSOCKET_API_URL,
   FORMS,
 };
+
+export default config;

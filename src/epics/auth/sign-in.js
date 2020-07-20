@@ -1,6 +1,6 @@
 import { ofType } from 'redux-observable';
 import { concat, of } from 'rxjs';
-import { switchMap, mergeMap } from 'rxjs/operators';
+import { switchMap, mergeMap, catchError } from 'rxjs/operators';
 import { ajax } from 'rxjs/ajax';
 import store from 'store';
 
@@ -9,7 +9,11 @@ import { setProfile } from 'actions/profile';
 import { signIn, setAuthStatus } from 'actions/auth';
 import { signIn as signInApi } from 'api/auth';
 import { FORM_TYPES, SNACKBAR_VARIANTS } from 'constants';
-import { setInProgressStatusAction, catchGlobalErrorWithUndefinedId } from '../common-operators';
+import {
+  setInProgressStatusAction,
+  getGlobalErrorObservable,
+  catchGlobalErrorWithUndefinedId,
+} from '../common-operators';
 
 export const signInEpic = action$ =>
   action$.pipe(
@@ -25,6 +29,11 @@ export const signInEpic = action$ =>
             setAuthStatus(true),
             showNotification({ variant: SNACKBAR_VARIANTS.SUCCESS, message: 'Authentication has been success' }),
           );
+        }),
+        catchError((error) => {
+          const { response: { message } } = error;
+
+          return getGlobalErrorObservable(message, error);
         }),
       ),
       setInProgressStatusAction(FORM_TYPES.SIGN_IN, false),
