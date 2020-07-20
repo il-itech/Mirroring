@@ -1,6 +1,7 @@
 import React, { useState, memo } from 'react';
 import PropTypes from 'prop-types';
 import Alert from '@material-ui/lab/Alert';
+import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import clasnames from 'classnames';
 
@@ -28,9 +29,7 @@ export const GlobalAlertUI = ({ dismissGlobalAlert, errorId }) => {
           icon: 'my-auto',
         }}
       >
-        <span className="my-auto">
-          {`Error: ${errorId}. Please, reload the page`}
-        </span>
+        <Typography>Error: {errorId}.</Typography>
         <CloseIcon
           className="cursor-pointer"
           onClick={onDismiss}

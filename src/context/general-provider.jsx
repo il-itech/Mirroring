@@ -6,9 +6,11 @@ import { useSnackbar } from 'notistack';
 import store from 'store';
 import * as R from 'ramda';
 
+import { clearState } from 'actions/common';
 import { setProfile } from 'actions/profile';
 import { useShallowSelector } from 'hooks/use-shallow-selector';
 import { isEmptyOrNil } from 'helpers/utils';
+import { REDUCER_TYPES } from 'constants';
 
 export const GeneralContext = createContext();
 
@@ -24,7 +26,10 @@ export const GeneralProvider = ({ children }) => {
   const { enqueueSnackbar } = useSnackbar();
   const dispatch = useDispatch();
   const { isUserAuth } = useShallowSelector(state => state?.auth);
-  const { variant, message } = useShallowSelector(state => state?.system?.notification);
+  const {
+    redirectTo,
+    notification: { variant, message },
+  } = useShallowSelector(state => state?.system);
 
   /**
    * Checking any message in store and if message is not null and was replaced - show notification
@@ -47,7 +52,15 @@ export const GeneralProvider = ({ children }) => {
     if (isUserAuth) {
       Router.push('/');
     }
-  }, [isUserAuth]);
+
+    return () => R.compose(dispatch, clearState)(REDUCER_TYPES.AUTH);
+  }, [dispatch, isUserAuth]);
+
+  useEffect(() => {
+    if (!isEmptyOrNil(redirectTo)) {
+      Router.push(redirectTo);
+    }
+  }, [dispatch, redirectTo]);
 
   return (
     <GeneralContext.Provider value={null}>

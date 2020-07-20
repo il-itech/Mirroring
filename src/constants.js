@@ -33,6 +33,7 @@ export const ERRORS = {
 export const FORM_TYPES = {
   SIGN_IN: 'signIn',
   SIGN_UP: 'signUp',
+  SIGN_OUT: 'signOut',
   CHAT_MESSAGE: 'chatMessage',
 };
 
@@ -96,7 +97,7 @@ export const VALIDATION_ERRORS_MESSAGES = {
 
 export const REDUCER_TYPES = {
   SYSTEM: 'system',
-  MESSENGER: 'messenger',
+  CHAT: 'chat',
   CORONAVIRUS: 'coronavirus',
   FORMS: 'forms',
   AUTH: 'auth',

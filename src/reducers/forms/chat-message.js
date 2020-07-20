@@ -4,9 +4,7 @@ import { FORM_TYPES } from 'constants';
 import { getFormsCommonReducer, getInitialState } from './common';
 
 const additionalState = {
-  formData: {
-    chatMessage: '',
-  },
+  formData: {},
 };
 
 export const chatMessage = handleActions(

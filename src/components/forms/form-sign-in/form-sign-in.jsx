@@ -47,65 +47,71 @@ export const FormSignIn = ({
           Sign in on the internal platform
         </Typography>
 
-        <NoSsr>
-          {Object.entries(fields).map(([field, item]) => {
-            const error = errors[field];
-            const hasError = !isEmptyOrNil(error);
-
-            return (
-              <FormElement
-                key={field}
-                formType={formType}
-                field={field}
-                variant="outlined"
-                value={formData[field]}
-                elementProps={{
-                  ...item,
-                  autoFocus: false,
-                  hasError,
-                  helperText: error?.message,
-                  classes: {
-                    root: 'w-100 mt-2 mb-1',
-                  },
-                  InputProps: {
-                    classes: {
-                      input: 'text-white input-custom-autocomplete',
-                      notchedOutline: classnames({
-                        'border-white-23': !hasError,
-                        'border-cinnabar': hasError,
-                      }),
-                    },
-                  },
-                  InputLabelProps: {
-                    classes: {
-                      root: 'text-mischka',
-                    },
-                  },
-                }}
-              />
-            );
-          })}
-        </NoSsr>
-
-        <Button
-          classes={{
-            root: classnames('mt-2 py-1 px-3 text-white', {
-              'bg-blue': !isInProgress,
-              'bg-vulcan bg-hover-none': isInProgress,
-            }),
-          }}
-          onClick={onSubmit}
-          disabled={isInProgress}
+        <form
+          id="form-sign-in"
+          onSubmit={onSubmit}
+          className="d-flex flex-column"
         >
-          Log in
-          {isInProgress && (
-            <CircularLoader
-              colorPrimary={classnames({
-                'text-muted': isInProgress,
-              })}
-            />
-          )}
-        </Button>
+          <NoSsr>
+            {Object.entries(fields).map(([field, item]) => {
+              const error = errors[field];
+              const hasError = !isEmptyOrNil(error);
+
+              return (
+                <FormElement
+                  key={field}
+                  formType={formType}
+                  field={field}
+                  variant="outlined"
+                  value={formData[field]}
+                  elementProps={{
+                    ...item,
+                    autoFocus: false,
+                    hasError,
+                    helperText: error?.message,
+                    classes: {
+                      root: 'w-100 mt-2 mb-1',
+                    },
+                    InputProps: {
+                      classes: {
+                        input: 'text-white input-custom-autocomplete',
+                        notchedOutline: classnames({
+                          'border-white-23': !hasError,
+                          'border-cinnabar': hasError,
+                        }),
+                      },
+                    },
+                    InputLabelProps: {
+                      classes: {
+                        root: 'text-mischka',
+                      },
+                    },
+                  }}
+                />
+              );
+            })}
+          </NoSsr>
+
+          <Button
+            classes={{
+              root: classnames('mt-2 py-1 px-3 text-white', {
+                'bg-blue': !isInProgress,
+                'bg-vulcan bg-hover-none': isInProgress,
+              }),
+            }}
+            onClick={onSubmit}
+            disabled={isInProgress}
+          >
+            Log in
+            {isInProgress && (
+              <CircularLoader
+                colorPrimary={classnames({
+                  'text-muted': isInProgress,
+                })}
+              />
+            )}
+          </Button>
+        </form>
         <Divider className="my-2 bg-vulcan" />
         <RouteLink
           to="/sign-up"

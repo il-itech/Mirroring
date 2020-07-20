@@ -1,6 +1,6 @@
 import { ofType } from 'redux-observable';
 import { concat, of } from 'rxjs';
-import { switchMap, mergeMap } from 'rxjs/operators';
+import { switchMap, mergeMap, catchError } from 'rxjs/operators';
 import { ajax } from 'rxjs/ajax';
 
 import { setSuccessStatus } from 'actions/common';
@@ -9,6 +9,7 @@ import { showNotification } from 'actions/system';
 import { signUp as signUpApi } from 'api/auth';
 import { FORM_TYPES, SNACKBAR_VARIANTS } from 'constants';
 import {
+  getGlobalErrorObservable,
   setInProgressStatusAction,
   catchGlobalErrorWithUndefinedId,
 } from '../common-operators';
@@ -23,6 +24,11 @@ export const signUpEpic = action$ =>
           setSuccessStatus(FORM_TYPES.SIGN_UP, response),
           showNotification({ variant: SNACKBAR_VARIANTS.SUCCESS, message: 'Registration has been success' }),
         )),
+        catchError((error) => {
+          const { response: { message } } = error;
+
+          return getGlobalErrorObservable(message, error);
+        }),
       ),
       setInProgressStatusAction(FORM_TYPES.SIGN_UP, false),
     )),

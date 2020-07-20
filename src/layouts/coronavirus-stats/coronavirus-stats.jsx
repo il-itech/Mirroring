@@ -9,7 +9,7 @@ import { CoronavirusCountryStatsTable } from './coronavirus-country-stats-table/
 
 export const CoronavirusStats = ({ statsList, allCountryStats }) => (
   <Main
-    isShowSideBar
+    showSideBar
     className="mt-10_5 pr-0"
   >
     <div className="px-3">

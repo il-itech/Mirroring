@@ -31,6 +31,20 @@ export const signUp = (ajax, body) => ajax({
 });
 
 /**
+ * API for sign out
+ * @param {Object} ajax
+ * @param {String} token
+ */
+export const signOut = (ajax, token) => ajax({
+  url: `${api}/auth/sign-out`,
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: { token },
+});
+
+/**
  * API for email confirmation
  * @param {Object} ajax
  * @param {String} token
