@@ -2,6 +2,7 @@
   "presets": ["next/babel"],
   "plugins": [
     "ramda",
+    ["styled-components", { "ssr": true }],
     ["module-resolver", {
       "root": ["./"],
       "alias": {
