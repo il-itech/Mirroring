@@ -3,4 +3,5 @@
 .global-alert {
   top: $header-height + 6px;
   width: calc(100% - 48px);
+  z-index: 99999;
 }

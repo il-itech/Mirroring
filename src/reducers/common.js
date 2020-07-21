@@ -4,7 +4,7 @@ import {
   setInProgressStatus,
   setSuccessStatus,
   clearState,
-} from '../actions/common';
+} from 'actions/common';
 
 export const getInitialState = (additionalState) => ({
   isInProgress: false,

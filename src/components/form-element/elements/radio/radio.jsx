@@ -2,7 +2,7 @@ import Radio from '@material-ui/core/Radio';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import PropTypes from 'prop-types';
 
-import { isEmptyOrNil } from '../../../../helpers/utils';
+import { isEmptyOrNil } from 'helpers/utils';
 // import { IconCheckItem } from '../../../icons/icon-check-item';
 
 export const CustomRadio = ({

@@ -2,7 +2,7 @@ import { ofType } from 'redux-observable';
 import { interval, of } from 'rxjs';
 import { switchMap, mergeMap, takeUntil } from 'rxjs/operators';
 
-import { setIntervalActions, clearIntervalActions } from '../actions/common';
+import { setIntervalActions, clearIntervalActions } from 'actions/common';
 import { catchGlobalErrorWithUndefinedId } from './common-operators';
 
 const FIVE_MINUTE = 300000;

@@ -1,27 +1,49 @@
-import * as R from 'ramda';
+import PropTypes from 'prop-types';
+import Typography from '@material-ui/core/Typography';
 
-import { useShallowSelector } from '../hooks/use-shallow-selector';
-import { getConfig } from '../helpers/env';
-import { Main } from '../components/main/main';
-import { FormSignUp } from '../components/forms/form-sign-up/form-sign-up';
-import { REDUCER_TYPES, FORM_TYPES } from '../constants';
+import { Main } from 'components/main/main';
+import { BackHome } from 'components/back-home/back-home';
+import { FormSignUp } from 'components/forms/form-sign-up/form-sign-up';
 
-const { FORM_TYPE, FIELDS } = getConfig('FORMS.SIGN_UP');
+export const SignUp = ({
+  formType,
+  fields,
+  formData,
+  errors,
+  isInProgress,
+  isSuccess,
+}) => (
+  <Main className="mt-10_5">
+    {isSuccess
+      ? (
+        <div className="d-flex justify-content-center">
+          <div className="w-50 flex-column">
+            <BackHome />
+            <Typography
+              variant="h5"
+              className="mt-3 py-2 px-5 bg-ebony text-white text-capitalize"
+            >
+              Thank you for registretion. Please, check your email.
+            </Typography>
+          </div>
+        </div>
+      ) : (
+        <FormSignUp
+          formType={formType}
+          fields={fields}
+          formData={formData}
+          errors={errors}
+          isInProgress={isInProgress}
+        />
+      )}
+  </Main>
+);
 
-export const SignUp = () => {
-  const {
-    formData,
-    errors,
-  } = useShallowSelector(R.path([REDUCER_TYPES.FORMS, FORM_TYPES.SIGN_UP]));
-
-  return (
-    <Main className="mt-10_5">
-      <FormSignUp
-        formType={FORM_TYPE}
-        fields={FIELDS}
-        formData={formData}
-        errors={errors}
-      />
-    </Main>
-  );
+SignUp.propTypes = {
+  formType: PropTypes.string.isRequired,
+  fields: PropTypes.shape({}).isRequired,
+  formData: PropTypes.shape({}).isRequired,
+  errors: PropTypes.shape({}).isRequired,
+  isInProgress: PropTypes.bool.isRequired,
+  isSuccess: PropTypes.bool.isRequired,
 };

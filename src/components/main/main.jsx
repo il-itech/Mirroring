@@ -5,11 +5,11 @@ import classnames from 'classnames';
 import Container from '@material-ui/core/Container';
 import * as R from 'ramda';
 
-import { useShallowSelector } from '../../hooks/use-shallow-selector';
-import { clearError } from '../../actions/system';
-import { ErrorBoundary } from '../error-boundary/error-boundary';
-import { GlobalAlert } from '../global-alert/global-alert';
-import { isEmptyOrNil } from '../../helpers/utils';
+import { useShallowSelector } from 'hooks/use-shallow-selector';
+import { clearError } from 'actions/system';
+import { ErrorBoundary } from 'components/error-boundary/error-boundary';
+import { GlobalAlert } from 'components/global-alert/global-alert';
+import { isEmptyOrNil } from 'helpers/utils';
 
 import './main.scss';
 
@@ -17,7 +17,7 @@ export const MainUI = ({
   children,
   className,
   disableGutters,
-  isShowSideBar,
+  showSideBar,
 }) => {
   const { errorId } = useShallowSelector(R.path(['system', 'globalError']));
   const dispatch = useDispatch();
@@ -29,9 +29,9 @@ export const MainUI = ({
   return (
     <Container
       disableGutters={disableGutters}
-      maxWidth="xl"
-      className={classnames('main-container', className, {
-        'side-bar-indent': isShowSideBar,
+      maxWidth={false}
+      className={classnames('main-container pr-0', className, {
+        'side-bar-indent': showSideBar,
       })}
     >
       {!isEmptyOrNil(errorId) && (
@@ -52,13 +52,13 @@ MainUI.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node.isRequired,
   disableGutters: PropTypes.bool,
-  isShowSideBar: PropTypes.bool,
+  showSideBar: PropTypes.bool,
 };
 
 MainUI.defaultProps = {
   className: null,
   disableGutters: false,
-  isShowSideBar: false,
+  showSideBar: false,
 };
 
 export const Main = memo(MainUI);

@@ -1,10 +1,6 @@
 import * as R from 'ramda';
 
 import {
-  getCommonReducers,
-  getInitialState as getCommonState,
-} from '../common';
-import {
   setFormData,
   replaceFormData,
   setFormError,
@@ -13,7 +9,11 @@ import {
   clearFormErrors,
   clearFormError,
   clearForm,
-} from '../../actions/forms/common';
+} from 'actions/forms/common';
+import {
+  getCommonReducers,
+  getInitialState as getCommonState,
+} from '../common';
 
 export const getInitialState = additionalState => R.mergeDeepLeft(
   {
@@ -42,8 +42,11 @@ export const getFormsCommonReducer = (reducerFormName, additionalState) => ({
   [setFormErrors]: (state, { payload: { formName, errors } }) =>
     reducerChecker(reducerFormName, state, formName, { errors }),
 
-  [clearFormData]: (state, { payload: { formName } }) =>
-    reducerChecker(reducerFormName, state, formName, { formData: getInitialState(additionalState).formData }),
+  [clearFormData]: (state, { payload: { formName, field } }) =>
+    reducerChecker(reducerFormName, state, formName, { formData: R.dissoc(field, state.formData) }),
+
+  [clearFormError]: (state, { payload: { formName, field } }) =>
+    reducerChecker(reducerFormName, state, formName, { errors: R.dissoc(field, state.errors) }),
 
   [clearFormError]: (state, { payload: { formName, field } }) =>
     reducerChecker(reducerFormName, state, formName, { errors: R.dissoc(field, state.errors) }),

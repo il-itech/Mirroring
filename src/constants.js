@@ -33,6 +33,8 @@ export const ERRORS = {
 export const FORM_TYPES = {
   SIGN_IN: 'signIn',
   SIGN_UP: 'signUp',
+  SIGN_OUT: 'signOut',
+  CHAT_MESSAGE: 'chatMessage',
 };
 
 export const FORM_FIELD_TYPES = {
@@ -95,9 +97,11 @@ export const VALIDATION_ERRORS_MESSAGES = {
 
 export const REDUCER_TYPES = {
   SYSTEM: 'system',
-  MESSENGER: 'messenger',
+  CHAT: 'chat',
   CORONAVIRUS: 'coronavirus',
   FORMS: 'forms',
+  AUTH: 'auth',
+  PROFILE: 'profile',
 };
 
 export const CORONAVIRUS_REDUCER_TYPES = {
@@ -106,4 +110,11 @@ export const CORONAVIRUS_REDUCER_TYPES = {
   COUNTRY_STATS: 'countryStats',
   FULL_TIMELINE_STATS: 'fullTimelineStats',
   COUNTRY_TIMELINE_STATS: 'countryTimelineStats',
+};
+
+export const SNACKBAR_VARIANTS = {
+  SUCCESS: 'success',
+  ERROR: 'error',
+  WARNING: 'warning',
+  INFO: 'info',
 };

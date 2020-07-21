@@ -3,11 +3,10 @@
 .app-sign-up {
   width: 600px;
 
-  .back-home-button {
-    width: 150px;
-
+  .bg-hover-none {
+    &:focus,
     &:hover {
-      background-color: $ebony;
+      background-color: $vulcan !important;
     }
   }
 }

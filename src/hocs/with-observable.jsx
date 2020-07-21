@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const withObservable = rootEpic => Component => {
   class WrappedComponent extends React.Component {
     static displayName = `withObservable(${Component.displayName || Component.name || 'Component'})`

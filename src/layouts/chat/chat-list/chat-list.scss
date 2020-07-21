@@ -1,0 +1,7 @@
+@import '../../../customizations/pre-customization';
+
+.chat-list {
+  border-right: 1px solid $white-12;
+  height: calc(100vh - 64px);
+  width: 300px;
+}

@@ -4,8 +4,8 @@ export const isNotNil = R.complement(R.isNil);
 export const isNotEmpty = R.complement(R.isEmpty);
 export const isEmptyOrNil = R.anyPass([R.isNil, R.isEmpty]);
 export const zeroOrNil = R.anyPass([R.isNil, R.compose(R.equals(0), Number)]);
-
-export const isFunction = type => R.type(type) === 'Function';
+export const isFunction = R.is(Function);
+export const isBoolean = R.is(Boolean);
 
 /**
  * Converts passed value to `String` type (if needed)

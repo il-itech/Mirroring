@@ -2,7 +2,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import PropTypes from 'prop-types';
 
-import { isEmptyOrNil } from '../../../../helpers/utils';
+import { isEmptyOrNil } from 'helpers/utils';
 
 export const CustomCheckbox = ({
   field,

@@ -4,8 +4,8 @@ import { switchMap, map } from 'rxjs/operators';
 import { request as ajax } from 'universal-rxjs-ajax';
 import * as R from 'ramda';
 
-import { getCoronavirusAllCountryStats, setCoronavirusAllCountryStats } from '../../actions/coronavirus';
-import { getAllCountryCoronavirusStats as getAllCountryCoronavirusStatsApi } from '../../api/coronavirus-api';
+import { getCoronavirusAllCountryStats, setCoronavirusAllCountryStats } from 'actions/coronavirus';
+import { getAllCountryCoronavirusStats as getAllCountryCoronavirusStatsApi } from 'api/coronavirus-api';
 import { catchGlobalErrorWithUndefinedId } from '../common-operators';
 
 export const fetchCoronavirusAllCountryStatsEpic = action$ =>

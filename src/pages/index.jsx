@@ -1,4 +1,4 @@
-import { Index as IndexLayout } from '../layouts';
+import { Index as IndexLayout } from 'layouts';
 
 const Index = IndexLayout;
 
