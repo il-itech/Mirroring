@@ -17,11 +17,18 @@ export const chat = handleActions(
       ...state,
       allUserList: payload,
     }),
-    [setMessage]: (state, { payload: { roomId, sender, message } }) => ({
+    [setMessage]: (state, {
+      payload: {
+        roomId,
+        sender,
+        message,
+        date,
+      },
+    }) => ({
       ...state,
       messages: {
         ...state.messages,
-        [roomId]: R.append({ sender, message }, state.messages[roomId] || []),
+        [roomId]: R.append({ sender, message, date }, state.messages[roomId] || []),
       },
     }),
     ...getCommonReducers(REDUCER_TYPES.CHAT, additionalState),

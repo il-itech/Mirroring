@@ -1,8 +1,9 @@
-import { useMemo } from 'react';
+import { useMemo, memo } from 'react';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import * as R from 'ramda';
 
 import { useShallowSelector } from 'hooks/use-shallow-selector';
 import { RouteLink } from 'components/route-link/route-link';
@@ -31,7 +32,7 @@ const getRoutesList = profileId => ([
   },
 ]);
 
-export const DrawerSideBar = () => {
+export const DrawerSideBarUI = () => {
   const { _id } = useShallowSelector(state => state?.profile);
   const routesList = useMemo(() => getRoutesList(_id), [_id]);
 
@@ -67,3 +68,5 @@ export const DrawerSideBar = () => {
     </Drawer>
   );
 };
+
+export const DrawerSideBar = memo(DrawerSideBarUI, R.equals);

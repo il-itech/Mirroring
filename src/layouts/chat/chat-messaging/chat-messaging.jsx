@@ -10,7 +10,9 @@ export const ChatMessaging = ({
   messages,
   allUserList,
   currentChatUser,
-  onSubmit,
+  chatContentRef,
+  handleSubmit,
+  handleKeyPress,
 }) => (
   <div className="h-100 w-75 d-flex flex-column">
     <ChatMessagingTitle currentChatUser={currentChatUser} />
@@ -18,10 +20,12 @@ export const ChatMessaging = ({
       profileId={profileId}
       messages={messages}
       allUserList={allUserList}
+      chatContentRef={chatContentRef}
     />
     <ChatMessagingText
       roomId={roomId}
-      onSubmit={onSubmit}
+      handleSubmit={handleSubmit}
+      handleKeyPress={handleKeyPress}
     />
   </div>
 );
@@ -36,7 +40,11 @@ ChatMessaging.propTypes = {
   }).isRequired,
   allUserList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   messages: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  onSubmit: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  handleKeyPress: PropTypes.func.isRequired,
+  chatContentRef: PropTypes.shape({
+    current: PropTypes.node,
+  }).isRequired,
 };
 
 ChatMessaging.defaultProps = {

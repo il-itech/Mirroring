@@ -2,7 +2,7 @@ import { ofType } from 'redux-observable';
 import { concat, of } from 'rxjs';
 import { switchMap, mergeMap, catchError } from 'rxjs/operators';
 import { ajax } from 'rxjs/ajax';
-import store from 'store';
+import cookies from 'js-cookie';
 
 import { showNotification } from 'actions/system';
 import { setProfile } from 'actions/profile';
@@ -22,7 +22,7 @@ export const signInEpic = action$ =>
       setInProgressStatusAction(FORM_TYPES.SIGN_IN, true),
       signInApi(ajax, payload).pipe(
         mergeMap(({ response: user }) => {
-          store.set('user', user);
+          cookies.set('accessToken', user.accessToken);
 
           return of(
             setProfile(user),
