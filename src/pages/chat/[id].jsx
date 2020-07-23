@@ -11,7 +11,9 @@ const Chat = () => {
   const { query: { id: roomId } } = useRouter();
   const {
     chat,
-    onSubmit,
+    chatContentRef,
+    handleSubmit,
+    handleKeyPress,
   } = useChat(roomId);
   const profileId = useShallowSelector(state => state?.profile?._id);
 
@@ -20,7 +22,9 @@ const Chat = () => {
       chat={chat}
       roomId={roomId}
       profileId={profileId}
-      onSubmit={onSubmit}
+      chatContentRef={chatContentRef}
+      handleSubmit={handleSubmit}
+      handleKeyPress={handleKeyPress}
     />
   );
 };

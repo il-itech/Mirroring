@@ -8,13 +8,13 @@ import { DrawerSideBar } from 'components/drawers/drawer-side-bar/drawer-side-ba
 import { ChatList } from './chat-list/chat-list';
 import { ChatMessaging } from './chat-messaging/chat-messaging';
 
-const IS_IN_DEVELOPMENT = false;
-
 export const Chat = ({
   roomId,
   chat: { allUserList, messages },
   profileId,
-  onSubmit,
+  chatContentRef,
+  handleSubmit,
+  handleKeyPress,
 }) => {
   const currentChatUser = useMemo(
     () => R.find(R.propEq('_id', roomId))(allUserList),
@@ -30,26 +30,22 @@ export const Chat = ({
     >
       <Header />
       <DrawerSideBar />
-      {IS_IN_DEVELOPMENT ? (
-        <div className="h4 text-white">
-          Section in development
-        </div>
-      ) : (
-        <div className="w-100 h-100 d-flex">
-          <ChatList
-            allUserList={allUserList}
-            messages={messages}
-          />
-          <ChatMessaging
-            roomId={roomId}
-            profileId={profileId}
-            messages={messagesById}
-            allUserList={allUserList}
-            currentChatUser={currentChatUser}
-            onSubmit={onSubmit}
-          />
-        </div>
-      )}
+      <div className="w-100 h-100 d-flex">
+        <ChatList
+          allUserList={allUserList}
+          messages={messages}
+        />
+        <ChatMessaging
+          roomId={roomId}
+          profileId={profileId}
+          messages={messagesById}
+          allUserList={allUserList}
+          currentChatUser={currentChatUser}
+          chatContentRef={chatContentRef}
+          handleSubmit={handleSubmit}
+          handleKeyPress={handleKeyPress}
+        />
+      </div>
     </Main>
   );
 };
@@ -61,7 +57,11 @@ Chat.propTypes = {
   }).isRequired,
   roomId: PropTypes.string.isRequired,
   profileId: PropTypes.string,
-  onSubmit: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  handleKeyPress: PropTypes.func.isRequired,
+  chatContentRef: PropTypes.shape({
+    current: PropTypes.node,
+  }).isRequired,
 };
 
 Chat.defaultProps = {
