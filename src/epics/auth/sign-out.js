@@ -2,7 +2,7 @@ import { ofType } from 'redux-observable';
 import { concat, of } from 'rxjs';
 import { switchMap, mergeMap } from 'rxjs/operators';
 import { ajax } from 'rxjs/ajax';
-import store from 'store';
+import cookies from 'js-cookie';
 
 import { clearState } from 'actions/common';
 import { showNotification, redirectTo, clearSystem } from 'actions/system';
@@ -19,7 +19,7 @@ export const signOutEpic = action$ =>
       setGlobalInProgressStatusAction(true),
       signOutApi(ajax, getToken()).pipe(
         mergeMap(() => {
-          store.remove('user');
+          cookies.remove('accessToken');
 
           return of(
             clearState(REDUCER_TYPES.PROFILE),

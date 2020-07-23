@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
@@ -14,7 +15,7 @@ import { isEmptyOrNil } from 'helpers/utils';
 
 import './header.scss';
 
-export const Header = () => {
+export const HeaderUI = () => {
   const {
     _id,
     firstname,
@@ -72,3 +73,5 @@ export const Header = () => {
     </AppBar>
   );
 };
+
+export const Header = memo(HeaderUI, R.equals);

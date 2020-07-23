@@ -28,7 +28,7 @@
     "bootstrap": "^4.4.1",
     "classnames": "^2.2.6",
     "cross-env": "^7.0.2",
-    "dayjs": "^1.8.23",
+    "dayjs": "^1.8.30",
     "js-cookie": "^2.2.1",
     "mui-datatables": "^2.14.0",
     "next": "^9.4.4",

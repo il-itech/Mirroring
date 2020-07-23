@@ -12,14 +12,16 @@ import './chat-messaging-text.scss';
 
 export const ChatMessagingTextUI = ({
   roomId,
-  onSubmit,
+  handleSubmit,
+  handleKeyPress,
 }) => {
   const message = useShallowSelector(state => state?.forms?.chatMessage?.formData[roomId]);
 
   return (
+    // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
     <form
       className="d-flex align-items-center p-2 bg-ebony chat-messaging-text"
-      onSubmit={onSubmit}
+      onKeyPress={handleKeyPress}
     >
       <NoSsr>
         <FormElement
@@ -27,7 +29,7 @@ export const ChatMessagingTextUI = ({
           field={roomId}
           value={message}
           elementProps={{
-            type: 'text',
+            type: 'textarea',
             placeholder: 'Leave a message',
             variant: 'outlined',
             classes: {
@@ -46,7 +48,7 @@ export const ChatMessagingTextUI = ({
         classes={{
           root: 'ml-1 send-button',
         }}
-        onClick={onSubmit}
+        onClick={handleSubmit}
       >
         <SendIcon
           classes={{
@@ -62,5 +64,6 @@ export const ChatMessagingText = memo(ChatMessagingTextUI, R.equals);
 
 ChatMessagingTextUI.propTypes = {
   roomId: PropTypes.string.isRequired,
-  onSubmit: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  handleKeyPress: PropTypes.func.isRequired,
 };
