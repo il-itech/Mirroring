@@ -2,7 +2,6 @@ import Router from 'next/router';
 import PropTypes from 'prop-types';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import MUIDataTable from 'mui-datatables';
-import NoSsr from '@material-ui/core/NoSsr';
 import * as R from 'ramda';
 
 import { serializeTable } from 'helpers/coronavirus';
@@ -35,15 +34,13 @@ const options = {
 };
 
 export const CoronavirusCountryStatsTable = ({ tableData }) => (
-  <NoSsr>
-    <MuiThemeProvider theme={getMuiTheme()}>
-      <MUIDataTable
-        data={serializeTable(tableData)}
-        columns={TABLE_HEADS_COMPANIES}
-        options={options}
-      />
-    </MuiThemeProvider>
-  </NoSsr>
+  <MuiThemeProvider theme={getMuiTheme()}>
+    <MUIDataTable
+      data={serializeTable(tableData)}
+      columns={TABLE_HEADS_COMPANIES}
+      options={options}
+    />
+  </MuiThemeProvider>
 );
 
 CoronavirusCountryStatsTable.propTypes = {

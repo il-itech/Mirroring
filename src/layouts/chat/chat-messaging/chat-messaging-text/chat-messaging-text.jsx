@@ -1,7 +1,6 @@
 import { memo } from 'react';
 import SendIcon from '@material-ui/icons/Send';
 import Button from '@material-ui/core/Button';
-import NoSsr from '@material-ui/core/NoSsr';
 import PropTypes from 'prop-types';
 import * as R from 'ramda';
 
@@ -23,27 +22,25 @@ export const ChatMessagingTextUI = ({
       className="d-flex align-items-center p-2 bg-ebony chat-messaging-text"
       onKeyPress={handleKeyPress}
     >
-      <NoSsr>
-        <FormElement
-          formType="chatMessage"
-          field={roomId}
-          value={message}
-          elementProps={{
-            type: 'textarea',
-            placeholder: 'Leave a message',
-            variant: 'outlined',
+      <FormElement
+        formType="chatMessage"
+        field={roomId}
+        value={message}
+        elementProps={{
+          type: 'textarea',
+          placeholder: 'Leave a message',
+          variant: 'outlined',
+          classes: {
+            root: 'w-100',
+          },
+          InputProps: {
             classes: {
-              root: 'w-100',
+              root: 'text-white',
+              notchedOutline: 'border-white-23',
             },
-            InputProps: {
-              classes: {
-                root: 'text-white',
-                notchedOutline: 'border-white-23',
-              },
-            },
-          }}
-        />
-      </NoSsr>
+          },
+        }}
+      />
       <Button
         classes={{
           root: 'ml-1 send-button',
