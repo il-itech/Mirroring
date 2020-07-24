@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
-import NoSsr from '@material-ui/core/NoSsr';
 import classnames from 'classnames';
 
 import { useSignUp } from 'hooks/use-sign-up';
@@ -41,45 +40,43 @@ export const FormSignUp = ({
           onSubmit={onSubmit}
           className="d-flex flex-column"
         >
-          <NoSsr>
-            {Object.entries(fields).map(([field, item]) => {
-              const error = errors[field];
-              const hasError = !isEmptyOrNil(error);
+          {Object.entries(fields).map(([field, item]) => {
+            const error = errors[field];
+            const hasError = !isEmptyOrNil(error);
 
-              return (
-                <FormElement
-                  key={field}
-                  formType={formType}
-                  field={field}
-                  variant="outlined"
-                  value={formData[field]}
-                  elementProps={{
-                    ...item,
-                    autoFocus: false,
-                    hasError,
-                    helperText: error?.message,
+            return (
+              <FormElement
+                key={field}
+                formType={formType}
+                field={field}
+                variant="outlined"
+                value={formData[field]}
+                elementProps={{
+                  ...item,
+                  autoFocus: false,
+                  hasError,
+                  helperText: error?.message,
+                  classes: {
+                    root: 'w-100 mt-2 mb-1',
+                  },
+                  InputProps: {
                     classes: {
-                      root: 'w-100 mt-2 mb-1',
+                      input: 'text-white input-custom-autocomplete',
+                      notchedOutline: classnames({
+                        'border-white-23': !hasError,
+                        'border-cinnabar': hasError,
+                      }),
                     },
-                    InputProps: {
-                      classes: {
-                        input: 'text-white input-custom-autocomplete',
-                        notchedOutline: classnames({
-                          'border-white-23': !hasError,
-                          'border-cinnabar': hasError,
-                        }),
-                      },
+                  },
+                  InputLabelProps: {
+                    classes: {
+                      root: 'text-mischka',
                     },
-                    InputLabelProps: {
-                      classes: {
-                        root: 'text-mischka',
-                      },
-                    },
-                  }}
-                />
-              );
-            })}
-          </NoSsr>
+                  },
+                }}
+              />
+            );
+          })}
 
           <Button
             classes={{
