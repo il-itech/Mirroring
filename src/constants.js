@@ -35,6 +35,7 @@ export const FORM_TYPES = {
   SIGN_UP: 'signUp',
   SIGN_OUT: 'signOut',
   CHAT_MESSAGE: 'chatMessage',
+  ACCOUNT: 'account',
 };
 
 export const FORM_FIELD_TYPES = {

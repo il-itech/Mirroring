@@ -5,11 +5,13 @@ export const {
   signUp,
   signOut,
   confirmEmail,
+  changeCredentials,
   setAuthStatus,
 } = createActions(
   'SIGN_IN',
   'SIGN_UP',
   'SIGN_OUT',
   'CONFIRM_EMAIL',
+  'CHANGE_CREDENTIALS',
   'SET_AUTH_STATUS',
 );
