@@ -4,7 +4,8 @@ import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import classnames from 'classnames';
 
-import { useSignUp } from 'hooks/use-sign-up';
+import { signUp } from 'actions/auth';
+import { useFormSubmit } from 'hooks/use-form-submit';
 import { BackHome } from 'components/back-home/back-home';
 import { FormElement } from 'components/form-element/form-element';
 import { RouteLink } from 'components/route-link/route-link';
@@ -22,7 +23,7 @@ export const FormSignUp = ({
 }) => {
   const {
     onSubmit,
-  } = useSignUp(formType, fields);
+  } = useFormSubmit(formType, fields, signUp);
 
   return (
     <div className="d-flex flex-column m-auto app-sign-up">

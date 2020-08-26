@@ -7,6 +7,7 @@ import store from 'store';
 import * as R from 'ramda';
 
 import { clearState } from 'actions/common';
+import { clearNotification } from 'actions/system';
 import { setProfile } from 'actions/profile';
 import { useShallowSelector } from 'hooks/use-shallow-selector';
 import { isEmptyOrNil } from 'helpers/utils';
@@ -38,7 +39,9 @@ export const GeneralProvider = ({ children }) => {
     if (!isEmptyOrNil(message)) {
       enqueueSnackbar(message, { ...NOTIFY_SETTINGS, variant });
     }
-  }, [enqueueSnackbar, message, variant]);
+
+    return R.compose(dispatch, clearNotification);
+  }, [dispatch, enqueueSnackbar, message, variant]);
 
   useEffect(() => {
     const user = store.get('user');

@@ -1,6 +1,10 @@
 @import '../../customizations/pre-customization';
 
 .global-alert {
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+  right: 0;
   top: $header-height + 6px;
   width: calc(100% - 48px);
   z-index: 99999;

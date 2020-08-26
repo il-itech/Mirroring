@@ -1,0 +1,29 @@
+import { ofType } from 'redux-observable';
+import { of } from 'rxjs';
+import { switchMap, mergeMap } from 'rxjs/operators';
+import { ajax } from 'rxjs/ajax';
+
+import { showNotification } from 'actions/system';
+import { setProfile } from 'actions/profile';
+import { uploadFile } from 'actions/files';
+import { setUserAvatar as setUserAvatarApi } from 'api/account';
+import { getToken } from 'helpers/auth';
+import { SNACKBAR_VARIANTS } from 'constants';
+import { catchGlobalErrorWithUndefinedId } from '../common-operators';
+
+export const setUserAvatarEpic = (action$, state$) =>
+  action$.pipe(
+    ofType(uploadFile),
+    switchMap(({ payload }) =>
+      setUserAvatarApi(ajax, payload, getToken()).pipe(
+        mergeMap(({ response }) => {
+          const { profile } = state$?.value;
+
+          return of(
+            setProfile({ ...profile, ...response }),
+            showNotification({ variant: SNACKBAR_VARIANTS.SUCCESS, message: 'Avatar has been updated' }),
+          );
+        }),
+      )),
+    catchGlobalErrorWithUndefinedId,
+  );
