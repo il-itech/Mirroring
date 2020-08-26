@@ -5,6 +5,7 @@ import {
   redirectTo,
   setGlobalInProgressStatus,
   showNotification,
+  clearNotification,
   clearError,
   clearSystem,
 } from 'actions/system';
@@ -40,7 +41,11 @@ export const system = handleActions(
       ...state,
       notification: payload,
     }),
-    [clearError]: (state) => ({
+    [clearNotification]: state => ({
+      ...state,
+      notification: { variant: null, message: null },
+    }),
+    [clearError]: state => ({
       ...state,
       globalError: {},
     }),

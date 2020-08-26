@@ -8,6 +8,7 @@ export const {
   redirectTo,
   setGlobalInProgressStatus,
   showNotification,
+  clearNotification,
   clearError,
   clearSystem,
 } = createActions(
@@ -29,6 +30,7 @@ export const {
   'REDIRECT_TO',
   'SET_GLOBAL_IN_PROGRESS_STATUS',
   'SHOW_NOTIFICATION',
+  'CLEAR_NOTIFICATION',
   'CLEAR_ERROR',
   'CLEAR_SYSTEM',
 );
