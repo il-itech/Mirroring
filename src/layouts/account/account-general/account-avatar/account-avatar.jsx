@@ -3,22 +3,24 @@ import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 
-import { useUploadFile } from 'hooks/use-upload-file';
+import { useFile } from 'hooks/use-file';
 
 import './account-avatar.scss';
 
 export const AccountAvatar = ({
-  profile: { firstname, lastname },
+  profile: { firstname, lastname, avatar },
 }) => {
   const {
     handleUploadFile,
-  } = useUploadFile();
+  } = useFile();
 
   return (
     <div className="w-25 d-flex flex-column align-items-center p-2 bg-ebony rounded account-avatar">
-      <Avatar classes={{
-        root: 'user-avatar',
-      }}
+      <Avatar
+        src={avatar}
+        classes={{
+          root: 'user-avatar',
+        }}
       />
       <Typography
         className="my-1_5 text-white text-capitalize"
@@ -56,5 +58,6 @@ AccountAvatar.propTypes = {
   profile: PropTypes.shape({
     firstname: PropTypes.string,
     lastname: PropTypes.string,
+    avatar: PropTypes.string,
   }).isRequired,
 };

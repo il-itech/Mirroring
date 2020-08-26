@@ -12,9 +12,9 @@ const additionalState = {
   },
 };
 
-export const account = handleActions(
+export const changeCredentials = handleActions(
   {
-    ...getFormsCommonReducer(FORM_TYPES.ACCOUNT, additionalState),
+    ...getFormsCommonReducer(FORM_TYPES.CHANGE_CREDENTIALS, additionalState),
   },
   getInitialState(additionalState),
 );

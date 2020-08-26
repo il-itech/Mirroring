@@ -6,6 +6,7 @@ export const {
   signOut,
   confirmEmail,
   changeCredentials,
+  changePassword,
   setAuthStatus,
 } = createActions(
   'SIGN_IN',
@@ -13,5 +14,6 @@ export const {
   'SIGN_OUT',
   'CONFIRM_EMAIL',
   'CHANGE_CREDENTIALS',
+  'CHANGE_PASSWORD',
   'SET_AUTH_STATUS',
 );

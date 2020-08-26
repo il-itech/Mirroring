@@ -20,6 +20,7 @@ export const HeaderUI = () => {
     _id,
     firstname,
     lastname,
+    avatar,
   } = useShallowSelector(state => state?.profile);
   const {
     anchorElement,
@@ -59,7 +60,12 @@ export const HeaderUI = () => {
               role="button"
               tabIndex={0}
             >
-              <Avatar className="mr-1">{`${R.head(firstname)} ${R.head(lastname)}`}</Avatar>
+              <Avatar
+                className="mr-1"
+                src={avatar}
+              >
+                {`${R.head(firstname)} ${R.head(lastname)}`}
+              </Avatar>
               <Typography className="mr-0_5">{firstname}</Typography>
               <Typography>{lastname}</Typography>
             </div>

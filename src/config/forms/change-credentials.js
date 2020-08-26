@@ -1,5 +1,5 @@
 export default {
-  FORM_TYPE: 'account',
+  FORM_TYPE: 'changeCredentials',
   FIELDS: {
     firstname: {
       type: 'text',
