@@ -6,7 +6,8 @@ import Avatar from '@material-ui/core/Avatar';
 import LockIcon from '@material-ui/icons/Lock';
 import classnames from 'classnames';
 
-import { useSignIn } from 'hooks/use-sign-in';
+import { signIn } from 'actions/auth';
+import { useFormSubmit } from 'hooks/use-form-submit';
 import { BackHome } from 'components/back-home/back-home';
 import { FormElement } from 'components/form-element/form-element';
 import { RouteLink } from 'components/route-link/route-link';
@@ -24,7 +25,7 @@ export const FormSignIn = ({
 }) => {
   const {
     onSubmit,
-  } = useSignIn(formType, fields);
+  } = useFormSubmit(formType, fields, signIn);
 
   return (
     <div className="m-auto app-sign-in">
