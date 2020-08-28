@@ -120,4 +120,3 @@ export const SNACKBAR_VARIANTS = {
   WARNING: 'warning',
   INFO: 'info',
 };
-
