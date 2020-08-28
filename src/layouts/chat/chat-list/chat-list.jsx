@@ -13,7 +13,12 @@ export const ChatListUI = ({ allUserList, messages }) => (
     <Typography className="mb-2 pl-2 text-white" variant="h6">
       Chats
     </Typography>
-    {allUserList.map(({ _id, firstname, lastname }) => {
+    {allUserList.map(({
+      _id,
+      firstname,
+      lastname,
+      avatar,
+    }) => {
       const lastMessage = getLastMessage(_id, messages);
 
       return (
@@ -24,6 +29,7 @@ export const ChatListUI = ({ allUserList, messages }) => (
           firstname={firstname}
           lastname={lastname}
           lastMessage={lastMessage}
+          avatar={avatar}
         />
       );
     })}
@@ -38,6 +44,7 @@ ChatListUI.propTypes = {
       _id: PropTypes.string.isRequired,
       firstname: PropTypes.string.isRequired,
       lastname: PropTypes.string.isRequired,
+      avatar: PropTypes.string.isRequired,
     }),
   ).isRequired,
   messages: PropTypes.shape({}).isRequired,
