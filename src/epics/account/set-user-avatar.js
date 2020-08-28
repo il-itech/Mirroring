@@ -1,5 +1,5 @@
 import { ofType } from 'redux-observable';
-import { of } from 'rxjs';
+import { of, concat } from 'rxjs';
 import { switchMap, mergeMap } from 'rxjs/operators';
 import { ajax } from 'rxjs/ajax';
 
@@ -9,12 +9,16 @@ import { uploadFile } from 'actions/files';
 import { setUserAvatar as setUserAvatarApi } from 'api/account';
 import { getToken } from 'helpers/auth';
 import { SNACKBAR_VARIANTS } from 'constants';
-import { catchGlobalErrorWithUndefinedId } from '../common-operators';
+import {
+  catchGlobalErrorWithUndefinedId,
+  setGlobalInProgressStatusAction,
+} from '../common-operators';
 
 export const setUserAvatarEpic = (action$, state$) =>
   action$.pipe(
     ofType(uploadFile),
-    switchMap(({ payload }) =>
+    switchMap(({ payload }) => concat(
+      setGlobalInProgressStatusAction(true),
       setUserAvatarApi(ajax, payload, getToken()).pipe(
         mergeMap(({ response }) => {
           const { profile } = state$?.value;
@@ -24,6 +28,8 @@ export const setUserAvatarEpic = (action$, state$) =>
             showNotification({ variant: SNACKBAR_VARIANTS.SUCCESS, message: 'Avatar has been updated' }),
           );
         }),
-      )),
+      ),
+      setGlobalInProgressStatusAction(false),
+    )),
     catchGlobalErrorWithUndefinedId,
   );

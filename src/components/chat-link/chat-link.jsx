@@ -10,6 +10,7 @@ export const ChatLink = ({
   firstname,
   lastname,
   lastMessage,
+  avatar,
 }) => (
   <Link href={href} as={as}>
     <Button
@@ -17,7 +18,7 @@ export const ChatLink = ({
         root: 'd-flex justify-content-start w-100 py-1_5 px-2 text-white text-capitalize link-hover',
       }}
     >
-      <Avatar />
+      <Avatar src={avatar} />
       <div className="d-flex flex-column align-items-start ml-2 text-truncate">
         <Typography variant="body1">{firstname} {lastname}</Typography>
         <Typography variant="body2" className="text-left text-mischka text-truncate">{lastMessage}</Typography>
@@ -32,4 +33,5 @@ ChatLink.propTypes = {
   firstname: PropTypes.string.isRequired,
   lastname: PropTypes.string.isRequired,
   lastMessage: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired,
 };

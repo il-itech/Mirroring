@@ -10,6 +10,7 @@ import { clearState } from 'actions/common';
 import { clearNotification } from 'actions/system';
 import { setProfile } from 'actions/profile';
 import { useShallowSelector } from 'hooks/use-shallow-selector';
+import { LinearLoader } from 'components/progress-bar/linear-loader/linear-loader';
 import { isEmptyOrNil } from 'helpers/utils';
 import { REDUCER_TYPES } from 'constants';
 
@@ -30,6 +31,7 @@ export const GeneralProvider = ({ children }) => {
   const {
     redirectTo,
     notification: { variant, message },
+    globalInProgressStatus,
   } = useShallowSelector(state => state?.system);
 
   /**
@@ -67,6 +69,7 @@ export const GeneralProvider = ({ children }) => {
 
   return (
     <GeneralContext.Provider value={null}>
+      {globalInProgressStatus && <LinearLoader />}
       {children}
     </GeneralContext.Provider>
   );
