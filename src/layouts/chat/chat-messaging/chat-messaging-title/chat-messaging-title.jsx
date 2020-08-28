@@ -10,10 +10,11 @@ export const ChatMessagingTitleUI = ({
   currentChatUser: {
     firstname,
     lastname,
+    avatar,
   },
 }) => (
   <div className="w-100 d-flex align-items-center p-2 bg-ebony chat-messaging-title">
-    <Avatar />
+    <Avatar src={avatar} />
     <div className="d-flex flex-column ml-2">
       <div className="d-flex">
         <Typography
@@ -41,5 +42,6 @@ ChatMessagingTitleUI.propTypes = {
     _id: PropTypes.string.isRequired,
     firstname: PropTypes.string.isRequired,
     lastname: PropTypes.string.isRequired,
+    avatar: PropTypes.string.isRequired,
   }).isRequired,
 };
