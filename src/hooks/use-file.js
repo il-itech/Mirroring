@@ -7,7 +7,7 @@ import { useShallowSelector } from 'hooks/use-shallow-selector';
 
 export const useFile = () => {
   const dispatch = useDispatch();
-  const { _id, avatarId } = useShallowSelector(state => state?.profile);
+  const { _id } = useShallowSelector(state => state?.profile);
 
   const handleUploadFile = useCallback(
     ({ target: { files } }) => {
@@ -21,13 +21,12 @@ export const useFile = () => {
           avatar: reader.result,
           avatarName: file.name,
           uId: _id,
-          avatarId,
         };
 
         R.compose(dispatch, uploadFile)(data);
       };
     },
-    [_id, avatarId, dispatch],
+    [_id, dispatch],
   );
 
   return {

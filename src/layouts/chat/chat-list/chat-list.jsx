@@ -44,7 +44,7 @@ ChatListUI.propTypes = {
       _id: PropTypes.string.isRequired,
       firstname: PropTypes.string.isRequired,
       lastname: PropTypes.string.isRequired,
-      avatar: PropTypes.string.isRequired,
+      avatar: PropTypes.string,
     }),
   ).isRequired,
   messages: PropTypes.shape({}).isRequired,
