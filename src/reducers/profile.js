@@ -11,7 +11,6 @@ const additionalState = {
   email: null,
   accessToken: null,
   avatar: null,
-  avatarId: null,
 };
 
 export const profile = handleActions(
