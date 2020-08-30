@@ -1,7 +1,7 @@
 import { handleActions } from 'redux-actions';
 import * as R from 'ramda';
 
-import { setAllUsers, setMessage } from 'actions/chat';
+import { setAllUsers, setMessage, setChatMessages } from 'actions/chat';
 
 import { REDUCER_TYPES } from 'constants';
 import { getCommonReducers, getInitialState } from '../common';
@@ -16,6 +16,13 @@ export const chat = handleActions(
     [setAllUsers]: (state, { payload }) => ({
       ...state,
       allUserList: payload,
+    }),
+    [setChatMessages]: (state, { payload: { roomId, messages } }) => ({
+      ...state,
+      messages: {
+        ...state.messages,
+        [roomId]: messages,
+      },
     }),
     [setMessage]: (state, {
       payload: {

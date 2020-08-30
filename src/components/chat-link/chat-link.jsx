@@ -33,5 +33,9 @@ ChatLink.propTypes = {
   firstname: PropTypes.string.isRequired,
   lastname: PropTypes.string.isRequired,
   lastMessage: PropTypes.string.isRequired,
-  avatar: PropTypes.string.isRequired,
+  avatar: PropTypes.string,
+};
+
+ChatLink.defaultProps = {
+  avatar: null,
 };
