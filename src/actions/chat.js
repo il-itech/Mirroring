@@ -5,9 +5,13 @@ export const {
   setAllUsers,
   setMessage,
   sendMessage,
+  getChatMessages,
+  setChatMessages,
 } = createActions(
   'GET_ALL_USERS',
   'SET_ALL_USERS',
   'SET_MESSAGE',
   'SEND_MESSAGE',
+  'GET_CHAT_MESSAGES',
+  'SET_CHAT_MESSAGES',
 );
