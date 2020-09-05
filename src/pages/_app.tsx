@@ -1,6 +1,7 @@
-import { useEffect } from 'react';
+import { AppProps } from 'next/app';
+import { Store } from 'redux';
+import { useEffect, ReactNode } from 'react';
 import { Provider } from 'react-redux';
-import PropTypes from 'prop-types';
 import Head from 'next/head';
 import withRedux from 'next-redux-wrapper';
 import { SnackbarProvider } from 'notistack';
@@ -18,7 +19,11 @@ import '../customizations/entrypoints.scss';
 
 const api = getConfig('HTTP_API_URL');
 
-const App = ({ Component, pageProps, store }) => {
+interface Props extends AppProps {
+  store: Store;
+}
+
+const App = ({ Component, pageProps, store }: Props): JSX.Element => {
   useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
@@ -44,7 +49,7 @@ const App = ({ Component, pageProps, store }) => {
   );
 };
 
-App.getInitialProps = async (props) => {
+App.getInitialProps = async (props: any): Promise<{ pageProps: {} }> => {
   const { Component, ctx } = props;
 
   if (ctx.isServer) {
@@ -69,16 +74,6 @@ App.getInitialProps = async (props) => {
     : {};
 
   return { pageProps };
-};
-
-App.propTypes = {
-  Component: PropTypes.func.isRequired,
-  pageProps: PropTypes.shape({}),
-  store: PropTypes.shape({}).isRequired,
-};
-
-App.defaultProps = {
-  pageProps: null,
 };
 
 export default R.compose(

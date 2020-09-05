@@ -1,7 +1,8 @@
 import { handleActions } from 'redux-actions';
 
+import { ISignInForm } from 'types/state.interfaces/forms-interface';
 import { FORM_TYPES } from 'constants';
-import { getFormsCommonReducer, getInitialState } from './common';
+import { getFormsCommonReducer, getInitialFormState } from '../common';
 
 const additionalState = {
   formData: {
@@ -10,9 +11,9 @@ const additionalState = {
   },
 };
 
-export const signIn = handleActions(
+export const signIn = handleActions<ISignInForm, any>(
   {
     ...getFormsCommonReducer(FORM_TYPES.SIGN_IN, additionalState),
   },
-  getInitialState(additionalState),
+  getInitialFormState(additionalState),
 );

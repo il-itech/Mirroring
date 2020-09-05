@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, Store } from 'redux';
 import { createEpicMiddleware } from 'redux-observable';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
@@ -6,7 +6,7 @@ import { rootEpic } from 'epics';
 import { rootReducer } from 'reducers';
 import { IS_MODE_DEV } from 'constants';
 
-const configureStore = (initialState = {}) => {
+const configureStore = (initialState = {}): Store => {
   const epicMiddleware = createEpicMiddleware();
 
   const store = createStore(

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 
-import { FORM_FIELD_TYPES } from 'constants';
+import { FORM_FIELD_TYPES } from 'enums';
 
 export const CustomTextField = ({
   type,

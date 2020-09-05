@@ -6,7 +6,7 @@ import * as R from 'ramda';
 import { setFormData, setFormError, clearFormError } from 'actions/forms/common';
 import { checkErrors } from 'helpers/form';
 import { isEmptyOrNil } from 'helpers/utils';
-import { FORM_FIELD_TYPES, FORM_TARGET_VALUES_SERIALIZE } from 'constants';
+import { FORM_FIELD_TYPES, FORM_TARGET_VALUES_SERIALIZE } from 'enums';
 import elements from './elements';
 
 const {

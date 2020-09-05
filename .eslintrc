@@ -23,7 +23,8 @@
   "settings": {
     "import/resolver": {
       "node": {
-        "extensions": [".ts", ".tsx", ".js", ".jsx"]
+        "extensions": [".ts", ".tsx", ".js", ".jsx"],
+        "moduleDirectory": ["node_modules", "src/"]
       },
       "babel-module": {
         "modules": "./node_modules",
@@ -39,11 +40,13 @@
         "reducers": "./src/reducers",
         "layouts": "./src/layouts",
         "services": "./src/services",
+        "interfaces": "./src/interfaces",
         "constants": "./src/constants.js"
       }
     }
   },
   "rules": {
+    "@typescript-eslint/ban-ts-ignore": "off",
     "padding-line-between-statements": [
       "error",
       { "blankLine": "always", "prev": "*", "next": "return" },
@@ -54,6 +57,7 @@
       { "blankLine": "any", "prev": ["const", "let", "var"], "next": ["const", "let", "var"]},
       { "blankLine": "always", "prev": "function", "next": "function" }
     ],
+    "@typescript-eslint/interface-name-prefix": 0,
     "@typescript-eslint/explicit-function-return-type": "off", // disable the rule for all files
     "@typescript-eslint/no-var-requires": 0,
     "@typescript-eslint/no-explicit-any": 0,

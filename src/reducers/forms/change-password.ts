@@ -1,7 +1,8 @@
 import { handleActions } from 'redux-actions';
 
+import { IChangePassword } from 'types/state.interfaces/forms-interface';
 import { FORM_TYPES } from 'constants';
-import { getFormsCommonReducer, getInitialState } from './common';
+import { getFormsCommonReducer, getInitialFormState } from '../common';
 
 const additionalState = {
   formData: {
@@ -10,9 +11,9 @@ const additionalState = {
   },
 };
 
-export const changePassword = handleActions(
+export const changePassword = handleActions<IChangePassword, any>(
   {
     ...getFormsCommonReducer(FORM_TYPES.CHANGE_PASSWORD, additionalState),
   },
-  getInitialState(additionalState),
+  getInitialFormState(additionalState),
 );

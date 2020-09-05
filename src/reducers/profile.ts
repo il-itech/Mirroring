@@ -1,7 +1,8 @@
 import { handleActions } from 'redux-actions';
 
+import { IProfile } from 'types/state.interfaces/profile-interface';
 import { setProfile } from 'actions/profile';
-import { REDUCER_TYPES } from 'constants';
+import { REDUCER_TYPES } from 'constants.js';
 import { getCommonReducers, getInitialState } from './common';
 
 const additionalState = {
@@ -13,9 +14,9 @@ const additionalState = {
   avatar: null,
 };
 
-export const profile = handleActions(
+export const profile = handleActions<IProfile, any>(
   {
-    [setProfile]: (state, { payload }) => ({
+    [`${setProfile}`]: (state, { payload }) => ({
       ...state,
       ...payload,
     }),

@@ -1,5 +1,6 @@
 import { handleActions } from 'redux-actions';
 
+import { ISystem } from 'types/state.interfaces/system-interface';
 import {
   globalError,
   redirectTo,
@@ -9,19 +10,27 @@ import {
   clearError,
   clearSystem,
 } from 'actions/system';
-import { ERRORS } from 'constants';
+import { ERRORS } from 'constants.js';
+
+enum VariantEnum {
+  default = 'default',
+  error = 'error',
+  success = 'success',
+  warning = 'warning',
+  info = 'info',
+}
 
 const initialState = {
   globalError: {},
   globalInProgressStatus: false,
-  notification: { variant: null, message: null },
+  notification: { variant: VariantEnum.default, message: null },
   is404: false,
-  redirectTo: null,
+  redirectTo: '',
 };
 
-export const system = handleActions(
+export const system = handleActions<ISystem, any>(
   {
-    [globalError]: (state, { payload: { error = ERRORS.UNDEFINED, status } }) => ({
+    [`${globalError}`]: (state, { payload: { error = ERRORS.UNDEFINED, status } }) => ({
       ...state,
       globalError: {
         ...state.globalError,
@@ -29,27 +38,27 @@ export const system = handleActions(
         status,
       },
     }),
-    [redirectTo]: (state, { payload }) => ({
+    [`${redirectTo}`]: (state, { payload }) => ({
       ...state,
       redirectTo: payload,
     }),
-    [setGlobalInProgressStatus]: (state, { payload }) => ({
+    [`${setGlobalInProgressStatus}`]: (state, { payload }) => ({
       ...state,
       globalInProgressStatus: payload,
     }),
-    [showNotification]: (state, { payload }) => ({
+    [`${showNotification}`]: (state, { payload }) => ({
       ...state,
       notification: payload,
     }),
-    [clearNotification]: state => ({
+    [`${clearNotification}`]: state => ({
       ...state,
       notification: { variant: null, message: null },
     }),
-    [clearError]: state => ({
+    [`${clearError}`]: state => ({
       ...state,
       globalError: {},
     }),
-    [clearSystem]: () => ({
+    [`${clearSystem}`]: () => ({
       ...initialState,
     }),
   },
