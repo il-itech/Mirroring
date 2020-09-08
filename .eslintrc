@@ -79,6 +79,7 @@
     "react/static-property-placement": 0,
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error",
+    "react/prop-types": 0,
     "no-underscore-dangle": 0,
     "lines-between-class-members": ["error", "always"],
     "implicit-arrow-linebreak": 0,

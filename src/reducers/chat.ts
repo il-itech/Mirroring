@@ -1,7 +1,7 @@
 import { handleActions } from 'redux-actions';
 import * as R from 'ramda';
 
-import { IChat } from 'types/state.interfaces/chat-interface';
+import { IChat } from 'interfaces/state.interfaces/chat-interface';
 import { setAllUsers, setMessage } from 'actions/chat';
 
 import { REDUCER_TYPES } from 'constants';

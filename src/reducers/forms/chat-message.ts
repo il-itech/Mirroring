@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
 
-import { IChatMessageForm } from 'types/state.interfaces/forms-interface';
+import { IChatMessageForm } from 'interfaces/state.interfaces/forms.interfaces/form-chat-message.interface';
 import { FORM_TYPES } from 'constants';
 import { getFormsCommonReducer, getInitialFormState } from '../common';
 

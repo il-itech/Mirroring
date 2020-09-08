@@ -1,5 +1,5 @@
 import { shallowEqual, useSelector } from 'react-redux';
-import { IState } from 'types/state.interfaces';
+import { IState } from 'interfaces/state.interfaces';
 
 type Selector<T> = (state: IState) => T;
 

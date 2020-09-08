@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
 
-import { IAuth } from 'types/state.interfaces/auth-interface';
+import { IAuth } from 'interfaces/state.interfaces/auth-interface';
 import { setAuthStatus } from 'actions/auth';
 import { REDUCER_TYPES } from 'constants';
 import { getCommonReducers, getInitialState } from './common';

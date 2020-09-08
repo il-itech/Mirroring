@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
 
-import { ISystem } from 'types/state.interfaces/system-interface';
+import { ISystem } from 'interfaces/state.interfaces/system-interface';
 import {
   globalError,
   redirectTo,

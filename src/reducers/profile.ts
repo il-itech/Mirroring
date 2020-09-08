@@ -1,17 +1,17 @@
 import { handleActions } from 'redux-actions';
 
-import { IProfile } from 'types/state.interfaces/profile-interface';
+import { IProfile } from 'interfaces/state.interfaces/profile-interface';
 import { setProfile } from 'actions/profile';
 import { REDUCER_TYPES } from 'constants.js';
 import { getCommonReducers, getInitialState } from './common';
 
 const additionalState = {
   _id: null,
-  firstname: null,
-  lastname: null,
-  email: null,
+  firstname: '',
+  lastname: '',
+  email: '',
   accessToken: null,
-  avatar: null,
+  avatar: '',
 };
 
 export const profile = handleActions<IProfile, any>(

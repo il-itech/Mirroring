@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
 
-import { ISignUpForm } from 'types/state.interfaces/forms-interface';
+import { ISignUpForm } from 'interfaces/state.interfaces/forms.interfaces/form-sign-up.interface';
 import { FORM_TYPES } from 'constants';
 import { getFormsCommonReducer, getInitialFormState } from '../common';
 

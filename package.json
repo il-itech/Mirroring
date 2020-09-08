@@ -15,6 +15,7 @@
     "eslint": "eslint --ext js,jsx,ts,tsx src",
     "stylelint": "stylelint '**/*.scss'",
     "styles:fix": "stylelint --fix '**/*.scss'",
+    "lint:tsc": "tsc --noEmit",
     "lint": "yarn eslint && yarn stylelint",
     "jsdoc": "jsdoc src -r -d docs",
     "clean": "node ./resources/yarn/clean"

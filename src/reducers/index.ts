@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import { IState } from 'types/state.interfaces';
+import { IState } from 'interfaces/state.interfaces';
 import { system } from './system';
 import { coronavirus } from './coronavirus';
 import { chat } from './chat';

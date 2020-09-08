@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import { IForms } from 'types/state.interfaces/forms-interface';
+import { IForms } from 'interfaces/state.interfaces/forms.interfaces/forms-interface';
 import { signUp } from './sign-up';
 import { signIn } from './sign-in';
 import { chatMessage } from './chat-message';

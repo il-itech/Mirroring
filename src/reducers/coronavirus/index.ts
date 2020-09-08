@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import { ICoronavirus } from 'types/state.interfaces/coronavirus-interface';
+import { ICoronavirus } from 'interfaces/state.interfaces/coronavirus-interface';
 import { globalStats } from './global-stats';
 import { allCountryStats } from './all-country-stats';
 import { countryStats } from './country-stats';

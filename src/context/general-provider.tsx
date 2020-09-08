@@ -3,12 +3,10 @@ import { useDispatch } from 'react-redux';
 import { Action } from 'redux-actions';
 import Router from 'next/router';
 import { useSnackbar, OptionsObject } from 'notistack';
-// import store from 'store';
 import * as R from 'ramda';
 
 import { clearState } from 'actions/common';
 import { clearNotification } from 'actions/system';
-// import { setProfile } from 'actions/profile';
 import { useShallowSelector } from 'hooks/use-shallow-selector';
 import { LinearLoader } from 'components/progress-bar/linear-loader/linear-loader';
 import { isEmptyOrNil } from 'helpers/utils';
@@ -50,14 +48,6 @@ export const GeneralProvider = ({ children }: Props): JSX.Element => {
       R.compose(dispatch, clearNotification)();
     };
   }, [dispatch, enqueueSnackbar, message, variant]);
-
-  // useEffect(() => {
-  //   const user = store.get('user');
-
-  //   if (!isEmptyOrNil(user)) {
-  //     R.compose(dispatch, setProfile)(user);
-  //   }
-  // }, [dispatch]);
 
   useEffect(() => {
     if (isUserAuth) {

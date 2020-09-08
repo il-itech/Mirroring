@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
 
-import { IStats } from 'types/state.interfaces/coronavirus-interface';
+import { IStats } from 'interfaces/state.interfaces/coronavirus-interface';
 import { setCoronavirusGlobalStats } from 'actions/coronavirus';
 import { CORONAVIRUS_REDUCER_TYPES } from 'constants';
 import { getCommonReducers, getInitialState } from '../common';

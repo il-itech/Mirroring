@@ -16,7 +16,7 @@ import {
   clearFormError,
   clearForm,
 } from 'actions/forms/common';
-import { ICommon, IFormCommon } from 'types/state.interfaces/common-interface';
+import { ICommon, IFormCommon } from 'interfaces/state.interfaces/common-interface';
 
 interface ICommonPayload {
   field: string;
