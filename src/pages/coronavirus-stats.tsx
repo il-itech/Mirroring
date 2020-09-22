@@ -1,6 +1,6 @@
+import { NextPage } from 'next';
 import { useEffect, useMemo } from 'react';
 import { useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
 import * as R from 'ramda';
 
 import {
@@ -10,8 +10,9 @@ import {
 import { setIntervalActions, clearIntervalActions } from 'actions/common';
 import { resolveActions } from 'helpers/resolve-actions';
 import { CoronavirusStats as CoronavirusStatsLayout } from 'layouts/coronavirus-stats/coronavirus-stats';
+import { Props } from 'interfaces/pages.interfaces/coronavirus-stats.interface';
 
-const CoronavirusStats = ({
+const CoronavirusStats: NextPage<Props> = ({
   coronavirus: {
     globalStats: { stats: globalStats },
     allCountryStats: { stats: allCountryStats },
@@ -42,16 +43,5 @@ CoronavirusStats.getInitialProps = resolveActions([
   getCoronavirusGlobalStats(),
   getCoronavirusAllCountryStats(),
 ]);
-
-CoronavirusStats.propTypes = {
-  coronavirus: PropTypes.shape({
-    globalStats: PropTypes.shape({
-      stats: PropTypes.shape({}).isRequired,
-    }).isRequired,
-    allCountryStats: PropTypes.shape({
-      stats: PropTypes.shape({}).isRequired,
-    }).isRequired,
-  }).isRequired,
-};
 
 export default CoronavirusStats;

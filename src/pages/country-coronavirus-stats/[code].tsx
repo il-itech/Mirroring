@@ -1,10 +1,12 @@
-import PropTypes from 'prop-types';
+import { NextPage } from 'next';
 
-import { resolveActions } from 'helpers/resolve-actions';
+import { resolveActions, NextContext } from 'helpers/resolve-actions';
 import { getCoronavirusCountryStats } from 'actions/coronavirus';
 import { CountryCoronavirusStats as CountryCoronavirusStatsLayout } from 'layouts/country-coronavirus-stats';
+import { IState } from 'interfaces/state.interfaces';
+import { Props } from 'interfaces/pages.interfaces/country-coronavirus-stats.interface';
 
-const CountryStats = ({
+const CountryStats: NextPage<Props> = ({
   coronavirus: {
     countryStats: { stats },
   },
@@ -14,16 +16,8 @@ const CountryStats = ({
   />
 );
 
-CountryStats.getInitialProps = ctx => resolveActions([
+CountryStats.getInitialProps = (ctx: NextContext): Promise<IState> => resolveActions([
   getCoronavirusCountryStats(ctx.query.code),
 ])(ctx);
-
-CountryStats.propTypes = {
-  coronavirus: PropTypes.shape({
-    countryStats: PropTypes.shape({
-      stats: PropTypes.shape({}).isRequired,
-    }),
-  }).isRequired,
-};
 
 export default CountryStats;

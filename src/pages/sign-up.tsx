@@ -1,10 +1,11 @@
-import { getConfig } from 'helpers/env';
+import { NextPage } from 'next';
 import { useShallowSelector } from 'hooks/use-shallow-selector';
 import { SignUp as SignUpLayout } from 'layouts/sign-up';
+import CONFIG from 'config/config';
 
-const { FORM_TYPE, FIELDS } = getConfig('FORMS.SIGN_UP');
+const { FORM_TYPE, FIELDS } = CONFIG?.FORMS?.SIGN_UP;
 
-const SignUp = () => {
+const SignUp: NextPage<{}> = () => {
   const {
     isInProgress,
     isSuccess,

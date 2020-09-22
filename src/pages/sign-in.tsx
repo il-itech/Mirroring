@@ -1,10 +1,11 @@
+import { NextPage } from 'next';
 import { useShallowSelector } from 'hooks/use-shallow-selector';
-import { getConfig } from 'helpers/env';
 import { SignIn as SignInLayout } from 'layouts/sign-in';
+import CONFIG from 'config/config';
 
-const { FORM_TYPE, FIELDS } = getConfig('FORMS.SIGN_IN');
+const { FORM_TYPE, FIELDS } = CONFIG?.FORMS?.SIGN_IN;
 
-const SignIn = () => {
+const SignIn: NextPage<{}> = () => {
   const {
     isInProgress,
     formData,
