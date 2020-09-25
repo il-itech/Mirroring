@@ -1,10 +1,12 @@
 import { NextPage } from 'next';
 
-import { resolveActions, NextContext } from 'helpers/resolve-actions';
+import withResolveActions from 'helpers/with-resolve-actions';
 import { getCoronavirusCountryStats } from 'actions/coronavirus';
 import { CountryCoronavirusStats as CountryCoronavirusStatsLayout } from 'layouts/country-coronavirus-stats';
-import { IState } from 'interfaces/state.interfaces';
 import { Props } from 'interfaces/pages.interfaces/country-coronavirus-stats.interface';
+import * as R from 'ramda';
+import { withAuth } from 'helpers/with-auth';
+import { withProps } from 'helpers/with-props';
 
 const CountryStats: NextPage<Props> = ({
   coronavirus: {
@@ -16,8 +18,12 @@ const CountryStats: NextPage<Props> = ({
   />
 );
 
-CountryStats.getInitialProps = (ctx: NextContext): Promise<IState> => resolveActions([
-  getCoronavirusCountryStats(ctx.query.code),
-])(ctx);
+export const getServerSideProps = R.compose(
+  withProps,
+  withAuth,
+  (ctx) => withResolveActions([
+    getCoronavirusCountryStats(ctx.query.code),
+  ])(ctx),
+);
 
 export default CountryStats;

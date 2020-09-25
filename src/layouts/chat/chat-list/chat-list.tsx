@@ -1,14 +1,14 @@
-import { memo } from 'react';
-import PropTypes from 'prop-types';
+import { FC, memo } from 'react';
 import Typography from '@material-ui/core/Typography';
 import * as R from 'ramda';
 
 import { ChatLink } from 'components/chat-link/chat-link';
 import { getLastMessage } from 'helpers/chat';
+import { Props } from './types';
 
 import './chat-list.scss';
 
-export const ChatListUI = ({ allUserList, messages }) => (
+export const ChatListUI: FC<Props> = ({ allUserList, messages }) => (
   <div className="w-25 pt-2 bg-ebony chat-list">
     <Typography className="mb-2 pl-2 text-white" variant="h6">
       Chats
@@ -37,15 +37,3 @@ export const ChatListUI = ({ allUserList, messages }) => (
 );
 
 export const ChatList = memo(ChatListUI, R.equals);
-
-ChatListUI.propTypes = {
-  allUserList: PropTypes.arrayOf(
-    PropTypes.shape({
-      _id: PropTypes.string.isRequired,
-      firstname: PropTypes.string.isRequired,
-      lastname: PropTypes.string.isRequired,
-      avatar: PropTypes.string,
-    }),
-  ).isRequired,
-  messages: PropTypes.shape({}).isRequired,
-};

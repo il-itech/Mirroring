@@ -16,32 +16,6 @@ export const toString = R.cond([
   [R.T, R.toString],
 ]);
 
-/**
- * Removes functions from React Component's `props` object
- * @param {Object} props
- * @returns {Object}
- */
-export const omitFunctionsFromComponentProps = (props) => {
-  const keys = [];
-
-  R.forEach(key =>
-    isFunction(props[key])
-      && keys.push(key), R.keys(props));
-
-  return R.omit(keys, props);
-};
-
-/**
- * Checks whether the React Component's `props` and `nextProps` objects are equal ones
- * @param props
- * @param nextProps
- * @returns {boolean}
- */
-export const areEqualComponentProps = (props, nextProps) => R.equals(
-  omitFunctionsFromComponentProps(props),
-  omitFunctionsFromComponentProps(nextProps),
-);
-
 export const getMonetaryValue = R.compose(
   R.reverse,
   R.join(','),
@@ -49,3 +23,10 @@ export const getMonetaryValue = R.compose(
   R.reverse,
   toString,
 );
+
+/**
+ * @param {ParsedUrlQuery} query
+ */
+export const getQueryString = (
+  query: string | string[] | undefined = '',
+): string => R.is(Array, query) ? query[0] : query;

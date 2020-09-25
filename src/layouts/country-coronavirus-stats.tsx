@@ -1,5 +1,4 @@
-import { useMemo } from 'react';
-import PropTypes from 'prop-types';
+import { FC, useMemo } from 'react';
 import { Typography } from '@material-ui/core';
 import * as R from 'ramda';
 
@@ -7,10 +6,22 @@ import { Main } from 'components/main/main';
 import { Header } from 'components/header/header';
 import { DrawerSideBar } from 'components/drawers/drawer-side-bar/drawer-side-bar';
 import { PaperList } from 'components/paper-list/paper-list';
+import { IStats } from 'interfaces/state.interfaces/coronavirus-interface';
 
-export const CountryCoronavirusStats = ({ stats }) => {
-  const { info: { title } } = stats;
-  const statsList = useMemo(() => R.compose(R.drop(1), R.toPairs)(stats), [stats]);
+interface Props {
+  stats: IStats;
+}
+
+const serializeStatsList = R.compose<IStats, any, [string, number][]>(
+  R.drop(1),
+  R.toPairs,
+);
+
+export const CountryCoronavirusStats: FC<Props> = ({
+  stats,
+  stats: { info: { title } },
+}) => {
+  const statsList = useMemo(() => serializeStatsList(stats), [stats]);
 
   return (
     <Main
@@ -27,12 +38,4 @@ export const CountryCoronavirusStats = ({ stats }) => {
       </div>
     </Main>
   );
-};
-
-CountryCoronavirusStats.propTypes = {
-  stats: PropTypes.shape({
-    info: PropTypes.shape({
-      title: PropTypes.string,
-    }),
-  }).isRequired,
 };

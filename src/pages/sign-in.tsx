@@ -8,6 +8,7 @@ const { FORM_TYPE, FIELDS } = CONFIG?.FORMS?.SIGN_IN;
 const SignIn: NextPage<{}> = () => {
   const {
     isInProgress,
+    isSuccess,
     formData,
     errors,
   } = useShallowSelector(state => state?.forms?.signIn);
@@ -19,6 +20,7 @@ const SignIn: NextPage<{}> = () => {
       formData={formData}
       errors={errors}
       isInProgress={isInProgress}
+      isSuccess={isSuccess}
     />
   );
 };

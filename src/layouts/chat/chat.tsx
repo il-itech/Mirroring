@@ -1,14 +1,25 @@
-import { useMemo } from 'react';
-import PropTypes from 'prop-types';
+import { FC, useMemo } from 'react';
 import * as R from 'ramda';
 
 import { Main } from 'components/main/main';
 import { Header } from 'components/header/header';
 import { DrawerSideBar } from 'components/drawers/drawer-side-bar/drawer-side-bar';
+import { IChatUser } from 'interfaces/state.interfaces/chat-interface';
 import { ChatList } from './chat-list/chat-list';
 import { ChatMessaging } from './chat-messaging/chat-messaging';
+import { Props } from './types';
 
-export const Chat = ({
+const getCurrentChatUser = (
+  roomId: string,
+  allUserList: IChatUser[],
+): IChatUser => R.find<IChatUser>(R.propEq('_id', roomId))(allUserList) || {
+  _id: '',
+  firstname: '',
+  lastname: '',
+  avatar: '',
+};
+
+export const Chat: FC<Props> = ({
   roomId,
   chat: { allUserList, messages },
   profileId,
@@ -17,7 +28,7 @@ export const Chat = ({
   handleKeyPress,
 }) => {
   const currentChatUser = useMemo(
-    () => R.find(R.propEq('_id', roomId))(allUserList),
+    () => getCurrentChatUser(roomId, allUserList),
     [allUserList, roomId],
   );
   const messagesById = useMemo(() => R.prop(roomId, messages) || [], [messages, roomId]);
@@ -48,22 +59,4 @@ export const Chat = ({
       </div>
     </Main>
   );
-};
-
-Chat.propTypes = {
-  chat: PropTypes.shape({
-    allUserList: PropTypes.arrayOf(PropTypes.shape({})),
-    messages: PropTypes.shape({}).isRequired,
-  }).isRequired,
-  roomId: PropTypes.string.isRequired,
-  profileId: PropTypes.string,
-  handleSubmit: PropTypes.func.isRequired,
-  handleKeyPress: PropTypes.func.isRequired,
-  chatContentRef: PropTypes.shape({
-    current: PropTypes.node,
-  }).isRequired,
-};
-
-Chat.defaultProps = {
-  profileId: null,
 };

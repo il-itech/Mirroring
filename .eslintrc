@@ -58,7 +58,8 @@
       { "blankLine": "always", "prev": "function", "next": "function" }
     ],
     "@typescript-eslint/interface-name-prefix": 0,
-    "@typescript-eslint/explicit-function-return-type": "off", // disable the rule for all files
+    "@typescript-eslint/explicit-function-return-type": 0, // disable the rule for all files
+    "@typescript-eslint/no-non-null-assertion": 0,
     "@typescript-eslint/no-var-requires": 0,
     "@typescript-eslint/no-explicit-any": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx", ".js", ".jsx"] }],
@@ -71,6 +72,7 @@
         "tsx": "never"
       }
     ],
+    "no-return-await": 0,
     "no-console": "error",
     "no-multiple-empty-lines": ["error", { "max": 1 }],
     "prefer-destructuring": ["error", { "object": true, "array": false }],

@@ -1,11 +1,12 @@
+import { FC } from 'react';
 import Router from 'next/router';
-import PropTypes from 'prop-types';
 import { MuiThemeProvider } from '@material-ui/core/styles';
-import MUIDataTable from 'mui-datatables';
+import MUIDataTable, { MUIDataTableOptions } from 'mui-datatables';
 import * as R from 'ramda';
 
 import { serializeTable } from 'helpers/coronavirus';
 import { getMuiTheme } from './theme';
+import { Props } from './types';
 
 const TABLE_HEADS_COMPANIES = [
   'Country name',
@@ -20,7 +21,7 @@ const TABLE_HEADS_COMPANIES = [
   'Total serious cases',
 ];
 
-const options = {
+const options: MUIDataTableOptions = {
   filterType: 'dropdown',
   rowsPerPageOptions: [10, 20, 30],
   onRowClick: (rowData) => {
@@ -33,16 +34,17 @@ const options = {
   },
 };
 
-export const CoronavirusCountryStatsTable = ({ tableData }) => (
-  <MuiThemeProvider theme={getMuiTheme()}>
-    <MUIDataTable
-      data={serializeTable(tableData)}
-      columns={TABLE_HEADS_COMPANIES}
-      options={options}
-    />
-  </MuiThemeProvider>
-);
+export const CoronavirusCountryStatsTable: FC<Props> = ({ tableData }) => {
+  const serializedTable = serializeTable(tableData);
 
-CoronavirusCountryStatsTable.propTypes = {
-  tableData: PropTypes.shape({}).isRequired,
+  return (
+    <MuiThemeProvider theme={getMuiTheme()}>
+      <MUIDataTable
+        data={serializedTable}
+        columns={TABLE_HEADS_COMPANIES}
+        options={options}
+        title=""
+      />
+    </MuiThemeProvider>
+  );
 };

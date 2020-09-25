@@ -1,7 +1,5 @@
-import { ReactType } from 'react';
-
 export interface Props {
-  children: ReactType;
+  children: JSX.Element | JSX.Element[];
   className?: string;
   disableGutters?: boolean;
   showSideBar?: boolean;

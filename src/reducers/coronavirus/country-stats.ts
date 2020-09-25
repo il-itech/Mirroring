@@ -1,15 +1,15 @@
 import { handleActions } from 'redux-actions';
 
-import { IStats } from 'interfaces/state.interfaces/coronavirus-interface';
+import { ICommonStats } from 'interfaces/state.interfaces/coronavirus-interface';
 import { setCoronavirusCountryStats } from 'actions/coronavirus';
-import { CORONAVIRUS_REDUCER_TYPES } from 'constants';
+import { CORONAVIRUS_REDUCER_TYPES } from 'enums';
 import { getCommonReducers, getInitialState } from '../common';
 
 export const additionalState = {
   stats: {},
 };
 
-export const countryStats = handleActions<IStats, any>(
+export const countryStats = handleActions<ICommonStats, any>(
   {
     [`${setCoronavirusCountryStats}`]: (state, { payload }) => ({
       ...state,

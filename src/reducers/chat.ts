@@ -4,7 +4,7 @@ import * as R from 'ramda';
 import { IChat } from 'interfaces/state.interfaces/chat-interface';
 import { setAllUsers, setMessage } from 'actions/chat';
 
-import { REDUCER_TYPES } from 'constants';
+import { REDUCER_TYPES } from 'enums';
 import { getCommonReducers, getInitialState } from './common';
 
 const additionalState = {

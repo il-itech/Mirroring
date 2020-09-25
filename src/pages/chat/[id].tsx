@@ -1,14 +1,19 @@
-import PropTypes from 'prop-types';
+import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 
 import { getAllUsers } from 'actions/chat';
 import { useShallowSelector } from 'hooks/use-shallow-selector';
 import { useChat } from 'hooks/chat/use-chat';
 import { Chat as ChatLayout } from 'layouts/chat/chat';
-import { resolveActions } from 'helpers/resolve-actions';
+import withResolveActions from 'helpers/with-resolve-actions';
+import { withAuth } from 'helpers/with-auth';
+import { withProps } from 'helpers/with-props';
+import { getQueryString } from 'helpers/utils';
+import * as R from 'ramda';
 
-const Chat = () => {
-  const { query: { id: roomId } } = useRouter();
+const Chat: NextPage<{}> = () => {
+  const { query: { id } } = useRouter();
+  const roomId = getQueryString(id);
   const {
     chat,
     chatContentRef,
@@ -29,12 +34,12 @@ const Chat = () => {
   );
 };
 
-Chat.getInitialProps = ctx => resolveActions([
-  getAllUsers(),
-])(ctx);
-
-Chat.propTypes = {
-  chat: PropTypes.shape({}).isRequired,
-};
+export const getServerSideProps = R.compose(
+  withProps,
+  withAuth,
+  withResolveActions([
+    getAllUsers(),
+  ]),
+);
 
 export default Chat;

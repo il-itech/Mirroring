@@ -1,9 +1,9 @@
-import { ReactNode, ReactType, ReactEventHandler } from 'react';
+import { ReactType, ReactEventHandler } from 'react';
 
 export interface Props {
   to: string;
   as?: string | {};
-  children: ReactNode;
+  children: JSX.Element | JSX.Element[] | string;
   component?: ReactType;
   copmonentClassName?: string;
   linkProps?: {};

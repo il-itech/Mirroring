@@ -2,7 +2,9 @@ import {
   useEffect,
   useCallback,
   useMemo,
-  createRef,
+  RefObject,
+  SyntheticEvent,
+  useRef,
 } from 'react';
 import { useDispatch } from 'react-redux';
 import dayjs from 'dayjs';
@@ -14,29 +16,43 @@ import { useShallowSelector } from 'hooks/use-shallow-selector';
 import { getChatSocketServiceSingleton } from 'services/sockets';
 import { isEmptyOrNil } from 'helpers/utils';
 import { getRoomHash } from 'helpers/chat';
-import { FORM_TYPES } from 'constants';
+import { IChat } from 'interfaces/state.interfaces/chat-interface';
+import { FORM_TYPES } from 'enums';
 
 const ENTER_KEY = 13;
 
-export const useChat = (roomId) => {
+interface IUseChat {
+  chat: IChat;
+  socket: any;
+  roomHash: string;
+  chatContentRef: RefObject<HTMLDivElement>;
+  handleSubmit: (e: SyntheticEvent) => void;
+  handleKeyPress: (e: KeyboardEvent) => void;
+}
+
+export const useChat = (roomId: string): IUseChat => {
   const dispatch = useDispatch();
   const profileId = useShallowSelector(state => state?.profile?._id);
   const message = useShallowSelector(state => state?.forms?.chatMessage?.formData[roomId] || '');
   const chat = useShallowSelector(state => state?.chat);
-  const socket = useMemo(getChatSocketServiceSingleton);
+  const socket = useMemo(getChatSocketServiceSingleton, []);
   const roomHash = useMemo(() => getRoomHash(profileId, roomId), [profileId, roomId]);
-  const chatContentRef = createRef();
+  const chatContentRef = useRef<HTMLDivElement>();
 
   useEffect(() => {
     socket.connect();
 
-    return () => socket.disconnect();
+    return (): void => {
+      socket.disconnect();
+    };
   }, [socket]);
 
   useEffect(() => {
     socket.emit('joinRoom', profileId);
 
-    return () => socket.emit('leaveRoom', profileId);
+    return (): void => {
+      socket.emit('leaveRoom', profileId);
+    };
   }, [profileId, socket]);
 
   useEffect(() => {
@@ -49,7 +65,9 @@ export const useChat = (roomId) => {
           date,
         }));
 
-    return () => stream$.unsubscribe();
+    return (): void => {
+      stream$.unsubscribe();
+    };
   }, [roomId, dispatch, socket]);
 
   useEffect(() => {
@@ -80,7 +98,7 @@ export const useChat = (roomId) => {
     R.compose(dispatch, clearFormData)(FORM_TYPES.CHAT_MESSAGE, roomId);
   }, [dispatch, message, profileId, roomHash, roomId, socket]);
 
-  const handleKeyPress = useCallback((e) => {
+  const handleKeyPress = useCallback((e: KeyboardEvent) => {
     if (e.which === ENTER_KEY && !e.shiftKey) {
       e.preventDefault();
       handleSubmit();

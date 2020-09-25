@@ -2,7 +2,7 @@ import { handleActions } from 'redux-actions';
 
 import { IAuth } from 'interfaces/state.interfaces/auth-interface';
 import { setAuthStatus } from 'actions/auth';
-import { REDUCER_TYPES } from 'constants';
+import { REDUCER_TYPES } from 'enums';
 import { getCommonReducers, getInitialState } from './common';
 
 const additionalState = {

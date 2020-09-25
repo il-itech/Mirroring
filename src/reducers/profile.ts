@@ -2,7 +2,7 @@ import { handleActions } from 'redux-actions';
 
 import { IProfile } from 'interfaces/state.interfaces/profile-interface';
 import { setProfile } from 'actions/profile';
-import { REDUCER_TYPES } from 'constants.js';
+import { REDUCER_TYPES } from 'enums';
 import { getCommonReducers, getInitialState } from './common';
 
 const additionalState = {

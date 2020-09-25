@@ -1,19 +1,20 @@
 import { ICommon } from './common-interface';
 
-interface IChatUser {
+export interface IChatUser {
   _id: string;
   firstname: string;
   lastname: string;
+  avatar: string;
 }
 
-interface IChatMessage {
+export interface IChatMessage {
   sender: string;
   message: string;
   date: string;
 }
 
-interface IChatMessages {
-  [key: string]: Array<IChatMessage>;
+export interface IChatMessages {
+  [key: string]: IChatMessage[];
 }
 
 export interface IChat extends ICommon {

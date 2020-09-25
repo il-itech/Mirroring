@@ -1,12 +1,13 @@
-import { memo } from 'react';
-import PropTypes from 'prop-types';
+import { FC, memo } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 import * as R from 'ramda';
 
+import { Props } from './types';
+
 import './chat-messaging-title.scss';
 
-export const ChatMessagingTitleUI = ({
+export const ChatMessagingTitleUI: FC<Props> = ({
   currentChatUser: {
     firstname,
     lastname,
@@ -36,12 +37,3 @@ export const ChatMessagingTitleUI = ({
 );
 
 export const ChatMessagingTitle = memo(ChatMessagingTitleUI, R.equals);
-
-ChatMessagingTitleUI.propTypes = {
-  currentChatUser: PropTypes.shape({
-    _id: PropTypes.string.isRequired,
-    firstname: PropTypes.string.isRequired,
-    lastname: PropTypes.string.isRequired,
-    avatar: PropTypes.string,
-  }).isRequired,
-};

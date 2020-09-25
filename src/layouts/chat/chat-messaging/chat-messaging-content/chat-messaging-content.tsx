@@ -1,28 +1,30 @@
-import { useEffect, memo } from 'react';
-import PropTypes from 'prop-types';
+import { useEffect, memo, FC } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import classnames from 'classnames';
 import * as R from 'ramda';
 
+import { IChatUser } from 'interfaces/state.interfaces/chat-interface';
+import { Props } from './types';
+
 import './chat-messaging-content.scss';
 
-const ChatMessagingContentUI = ({
+const ChatMessagingContentUI: FC<Props> = ({
   profileId,
   messages,
   allUserList,
   chatContentRef,
 }) => {
   useEffect(() => {
-    const { scrollHeight } = chatContentRef.current;
+    const { scrollHeight } = chatContentRef.current!;
 
-    chatContentRef.current.scrollTop = scrollHeight;
+    chatContentRef.current!.scrollTop = scrollHeight;
   }, [chatContentRef]);
 
   return (
     <div ref={chatContentRef} className="h-100 p-2 overflow-auto chat-messaging">
       {messages.map(({ sender: senderId, message, date }) => {
-        const { firstname, lastname } = R.find(R.propEq('_id', senderId))(allUserList);
+        const { firstname, lastname } = R.find<IChatUser>(R.propEq('_id', senderId))(allUserList) || {};
         const isAuthorMessage = profileId === senderId;
 
         return (
@@ -49,20 +51,3 @@ const ChatMessagingContentUI = ({
 };
 
 export const ChatMessagingContent = memo(ChatMessagingContentUI, R.equals);
-
-ChatMessagingContentUI.propTypes = {
-  profileId: PropTypes.string,
-  messages: PropTypes.arrayOf(PropTypes.shape({
-    sender: PropTypes.string,
-    message: PropTypes.string,
-    date: PropTypes.string,
-  })).isRequired,
-  allUserList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  chatContentRef: PropTypes.shape({
-    current: PropTypes.node,
-  }).isRequired,
-};
-
-ChatMessagingContentUI.defaultProps = {
-  profileId: null,
-};

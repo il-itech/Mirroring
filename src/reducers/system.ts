@@ -10,7 +10,7 @@ import {
   clearError,
   clearSystem,
 } from 'actions/system';
-import { ERRORS } from 'constants.js';
+import { ERRORS } from 'enums';
 
 enum VariantEnum {
   default = 'default',

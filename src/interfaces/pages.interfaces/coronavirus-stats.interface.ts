@@ -1,8 +1,8 @@
-import { IStats } from 'interfaces/state.interfaces/coronavirus-interface';
+import { IAllCountryStats, ICommonStats } from 'interfaces/state.interfaces/coronavirus-interface';
 
 export interface Props {
   coronavirus: {
-    globalStats: IStats;
-    allCountryStats: IStats;
+    globalStats: ICommonStats;
+    allCountryStats: IAllCountryStats;
   };
 }

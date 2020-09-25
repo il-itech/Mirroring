@@ -8,9 +8,17 @@ import {
   getCoronavirusAllCountryStats,
 } from 'actions/coronavirus';
 import { setIntervalActions, clearIntervalActions } from 'actions/common';
-import { resolveActions } from 'helpers/resolve-actions';
+import withResolveActions from 'helpers/with-resolve-actions';
 import { CoronavirusStats as CoronavirusStatsLayout } from 'layouts/coronavirus-stats/coronavirus-stats';
 import { Props } from 'interfaces/pages.interfaces/coronavirus-stats.interface';
+import { withAuth } from 'helpers/with-auth';
+import { withProps } from 'helpers/with-props';
+import { IStats } from 'interfaces/state.interfaces/coronavirus-interface';
+
+const serializeStatsList = R.compose<IStats, any, [string, number][]>(
+  R.dropLast(1),
+  R.toPairs,
+);
 
 const CoronavirusStats: NextPage<Props> = ({
   coronavirus: {
@@ -29,7 +37,7 @@ const CoronavirusStats: NextPage<Props> = ({
     return R.compose(dispatch, clearIntervalActions);
   }, [dispatch]);
 
-  const statsList = useMemo(() => R.compose(R.dropLast(1), R.toPairs)(globalStats), [globalStats]);
+  const statsList = useMemo(() => serializeStatsList(globalStats), [globalStats]);
 
   return (
     <CoronavirusStatsLayout
@@ -39,9 +47,13 @@ const CoronavirusStats: NextPage<Props> = ({
   );
 };
 
-CoronavirusStats.getInitialProps = resolveActions([
-  getCoronavirusGlobalStats(),
-  getCoronavirusAllCountryStats(),
-]);
+export const getServerSideProps = R.compose(
+  withProps,
+  withAuth,
+  withResolveActions([
+    getCoronavirusGlobalStats(),
+    getCoronavirusAllCountryStats(),
+  ]),
+);
 
 export default CoronavirusStats;

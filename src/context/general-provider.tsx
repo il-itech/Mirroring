@@ -1,4 +1,4 @@
-import React, { useEffect, createContext, ReactChildren } from 'react';
+import React, { useEffect, createContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { Action } from 'redux-actions';
 import Router from 'next/router';
@@ -13,7 +13,7 @@ import { isEmptyOrNil } from 'helpers/utils';
 import { REDUCER_TYPES } from 'enums';
 
 interface Props {
-  children: ReactChildren;
+  children: JSX.Element | JSX.Element[];
 }
 
 const NOTIFY_SETTINGS: OptionsObject = {

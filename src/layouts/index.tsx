@@ -1,7 +1,9 @@
+import { FC } from 'react';
+
 import { Header } from 'components/header/header';
 import { DrawerSideBar } from 'components/drawers/drawer-side-bar/drawer-side-bar';
 
-export const Index = () => (
+export const Index: FC<{}> = () => (
   <div>
     <Header />
     <DrawerSideBar />

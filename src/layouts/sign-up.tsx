@@ -1,11 +1,22 @@
-import PropTypes from 'prop-types';
+import { FC } from 'react';
 import Typography from '@material-ui/core/Typography';
 
 import { Main } from 'components/main/main';
 import { BackHome } from 'components/back-home/back-home';
 import { FormSignUp } from 'components/forms/form-sign-up/form-sign-up';
+import { ISignUpFormData } from 'interfaces/state.interfaces/forms.interfaces/form-sign-up.interface';
+import { ISignUpFieldsConfig } from 'interfaces/config.interfaces/form-config-sign-up.interface';
 
-export const SignUp = ({
+interface Props {
+  formType: string;
+  fields: ISignUpFieldsConfig;
+  formData: ISignUpFormData;
+  errors: {};
+  isInProgress: boolean;
+  isSuccess: boolean;
+}
+
+export const SignUp: FC<Props> = ({
   formType,
   fields,
   formData,
@@ -38,12 +49,3 @@ export const SignUp = ({
       )}
   </Main>
 );
-
-SignUp.propTypes = {
-  formType: PropTypes.string.isRequired,
-  fields: PropTypes.shape({}).isRequired,
-  formData: PropTypes.shape({}).isRequired,
-  errors: PropTypes.shape({}).isRequired,
-  isInProgress: PropTypes.bool.isRequired,
-  isSuccess: PropTypes.bool.isRequired,
-};

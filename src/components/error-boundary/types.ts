@@ -1,6 +1,4 @@
-import { ReactType } from 'react';
-
 export interface Props {
-  children: ReactType;
+  children: JSX.Element | JSX.Element[];
   dismissGlobalAlert: () => void;
 }

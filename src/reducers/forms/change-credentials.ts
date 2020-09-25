@@ -1,7 +1,7 @@
 import { handleActions } from 'redux-actions';
 
 import { IChangeCredentialsForm } from 'interfaces/state.interfaces/forms.interfaces/form-change-credentials.interface';
-import { FORM_TYPES } from 'constants';
+import { FORM_TYPES } from 'enums';
 import { getFormsCommonReducer, getInitialFormState } from '../common';
 
 const additionalState = {

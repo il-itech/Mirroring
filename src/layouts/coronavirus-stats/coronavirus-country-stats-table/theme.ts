@@ -1,4 +1,4 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createMuiTheme, Theme } from '@material-ui/core/styles';
 
 import scssVariables from '../../../customizations/js/variables';
 
@@ -10,7 +10,7 @@ const {
   },
 } = scssVariables;
 
-export const getMuiTheme = () =>
+export const getMuiTheme = (): Theme =>
   createMuiTheme({
     overrides: {
       MuiPaper: {
