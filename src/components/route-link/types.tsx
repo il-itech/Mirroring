@@ -8,5 +8,5 @@ export interface Props {
   copmonentClassName?: string;
   linkProps?: {};
   disabled?: boolean;
-  handleClick?: (e: ReactEventHandler) => void;
+  handleClick?: ReactEventHandler;
 }

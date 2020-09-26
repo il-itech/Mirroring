@@ -1,7 +1,7 @@
-import { SyntheticEvent } from 'react';
+import { MouseEventHandler } from 'react';
 
 export interface Props {
   roomId: string;
-  handleSubmit: (event: SyntheticEvent) => void;
+  handleSubmit: MouseEventHandler<HTMLButtonElement>;
   handleKeyPress: (event: KeyboardEvent) => void;
 }

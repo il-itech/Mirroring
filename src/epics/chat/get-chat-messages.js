@@ -3,7 +3,7 @@ import { switchMap, map } from 'rxjs/operators';
 import { request as ajax } from 'universal-rxjs-ajax';
 
 import { getChatMessages, setChatMessages } from 'actions/chat';
-import { getChatMessages as getChatMessagesApi } from 'api/chat';
+import { getChatMessages as getChatMessagesApi } from 'services/http/chat';
 import { getToken } from 'helpers/auth';
 import { catchGlobalErrorWithUndefinedId } from '../common-operators';
 

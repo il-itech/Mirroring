@@ -1,6 +1,5 @@
 import React, { useEffect, createContext } from 'react';
 import { useDispatch } from 'react-redux';
-import { Action } from 'redux-actions';
 import Router from 'next/router';
 import { useSnackbar, OptionsObject } from 'notistack';
 import * as R from 'ramda';
@@ -55,11 +54,7 @@ export const GeneralProvider = ({ children }: Props): JSX.Element => {
     }
 
     return (): void => {
-      R.compose<
-        string,
-        Action<{ field: string }>,
-        Action<{ field: string }>
-      >(dispatch, clearState)(REDUCER_TYPES.AUTH);
+      R.compose(dispatch, clearState)(REDUCER_TYPES.AUTH);
     };
   }, [dispatch, isUserAuth]);
 

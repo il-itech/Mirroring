@@ -4,13 +4,12 @@ import { SocketService } from './websocket-service';
 
 const socketApi = getConfig('WEBSOCKET_API_URL');
 
-let chatSocketService = null;
+let chatSocketService: SocketService | null = null;
 
-export const getChatSocketServiceSingleton = () => {
+export const getChatSocketServiceSingleton = (): SocketService => {
   if (!chatSocketService) {
     chatSocketService = new SocketService(`${socketApi}/chat`);
   }
 
   return chatSocketService;
 };
-

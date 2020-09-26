@@ -5,7 +5,7 @@ import { request as ajax } from 'universal-rxjs-ajax';
 import * as R from 'ramda';
 
 import { getCoronavirusCountryStats, setCoronavirusCountryStats } from 'actions/coronavirus';
-import { getCountryCoronavirusStats as getCountryCoronavirusStatsApi } from 'api/coronavirus-api';
+import { getCountryCoronavirusStats as getCountryCoronavirusStatsApi } from 'services/http/coronavirus-api';
 import { catchGlobalErrorWithUndefinedId } from '../common-operators';
 
 export const fetchCoronavirusCountryStatsEpic = action$ =>

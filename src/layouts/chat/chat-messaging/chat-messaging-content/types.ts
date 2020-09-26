@@ -1,10 +1,10 @@
-import { RefObject } from 'react';
+import { MutableRefObject } from 'react';
 
 import { IChatMessage, IChatUser } from 'interfaces/state.interfaces/chat-interface';
 
 export interface Props {
-  profileId: string;
+  profileId: string | null;
   messages: IChatMessage[];
   allUserList: IChatUser[];
-  chatContentRef: RefObject<HTMLDivElement>;
+  chatContentRef: MutableRefObject<HTMLDivElement>;
 }

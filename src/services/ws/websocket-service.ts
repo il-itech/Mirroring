@@ -4,9 +4,9 @@ import { Observable } from 'rxjs';
 import { logInfo, logError } from 'helpers/logger';
 
 export class SocketService {
-  socket;
+  private socket;
 
-  constructor(url, reconnectionDelay = 5000, reconnectionAttempts = 20) {
+  constructor(url: string, reconnectionDelay = 5000, reconnectionAttempts = 20) {
     this.socket = io(url, {
       reconnectionAttempts,
       reconnectionDelay,
@@ -16,32 +16,32 @@ export class SocketService {
     this.socket.on('error', logError);
   }
 
-  connect() {
+  connect(): void {
     this.socket.connect();
   }
 
-  disconnect() {
+  disconnect(): void {
     this.socket.disconnect();
   }
 
-  emit(chanel, message) {
+  emit<T>(chanel: string, message: T): void {
     this.socket.emit(chanel, message);
   }
 
-  on(eventName) {
+  on<T>(eventName: string): Observable<T> {
     return new Observable(observer => {
       this.socket.off(eventName);
-      this.socket.on(eventName, (data) => {
+      this.socket.on(eventName, (data: T) => {
         observer.next(data);
       });
     });
   }
 
-  static connected() {
+  static connected(): void {
     logInfo('Socket has been connected...');
   }
 
-  static disconnected() {
+  static disconnected(): void {
     logInfo('Socket was disconnected!');
   }
 }

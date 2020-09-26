@@ -7,7 +7,7 @@ import cookies from 'js-cookie';
 import { showNotification } from 'actions/system';
 import { setProfile } from 'actions/profile';
 import { confirmEmail, setAuthStatus } from 'actions/auth';
-import { confirmEmail as confirmEmailApi } from 'api/auth';
+import { confirmEmail as confirmEmailApi } from 'services/http/auth';
 import { SNACKBAR_VARIANTS } from 'constants';
 import { catchGlobalErrorWithUndefinedId } from '../common-operators';
 

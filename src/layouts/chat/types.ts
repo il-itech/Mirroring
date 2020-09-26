@@ -1,4 +1,4 @@
-import { RefObject, SyntheticEvent } from 'react';
+import { MouseEventHandler, MutableRefObject } from 'react';
 
 import { IChat } from 'interfaces/state.interfaces/chat-interface';
 
@@ -6,7 +6,7 @@ export interface Props {
   roomId: string;
   chat: IChat;
   profileId: string | null;
-  chatContentRef: RefObject<HTMLDivElement>;
-  handleSubmit: (event: SyntheticEvent) => void;
+  chatContentRef: MutableRefObject<HTMLDivElement>;
+  handleSubmit: MouseEventHandler<HTMLButtonElement>;
   handleKeyPress: (event: KeyboardEvent) => void;
 }

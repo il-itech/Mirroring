@@ -1,13 +1,16 @@
+import { Observable } from 'rxjs/internal/Observable';
+import { AjaxCreationMethod, AjaxResponse } from 'rxjs/internal/observable/dom/AjaxObservable';
+
 import { getConfig } from 'helpers/env';
 
 const api = getConfig('HTTP_API_URL');
 
 /**
  * API for sign in
- * @param {Object} ajax
+ * @param {AjaxCreationMethod} ajax
  * @param {Object} body
  */
-export const signIn = (ajax, body) => ajax({
+export const signIn = (ajax: AjaxCreationMethod, body): Observable<AjaxResponse> => ajax({
   url: `${api}/auth/sign-in`,
   method: 'POST',
   headers: {
@@ -18,10 +21,10 @@ export const signIn = (ajax, body) => ajax({
 
 /**
  * API for sign up
- * @param {Object} ajax
+ * @param {AjaxCreationMethod} ajax
  * @param {Object} body
  */
-export const signUp = (ajax, body) => ajax({
+export const signUp = (ajax: AjaxCreationMethod, body): Observable<AjaxResponse> => ajax({
   url: `${api}/auth/sign-up`,
   method: 'POST',
   headers: {
@@ -32,10 +35,10 @@ export const signUp = (ajax, body) => ajax({
 
 /**
  * API for sign out
- * @param {Object} ajax
+ * @param {AjaxCreationMethod} ajax
  * @param {String} token
  */
-export const signOut = (ajax, token) => ajax({
+export const signOut = (ajax: AjaxCreationMethod, token: string): Observable<AjaxResponse> => ajax({
   url: `${api}/auth/sign-out`,
   method: 'POST',
   headers: {
@@ -46,10 +49,10 @@ export const signOut = (ajax, token) => ajax({
 
 /**
  * API for email confirmation
- * @param {Object} ajax
+ * @param {AjaxCreationMethod} ajax
  * @param {String} token
  */
-export const confirmEmail = (ajax, token) => ajax({
+export const confirmEmail = (ajax: AjaxCreationMethod, token: string): Observable<AjaxResponse> => ajax({
   url: `${api}/auth/confirm-email?token=${token}`,
   method: 'GET',
 });

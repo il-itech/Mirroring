@@ -2,9 +2,9 @@ import {
   useEffect,
   useCallback,
   useMemo,
-  RefObject,
-  SyntheticEvent,
   useRef,
+  MutableRefObject,
+  MouseEventHandler,
 } from 'react';
 import { useDispatch } from 'react-redux';
 import dayjs from 'dayjs';
@@ -13,10 +13,10 @@ import * as R from 'ramda';
 import { clearFormData } from 'actions/forms/common';
 import { setMessage, getChatMessages } from 'actions/chat';
 import { useShallowSelector } from 'hooks/use-shallow-selector';
-import { getChatSocketServiceSingleton } from 'services/sockets';
+import { getChatSocketServiceSingleton } from 'services/ws/sockets';
 import { isEmptyOrNil } from 'helpers/utils';
 import { getRoomHash } from 'helpers/chat';
-import { IChat } from 'interfaces/state.interfaces/chat-interface';
+import { IChat, IChatMessage } from 'interfaces/state.interfaces/chat-interface';
 import { FORM_TYPES } from 'enums';
 
 const ENTER_KEY = 13;
@@ -25,9 +25,9 @@ interface IUseChat {
   chat: IChat;
   socket: any;
   roomHash: string;
-  chatContentRef: RefObject<HTMLDivElement>;
-  handleSubmit: (e: SyntheticEvent) => void;
-  handleKeyPress: (e: KeyboardEvent) => void;
+  chatContentRef: MutableRefObject<HTMLDivElement>;
+  handleSubmit: MouseEventHandler<HTMLButtonElement>;
+  handleKeyPress: (event: KeyboardEvent) => void;
 }
 
 export const useChat = (roomId: string): IUseChat => {
@@ -36,7 +36,7 @@ export const useChat = (roomId: string): IUseChat => {
   const message = useShallowSelector(state => state?.forms?.chatMessage?.formData[roomId] || '');
   const chat = useShallowSelector(state => state?.chat);
   const socket = useMemo(getChatSocketServiceSingleton, []);
-  const roomHash = useMemo(() => getRoomHash(profileId, roomId), [profileId, roomId]);
+  const roomHash = useMemo(() => getRoomHash(profileId!, roomId), [profileId, roomId]);
   const chatContentRef = useRef<HTMLDivElement>();
 
   useEffect(() => {
@@ -48,15 +48,15 @@ export const useChat = (roomId: string): IUseChat => {
   }, [socket]);
 
   useEffect(() => {
-    socket.emit('joinRoom', profileId);
+    socket.emit('joinRoom', profileId!);
 
     return (): void => {
-      socket.emit('leaveRoom', profileId);
+      socket.emit('leaveRoom', profileId!);
     };
   }, [profileId, socket]);
 
   useEffect(() => {
-    const stream$ = socket.on('chatToClient')
+    const stream$ = socket.on<IChatMessage>('chatToClient')
       .subscribe(({ sender, message: receivedMessage, date }) =>
         R.compose(dispatch, setMessage)({
           roomId: sender,

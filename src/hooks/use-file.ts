@@ -1,11 +1,15 @@
-import { useCallback } from 'react';
+import { useCallback, MouseEventHandler } from 'react';
 import { useDispatch } from 'react-redux';
 import * as R from 'ramda';
 
 import { uploadFile } from 'actions/files';
 import { useShallowSelector } from 'hooks/use-shallow-selector';
 
-export const useFile = () => {
+interface IUseFile {
+  handleUploadFile: MouseEventHandler<HTMLInputElement>;
+}
+
+export const useFile = (): IUseFile => {
   const dispatch = useDispatch();
   const { _id } = useShallowSelector(state => state?.profile);
 
@@ -16,7 +20,7 @@ export const useFile = () => {
 
       reader.readAsDataURL(file);
 
-      reader.onloadend = () => {
+      reader.onloadend = (): void => {
         const data = {
           avatar: reader.result,
           avatarName: file.name,

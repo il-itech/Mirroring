@@ -6,7 +6,7 @@ import { ajax } from 'rxjs/ajax';
 import { showNotification } from 'actions/system';
 import { setProfile } from 'actions/profile';
 import { uploadFile } from 'actions/files';
-import { setUserAvatar as setUserAvatarApi } from 'api/account';
+import { setUserAvatar as setUserAvatarApi } from 'services/http/account';
 import { getToken } from 'helpers/auth';
 import { SNACKBAR_VARIANTS } from 'constants';
 import {

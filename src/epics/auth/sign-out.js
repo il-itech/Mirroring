@@ -7,7 +7,7 @@ import cookies from 'js-cookie';
 import { clearState } from 'actions/common';
 import { showNotification, redirectTo, clearSystem } from 'actions/system';
 import { signOut } from 'actions/auth';
-import { signOut as signOutApi } from 'api/auth';
+import { signOut as signOutApi } from 'services/http/auth';
 import { getToken } from 'helpers/auth';
 import { REDUCER_TYPES, SNACKBAR_VARIANTS } from 'constants';
 import { setGlobalInProgressStatusAction, catchGlobalErrorWithUndefinedId } from '../common-operators';

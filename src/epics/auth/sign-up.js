@@ -6,7 +6,7 @@ import { ajax } from 'rxjs/ajax';
 import { setSuccessStatus } from 'actions/common';
 import { signUp } from 'actions/auth';
 import { showNotification } from 'actions/system';
-import { signUp as signUpApi } from 'api/auth';
+import { signUp as signUpApi } from 'services/http/auth';
 import { FORM_TYPES, SNACKBAR_VARIANTS } from 'constants';
 import {
   getGlobalErrorObservable,
