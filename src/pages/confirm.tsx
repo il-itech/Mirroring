@@ -7,18 +7,19 @@ import * as R from 'ramda';
 
 import { useShallowSelector } from 'hooks/use-shallow-selector';
 import { confirmEmail } from 'actions/auth';
-import { isEmptyOrNil } from 'helpers/utils';
+import { getQueryString, isEmptyOrNil } from 'helpers/utils';
 
 const Confirm: NextPage<{}> = () => {
   const { globalError } = useShallowSelector(state => state?.system);
   const dispatch = useDispatch();
   const { query } = useRouter();
+  const token = getQueryString(query?.token);
 
   useEffect(() => {
     if (!isEmptyOrNil(query)) {
-      R.compose(dispatch, confirmEmail)(query?.token);
+      R.compose(dispatch, confirmEmail)(token);
     }
-  }, [dispatch, query]);
+  }, [dispatch, query, token]);
 
   return (
     <div className="h-100vh d-flex justify-content-center align-items-center">

@@ -1,19 +1,18 @@
-import { handleActions } from 'redux-actions';
+import { createReducer } from 'deox';
 
-import { ISignInForm } from 'interfaces/state.interfaces/forms.interfaces/form-sign-in.interface';
 import { FORM_TYPES } from 'enums';
 import { getFormsCommonReducer, getInitialFormState } from '../common';
 
-const additionalState = {
+const initialState = getInitialFormState({
   formData: {
     email: '',
     password: '',
   },
-};
+});
 
-export const signIn = handleActions<ISignInForm, any>(
-  {
-    ...getFormsCommonReducer(FORM_TYPES.SIGN_IN, additionalState),
-  },
-  getInitialFormState(additionalState),
+export const signIn = createReducer(
+  initialState,
+  handleAction => ([
+    ...getFormsCommonReducer(FORM_TYPES.SIGN_IN, initialState, handleAction),
+  ]),
 );

@@ -2,7 +2,7 @@ import { VariantType } from 'notistack';
 
 export interface ISystem {
   globalError: {
-    [key: string]: string;
+    [key: string]: string | boolean;
   };
   globalInProgressStatus: boolean;
   notification: {

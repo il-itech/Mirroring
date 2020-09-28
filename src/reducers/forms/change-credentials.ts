@@ -1,21 +1,20 @@
-import { handleActions } from 'redux-actions';
+import { createReducer } from 'deox';
 
-import { IChangeCredentialsForm } from 'interfaces/state.interfaces/forms.interfaces/form-change-credentials.interface';
 import { FORM_TYPES } from 'enums';
 import { getFormsCommonReducer, getInitialFormState } from '../common';
 
-const additionalState = {
+const initialState = getInitialFormState({
   formData: {
     firstname: '',
     lastname: '',
     email: '',
     country: '',
   },
-};
+});
 
-export const changeCredentials = handleActions<IChangeCredentialsForm, any>(
-  {
-    ...getFormsCommonReducer(FORM_TYPES.CHANGE_CREDENTIALS, additionalState),
-  },
-  getInitialFormState(additionalState),
+export const changeCredentials = createReducer(
+  initialState,
+  handleAction => ([
+    ...getFormsCommonReducer(FORM_TYPES.CHANGE_CREDENTIALS, initialState, handleAction),
+  ]),
 );

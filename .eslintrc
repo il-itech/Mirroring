@@ -58,7 +58,7 @@
       { "blankLine": "always", "prev": "function", "next": "function" }
     ],
     "@typescript-eslint/interface-name-prefix": 0,
-    "@typescript-eslint/explicit-function-return-type": 0, // disable the rule for all files
+    "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-non-null-assertion": 0,
     "@typescript-eslint/no-var-requires": 0,
     "@typescript-eslint/no-explicit-any": 0,
@@ -134,15 +134,6 @@
       "withinDescribe": "test"
     }]
   },
-  "overrides": [
-    {
-      // enable the rule specifically for TypeScript files
-      "files": ["*.ts", "*.tsx"],
-      "rules": {
-        "@typescript-eslint/explicit-function-return-type": ["error"]
-      }
-    }
-  ],
   "env": {
     "es6": true,
     "browser": true,

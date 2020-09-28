@@ -1,24 +1,23 @@
-import { handleActions } from 'redux-actions';
+import { createReducer } from 'deox';
 import * as R from 'ramda';
 
-import { IChat } from 'interfaces/state.interfaces/chat-interface';
 import { setAllUsers, setMessage } from 'actions/chat';
-
 import { REDUCER_TYPES } from 'enums';
 import { getCommonReducers, getInitialState } from './common';
 
-const additionalState = {
+const initialState = getInitialState({
   messages: {},
   allUserList: [],
-};
+});
 
-export const chat = handleActions<IChat, any>(
-  {
-    [`${setAllUsers}`]: (state, { payload }) => ({
+export const chat = createReducer(
+  initialState,
+  handleAction => ([
+    handleAction(setAllUsers, (state, { payload }) => ({
       ...state,
       allUserList: payload,
-    }),
-    [`${setMessage}`]: (state, {
+    })),
+    handleAction(setMessage, (state, {
       payload: {
         roomId,
         sender,
@@ -31,8 +30,7 @@ export const chat = handleActions<IChat, any>(
         ...state.messages,
         [roomId]: R.append({ sender, message, date }, state.messages[roomId] || []),
       },
-    }),
-    ...getCommonReducers(REDUCER_TYPES.CHAT, additionalState),
-  },
-  getInitialState(additionalState),
+    })),
+    ...getCommonReducers(REDUCER_TYPES.CHAT, initialState, handleAction),
+  ]),
 );

@@ -1,7 +1,8 @@
-import { createActions } from 'redux-actions';
+import { createActionCreator } from 'deox';
 
-export const {
-  setProfile,
-} = createActions(
+import { IProfile } from 'interfaces/state.interfaces/profile-interface';
+
+export const setProfile = createActionCreator(
   'SET_PROFILE',
+  resolve => (profile: IProfile) => resolve(profile),
 );

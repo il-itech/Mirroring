@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { logInfo, logError } from 'helpers/logger';
 
 export class SocketService {
-  private socket;
+  private socket: SocketIOClient.Socket;
 
   constructor(url: string, reconnectionDelay = 5000, reconnectionAttempts = 20) {
     this.socket = io(url, {

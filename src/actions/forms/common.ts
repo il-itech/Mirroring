@@ -1,45 +1,43 @@
-import { createActions } from 'redux-actions';
+import { createActionCreator } from 'deox';
 
-export const {
-  setFormData,
-  replaceFormData,
-  setFormError,
-  setFormErrors,
-  clearFormData,
-  clearFormError,
-  clearFormErrors,
-  clearForm,
-} = createActions(
-  {
-    SET_FORM_DATA: (formName, formData) => ({
-      formName,
-      formData,
-    }),
-    REPLACE_FORM_DATA: (formName, formData) => ({
-      formName,
-      formData,
-    }),
-    SET_FORM_ERROR: (formName, error) => ({
-      formName,
-      error,
-    }),
-    SET_FORM_ERRORS: (formName, errors) => ({
-      formName,
-      errors,
-    }),
-    CLEAR_FORM_DATA: (formName, field) => ({
-      formName,
-      field,
-    }),
-    CLEAR_FORM_ERROR: (formName, field) => ({
-      formName,
-      field,
-    }),
-    CLEAR_FORM_ERRORS: formName => ({
-      formName,
-    }),
-    CLEAR_FORM: formName => ({
-      formName,
-    }),
-  },
+import { FormErrors, FormData } from 'interfaces';
+
+export const setFormData = createActionCreator(
+  'SET_FORM_DATA',
+  resolve => (formName: string, formData: FormData) => resolve({ formName, formData }),
+);
+
+export const replaceFormData = createActionCreator(
+  'REPLACE_FORM_DATA',
+  resolve => (formName: string, formData: FormData) => resolve({ formName, formData }),
+);
+
+export const setFormError = createActionCreator(
+  'SET_FORM_ERROR',
+  resolve => (formName: string, error: FormErrors) => resolve({ formName, error }),
+);
+
+export const setFormErrors = createActionCreator(
+  'SET_FORM_ERRORS',
+  resolve => (formName: string, errors: FormErrors) => resolve({ formName, errors }),
+);
+
+export const clearFormData = createActionCreator(
+  'CLEAR_FORM_DATA',
+  resolve => (formName: string, field: string) => resolve({ formName, field }),
+);
+
+export const clearFormError = createActionCreator(
+  'CLEAR_FORM_ERROR',
+  resolve => (formName: string, field: string) => resolve({ formName, field }),
+);
+
+export const clearFormErrors = createActionCreator(
+  'CLEAR_FORM_ERRORS',
+  resolve => (formName: string) => resolve({ formName }),
+);
+
+export const clearForm = createActionCreator(
+  'CLEAR_FORM',
+  resolve => (formName: string) => resolve({ formName }),
 );

@@ -1,16 +1,15 @@
-import { handleActions } from 'redux-actions';
+import { createReducer } from 'deox';
 
-import { IChatMessageForm } from 'interfaces/state.interfaces/forms.interfaces/form-chat-message.interface';
 import { FORM_TYPES } from 'enums';
 import { getFormsCommonReducer, getInitialFormState } from '../common';
 
-const additionalState = {
+const initialState = getInitialFormState({
   formData: {},
-};
+});
 
-export const chatMessage = handleActions<IChatMessageForm, any>(
-  {
-    ...getFormsCommonReducer(FORM_TYPES.CHAT_MESSAGE, additionalState),
-  },
-  getInitialFormState(additionalState),
+export const chatMessage = createReducer(
+  initialState,
+  handleAction => ([
+    ...getFormsCommonReducer(FORM_TYPES.CHAT_MESSAGE, initialState, handleAction),
+  ]),
 );

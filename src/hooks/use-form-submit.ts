@@ -1,5 +1,5 @@
-import { useCallback, MouseEventHandler } from 'react';
-import { ActionFunctionAny } from 'redux-actions';
+import { useCallback, MouseEventHandler, FormEvent, ReactEventHandler } from 'react';
+import { ActionCreator } from 'deox';
 import { useDispatch } from 'react-redux';
 import * as R from 'ramda';
 
@@ -9,18 +9,18 @@ import { isEmptyOrNil } from 'helpers/utils';
 import { useShallowSelector } from './use-shallow-selector';
 
 interface IUseFormSubmit {
-  onSubmit: MouseEventHandler<HTMLButtonElement>;
+  onSubmit: ReactEventHandler;
 }
 
 export const useFormSubmit = <T>(
   formType: string,
   fields: T,
-  actionFn: ActionFunctionAny<any>,
+  actionFn: ActionCreator<string>,
 ): IUseFormSubmit => {
   const { formData } = useShallowSelector(state => state?.forms?.[formType]);
   const dispatch = useDispatch();
 
-  const onSubmit: MouseEventHandler<HTMLButtonElement> = useCallback(
+  const onSubmit: ReactEventHandler = useCallback(
     (e) => {
       e.preventDefault();
 

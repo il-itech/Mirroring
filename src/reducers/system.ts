@@ -1,24 +1,15 @@
-import { handleActions } from 'redux-actions';
+import { createReducer } from 'deox';
 
-import { ISystem } from 'interfaces/state.interfaces/system-interface';
 import {
   globalError,
   redirectTo,
   setGlobalInProgressStatus,
   showNotification,
   clearNotification,
-  clearError,
+  clearErrors,
   clearSystem,
 } from 'actions/system';
-import { ERRORS } from 'enums';
-
-enum VariantEnum {
-  default = 'default',
-  error = 'error',
-  success = 'success',
-  warning = 'warning',
-  info = 'info',
-}
+import { ERRORS, VariantEnum } from 'enums';
 
 const initialState = {
   globalError: {},
@@ -28,39 +19,36 @@ const initialState = {
   redirectTo: '',
 };
 
-export const system = handleActions<ISystem, any>(
-  {
-    [`${globalError}`]: (state, { payload: { error = ERRORS.UNDEFINED, status } }) => ({
-      ...state,
-      globalError: {
-        ...state.globalError,
-        errorId: error,
-        status,
-      },
-    }),
-    [`${redirectTo}`]: (state, { payload }) => ({
-      ...state,
-      redirectTo: payload,
-    }),
-    [`${setGlobalInProgressStatus}`]: (state, { payload }) => ({
-      ...state,
-      globalInProgressStatus: payload,
-    }),
-    [`${showNotification}`]: (state, { payload }) => ({
-      ...state,
-      notification: payload,
-    }),
-    [`${clearNotification}`]: state => ({
-      ...state,
-      notification: { variant: null, message: null },
-    }),
-    [`${clearError}`]: state => ({
-      ...state,
-      globalError: {},
-    }),
-    [`${clearSystem}`]: () => ({
-      ...initialState,
-    }),
-  },
-  initialState,
-);
+export const system = createReducer(initialState, handleAction => ([
+  handleAction(globalError, (state, { payload: { error = ERRORS.UNDEFINED, status } }) => ({
+    ...state,
+    globalError: {
+      ...state.globalError,
+      errorId: error,
+      status,
+    },
+  })),
+  handleAction(redirectTo, (state, { payload }) => ({
+    ...state,
+    redirectTo: payload,
+  })),
+  handleAction(setGlobalInProgressStatus, (state, { payload }) => ({
+    ...state,
+    globalInProgressStatus: payload,
+  })),
+  handleAction(showNotification, (state, { payload }) => ({
+    ...state,
+    notification: payload,
+  })),
+  handleAction(clearNotification, state => ({
+    ...state,
+    notification: { variant: VariantEnum.default, message: null },
+  })),
+  handleAction(clearErrors, state => ({
+    ...state,
+    globalError: {},
+  })),
+  handleAction(clearSystem, () => ({
+    ...initialState,
+  })),
+]));

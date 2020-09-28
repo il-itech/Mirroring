@@ -10,11 +10,11 @@ import './global-alert.scss';
 
 export const GlobalAlertUI: FC<Props> = ({
   dismissGlobalAlert,
-  errorId = null,
+  errorId,
 }) => {
   const [isVisible, setVisible] = useState(true);
 
-  const onDismiss = (): void => {
+  const onDismiss = () => {
     setVisible(visible => !visible);
 
     if (dismissGlobalAlert) {

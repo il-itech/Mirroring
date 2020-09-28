@@ -120,3 +120,11 @@ export enum SNACKBAR_VARIANTS {
   WARNING = 'warning',
   INFO = 'info',
 }
+
+export enum VariantEnum {
+  default = 'default',
+  error = 'error',
+  success = 'success',
+  warning = 'warning',
+  info = 'info',
+}

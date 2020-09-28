@@ -5,7 +5,7 @@ import Container from '@material-ui/core/Container';
 import * as R from 'ramda';
 
 import { useShallowSelector } from 'hooks/use-shallow-selector';
-import { clearError } from 'actions/system';
+import { clearErrors } from 'actions/system';
 import { ErrorBoundary } from 'components/error-boundary/error-boundary';
 import { GlobalAlert } from 'components/global-alert/global-alert';
 import { isEmptyOrNil } from 'helpers/utils';
@@ -23,7 +23,7 @@ export const MainUI: FC<Props> = ({
   const { errorId } = useShallowSelector(state => state?.system?.globalError);
   const dispatch = useDispatch();
   const dismissGlobalAlert = useCallback(
-    R.compose(dispatch, clearError),
+    R.compose(dispatch, clearErrors),
     [dispatch],
   );
 
@@ -37,7 +37,7 @@ export const MainUI: FC<Props> = ({
     >
       {!isEmptyOrNil(errorId) && (
         <GlobalAlert
-          errorId={errorId}
+          errorId={errorId as string}
           dismissGlobalAlert={dismissGlobalAlert}
         />
       )}

@@ -1,21 +1,20 @@
-import { handleActions } from 'redux-actions';
+import { createReducer } from 'deox';
 
-import { ICommonStats } from 'interfaces/state.interfaces/coronavirus-interface';
 import { setCoronavirusCountryStats } from 'actions/coronavirus';
 import { CORONAVIRUS_REDUCER_TYPES } from 'enums';
 import { getCommonReducers, getInitialState } from '../common';
 
-export const additionalState = {
+export const initialState = getInitialState({
   stats: {},
-};
+});
 
-export const countryStats = handleActions<ICommonStats, any>(
-  {
-    [`${setCoronavirusCountryStats}`]: (state, { payload }) => ({
+export const countryStats = createReducer(
+  initialState,
+  handleAction => ([
+    handleAction(setCoronavirusCountryStats, (state, { payload }) => ({
       ...state,
       stats: payload,
-    }),
-    ...getCommonReducers(CORONAVIRUS_REDUCER_TYPES.COUNTRY_STATS, additionalState),
-  },
-  getInitialState(additionalState),
+    })),
+    ...getCommonReducers(CORONAVIRUS_REDUCER_TYPES.COUNTRY_STATS, initialState, handleAction),
+  ]),
 );

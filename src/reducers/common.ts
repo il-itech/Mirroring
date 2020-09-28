@@ -1,4 +1,5 @@
-import { ReducerMap } from 'redux-actions';
+// eslint-disable-next-line import/no-unresolved
+import { CreateHandlerMap } from 'deox/dist/create-handler-map';
 import * as R from 'ramda';
 
 import {
@@ -18,27 +19,21 @@ import {
 } from 'actions/forms/common';
 import { ICommon, IFormCommon } from 'interfaces/state.interfaces/common-interface';
 
-interface ICommonPayload {
-  field: string;
-  status?: boolean;
-}
-interface ICommonFormPayload {
-  formName: string;
-  field: string;
-  formData: {};
-  error?: {};
-  errors?: {};
-}
-
+/**
+ * @param   {Object} additionalState
+ * @returns {Object} initial state fields for every reducers
+ */
 export const getInitialState = <T extends {}>(additionalState: T): T & ICommon => ({
   isInProgress: false,
   isSuccess: false,
   ...additionalState,
 });
 
-export const getInitialFormState = <
-  T extends {}
->
+/**
+ * @param   {Object} additionalState
+ * @returns {Object} initial state fields for every form reducers
+ */
+export const getInitialFormState = <T extends {}>
   (additionalState: T): T & IFormCommon & ICommon => ({
     formData: {},
     errors: {},
@@ -59,48 +54,49 @@ const reducerChecker = <
       ? { ...state, ...result }
       : state;
 
-export const getCommonReducers = <
-  T extends {},
-  V extends {}
->(
-    reducerFieldName: string,
-    additionalState: V,
-  ): ReducerMap<T, ICommonPayload> => ({
-    [`${setInProgressStatus}`]: (state, { payload: { field, status } }): T | T & V =>
-      reducerChecker(reducerFieldName, state, field, { isInProgress: status }),
-    [`${setSuccessStatus}`]: (state, { payload: { field, status } }): T | T & V =>
-      reducerChecker(reducerFieldName, state, field, { isSuccess: status }),
-    [`${clearState}`]: (state, { payload: { field } }): T | T & V =>
-      reducerChecker(reducerFieldName, state, field, getInitialState(additionalState)),
-  });
+export const getCommonReducers = <T extends {}>(
+  reducerFieldName: string,
+  initialState: T,
+  handleAction: CreateHandlerMap<T>,
+) => ([
+    handleAction(setInProgressStatus, (state: T, { payload: { field, status } }) =>
+      reducerChecker(reducerFieldName, state, field, { isInProgress: status })),
 
-export const getFormsCommonReducer = <
-  T extends { formData: {}; errors: {} },
-  V extends {}
->(reducerFormName: string, additionalState: V): ReducerMap<T, ICommonFormPayload> => ({
-    [`${setFormData}`]: (state, { payload: { formName, formData } }): T | T & V =>
-      reducerChecker(reducerFormName, state, formName, { formData: { ...state.formData, ...formData } }),
+    handleAction(setSuccessStatus, (state: T, { payload: { field, status } }) =>
+      reducerChecker(reducerFieldName, state, field, { isSuccess: status })),
 
-    [`${replaceFormData}`]: (state, { payload: { formName, formData } }): T | T & V =>
-      reducerChecker(reducerFormName, state, formName, { formData }),
+    handleAction(clearState, (state: T, { payload: { field } }) =>
+      reducerChecker(reducerFieldName, state, field, getInitialState(initialState))),
+  ]);
 
-    [`${setFormError}`]: (state, { payload: { formName, error } }): T | T & V =>
-      reducerChecker(reducerFormName, state, formName, { errors: { ...state.errors, ...error } }),
+export const getFormsCommonReducer = <T extends { formData: {}; errors: {} }>(
+  reducerFormName: string,
+  initialState: T,
+  handleAction: CreateHandlerMap<T>,
+) => ([
+    handleAction(setFormData, (state, { payload: { formName, formData } }) =>
+      reducerChecker(reducerFormName, state, formName, { formData: { ...state.formData, ...formData } })),
 
-    [`${setFormErrors}`]: (state, { payload: { formName, errors } }): T | T & V =>
-      reducerChecker(reducerFormName, state, formName, { errors }),
+    handleAction(replaceFormData, (state, { payload: { formName, formData } }) =>
+      reducerChecker(reducerFormName, state, formName, { formData })),
 
-    [`${clearFormData}`]: (state, { payload: { formName, field } }): T | T & V =>
-      reducerChecker(reducerFormName, state, formName, { formData: R.dissoc(field, state.formData) }),
+    handleAction(setFormError, (state, { payload: { formName, error } }) =>
+      reducerChecker(reducerFormName, state, formName, { errors: { ...state.errors, ...error } })),
 
-    [`${clearFormError}`]: (state, { payload: { formName, field } }): T | T & V =>
-      reducerChecker(reducerFormName, state, formName, { errors: R.dissoc(field, state.errors) }),
+    handleAction(setFormErrors, (state, { payload: { formName, errors } }) =>
+      reducerChecker(reducerFormName, state, formName, { errors })),
 
-    [`${clearFormErrors}`]: (state, { payload: { formName } }): T | T & V =>
-      reducerChecker(reducerFormName, state, formName, { errors: getInitialFormState(additionalState).errors }),
+    handleAction(clearFormData, (state, { payload: { formName, field } }) =>
+      reducerChecker(reducerFormName, state, formName, { formData: R.dissoc(field, state.formData) })),
 
-    [`${clearForm}`]: (state, { payload: { formName } }): T | T & V =>
-      reducerChecker(reducerFormName, state, formName, getInitialFormState(additionalState)),
+    handleAction(clearFormError, (state, { payload: { formName, field } }) =>
+      reducerChecker(reducerFormName, state, formName, { errors: R.dissoc(field, state.errors) })),
 
-    ...getCommonReducers(reducerFormName, additionalState),
-  });
+    handleAction(clearFormErrors, (state, { payload: { formName } }) =>
+      reducerChecker(reducerFormName, state, formName, { errors: getInitialFormState(initialState).errors })),
+
+    handleAction(clearForm, (state, { payload: { formName } }) =>
+      reducerChecker(reducerFormName, state, formName, getInitialFormState(initialState))),
+
+    ...getCommonReducers(reducerFormName, initialState, handleAction),
+  ]);

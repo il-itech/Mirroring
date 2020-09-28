@@ -34,7 +34,9 @@ const CoronavirusStats: NextPage<Props> = ({
       getCoronavirusAllCountryStats,
     ]);
 
-    return R.compose(dispatch, clearIntervalActions);
+    return () => {
+      R.compose(dispatch, clearIntervalActions)();
+    };
   }, [dispatch]);
 
   const statsList = useMemo(() => serializeStatsList(globalStats), [globalStats]);

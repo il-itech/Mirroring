@@ -20,11 +20,11 @@ export const useFile = (): IUseFile => {
 
       reader.readAsDataURL(file);
 
-      reader.onloadend = (): void => {
+      reader.onloadend = () => {
         const data = {
-          avatar: reader.result,
-          avatarName: file.name,
-          uId: _id,
+          avatar: reader.result as string,
+          avatarName: file.name as string,
+          uId: _id as string,
         };
 
         R.compose(dispatch, uploadFile)(data);

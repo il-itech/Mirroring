@@ -81,7 +81,7 @@ export const useChat = (roomId: string): IUseChat => {
     const date = dayjs().toISOString();
     const data = {
       roomId,
-      sender: profileId,
+      sender: profileId!,
       message: preparedMessage,
       date,
     };

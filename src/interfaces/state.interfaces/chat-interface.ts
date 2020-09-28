@@ -8,6 +8,7 @@ export interface IChatUser {
 }
 
 export interface IChatMessage {
+  roomId: string;
   sender: string;
   message: string;
   date: string;
@@ -19,5 +20,5 @@ export interface IChatMessages {
 
 export interface IChat extends ICommon {
   messages: IChatMessages;
-  allUserList: Array<IChatUser>;
+  allUserList: IChatUser[];
 }
