@@ -6,7 +6,7 @@ const socketApi = getConfig('WEBSOCKET_API_URL');
 
 let chatSocketService: SocketService | null = null;
 
-export const getChatSocketServiceSingleton = (): SocketService => {
+export const getChatSocketServiceSingleton = () => {
   if (!chatSocketService) {
     chatSocketService = new SocketService(`${socketApi}/chat`);
   }

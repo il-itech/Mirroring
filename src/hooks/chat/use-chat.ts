@@ -42,7 +42,7 @@ export const useChat = (roomId: string): IUseChat => {
   useEffect(() => {
     socket.connect();
 
-    return (): void => {
+    return () => {
       socket.disconnect();
     };
   }, [socket]);
@@ -50,7 +50,7 @@ export const useChat = (roomId: string): IUseChat => {
   useEffect(() => {
     socket.emit('joinRoom', profileId!);
 
-    return (): void => {
+    return () => {
       socket.emit('leaveRoom', profileId!);
     };
   }, [profileId, socket]);
@@ -65,7 +65,7 @@ export const useChat = (roomId: string): IUseChat => {
           date,
         }));
 
-    return (): void => {
+    return () => {
       stream$.unsubscribe();
     };
   }, [roomId, dispatch, socket]);

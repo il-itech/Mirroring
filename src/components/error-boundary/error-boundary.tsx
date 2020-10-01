@@ -1,4 +1,4 @@
-import React, { PureComponent, ReactNode } from 'react';
+import React, { PureComponent } from 'react';
 
 import { logError } from 'helpers/logger';
 import { GlobalAlert } from '../global-alert/global-alert';
@@ -9,13 +9,13 @@ export class ErrorBoundary extends PureComponent<Props, {}> {
     hasError: false,
   };
 
-  public componentDidCatch(error: Error, errorInfo: {}): void {
+  public componentDidCatch(error: Error, errorInfo: {}) {
     this.setState({ hasError: true });
 
     logError(error, { extra: errorInfo });
   }
 
-  render(): ReactNode {
+  render() {
     const { children, dismissGlobalAlert } = this.props;
     const { hasError } = this.state;
 

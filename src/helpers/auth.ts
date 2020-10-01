@@ -3,7 +3,7 @@ import * as R from 'ramda';
 
 export const getToken = () => cookies.get('accessToken');
 
-export const parseCookieOnServer = (value, str) => R.ifElse(
+export const parseCookieOnServer = (value: string, str: string): string | null => R.ifElse(
   R.test(new RegExp(value)),
   R.compose(
     R.head,

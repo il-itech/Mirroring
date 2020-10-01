@@ -11,7 +11,7 @@ export const Tabs: FC<Props> = ({ tabs, tabPanels }) => {
   const handleChange = (
     event: ChangeEvent<{}>,
     newValue: number,
-  ): void => setTabIdx(newValue);
+  ) => setTabIdx(newValue);
 
   return (
     <div className="d-flex flex-column">

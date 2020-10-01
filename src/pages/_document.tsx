@@ -4,21 +4,18 @@ import Document, {
   Main,
   NextScript,
   DocumentContext,
-  DocumentInitialProps,
 } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 import { ServerStyleSheets } from '@material-ui/styles';
-import { RenderPageResult } from 'next/dist/next-server/lib/utils';
 
 class MyDocument extends Document {
-  static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
+  static async getInitialProps(ctx: DocumentContext) {
     const styledComponentsSheet = new ServerStyleSheet();
     const materialSheets = new ServerStyleSheets();
     const originalRenderPage = ctx.renderPage;
 
     try {
-      ctx.renderPage = (): RenderPageResult | Promise<RenderPageResult> => originalRenderPage({
-        // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+      ctx.renderPage = () => originalRenderPage({
         enhanceApp: App => props => styledComponentsSheet.collectStyles(materialSheets.collect(<App {...props} />)),
       });
       const initialProps = await Document.getInitialProps(ctx);
@@ -38,7 +35,7 @@ class MyDocument extends Document {
     }
   }
 
-  render(): JSX.Element {
+  render() {
     return (
       <Html>
         <Head>

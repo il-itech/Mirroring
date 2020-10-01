@@ -16,15 +16,15 @@ export class SocketService {
     this.socket.on('error', logError);
   }
 
-  connect(): void {
+  connect() {
     this.socket.connect();
   }
 
-  disconnect(): void {
+  disconnect() {
     this.socket.disconnect();
   }
 
-  emit<T>(chanel: string, message: T): void {
+  emit<T>(chanel: string, message: T) {
     this.socket.emit(chanel, message);
   }
 
@@ -37,11 +37,11 @@ export class SocketService {
     });
   }
 
-  static connected(): void {
+  static connected() {
     logInfo('Socket has been connected...');
   }
 
-  static disconnected(): void {
+  static disconnected() {
     logInfo('Socket was disconnected!');
   }
 }

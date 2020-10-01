@@ -1,4 +1,5 @@
-import { VALIDATION_TYPES } from 'constants';
+import { FormData } from 'interfaces';
+import { VALIDATION_TYPES } from 'enums';
 import {
   validateMinLength,
   validateMaxLength,
@@ -8,6 +9,11 @@ import {
   validateRequired,
 } from './validate';
 import { isEmptyOrNil } from './utils';
+
+type FieldError = {
+  message: string;
+  values: { [key: string]: string | number };
+} | {};
 
 export const FIELD_VALIDATIONS = {
   [VALIDATION_TYPES.REQUIRED]: validateRequired,
@@ -20,19 +26,19 @@ export const FIELD_VALIDATIONS = {
 
 /**
  * Return errors
- * @param {Object} fields
- * @param {Object} formData
- * @return {Object}
  */
-export const checkErrors = (fields, formData) => {
-  const errors = {};
+export const checkErrors = <T>(
+  fields: T,
+  formData: FormData,
+) => {
+  const errors: { [key: string]: FieldError } = {};
 
   Object.entries(fields).forEach(([field, item]) => {
-    let error;
+    let error: FieldError = {};
 
     if (!isEmptyOrNil(item.validation)) {
-      item.validation.some(({ type, value }) => {
-        const fieldError = FIELD_VALIDATIONS[type](field, formData, value);
+      item.validation.some(({ type, value }: { type: string; value: string | number }) => {
+        const fieldError = FIELD_VALIDATIONS[type](field, formData, value) as FieldError;
 
         if (fieldError) {
           error = fieldError;

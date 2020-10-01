@@ -10,7 +10,7 @@ import { IS_MODE_DEV } from 'enums';
 
 let store: Store | undefined;
 
-const initStore = (initialState: {}): Store => {
+const initStore = (initialState: {}) => {
   const epicMiddleware = createEpicMiddleware();
   const reduxMiddleware = IS_MODE_DEV
     ? composeWithDevTools(applyMiddleware(epicMiddleware))
@@ -23,7 +23,7 @@ const initStore = (initialState: {}): Store => {
   return _store;
 };
 
-export const initializeStore = (preloadedState: {}): Store => {
+export const initializeStore = (preloadedState: {}) => {
   let _store = store ?? initStore(preloadedState);
 
   /**
@@ -49,7 +49,7 @@ export const initializeStore = (preloadedState: {}): Store => {
   return _store;
 };
 
-export const useStore = (initialState: IState): Store => {
+export const useStore = (initialState: IState) => {
   const _store = useMemo(() => initializeStore(initialState), [initialState]);
 
   return _store;

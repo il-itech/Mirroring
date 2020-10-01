@@ -43,7 +43,7 @@ export const GeneralProvider = ({ children }: Props): JSX.Element => {
       enqueueSnackbar(message, { ...NOTIFY_SETTINGS, variant });
     }
 
-    return (): void => {
+    return () => {
       R.compose(dispatch, clearNotification)();
     };
   }, [dispatch, enqueueSnackbar, message, variant]);
@@ -53,7 +53,7 @@ export const GeneralProvider = ({ children }: Props): JSX.Element => {
       Router.push('/');
     }
 
-    return (): void => {
+    return () => {
       R.compose(dispatch, clearState)(REDUCER_TYPES.AUTH);
     };
   }, [dispatch, isUserAuth]);

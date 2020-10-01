@@ -1,6 +1,6 @@
 import { of } from 'rxjs';
 import { timeout } from 'rxjs/operators';
-import { Action } from 'redux-actions';
+import { Action } from 'deox';
 import { GetServerSidePropsContext } from 'next';
 import * as R from 'ramda';
 
@@ -12,7 +12,7 @@ const DEFAULT_TIMEOUT = 15000;
 const FAILURE_ACTION = { type: '@@ndo/failure_action' };
 
 const makeArray = <T>(item: T[] | T): T[] => Array.isArray(item) ? item : [item];
-const failureAction = <T>(error: T): Action<{ error: T }> => ({ ...FAILURE_ACTION, payload: { error } });
+const failureAction = <T>(error: T): Action<string, { error: T }> => ({ ...FAILURE_ACTION, payload: { error } });
 
 /**
  * Method responsible for getting all actions needed to be processed

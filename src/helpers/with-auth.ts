@@ -11,7 +11,7 @@ export const withAuth = async (ctx: Promise<NextContextWithStore>): Promise<Next
     req: { headers: { cookie } },
   } = await ctx;
 
-  const token = parseCookieOnServer('accessToken', cookie);
+  const token = parseCookieOnServer('accessToken', cookie ?? '');
   const response = await fetch(`${api}/auth/check-is-token-expired`, {
     method: 'POST',
     headers: {
