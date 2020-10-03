@@ -1,4 +1,4 @@
-import { MouseEventHandler, MutableRefObject } from 'react';
+import { MouseEventHandler, KeyboardEvent, MutableRefObject } from 'react';
 import { IChatMessage, IChatUser } from 'interfaces/state.interfaces/chat-interface';
 
 export interface Props {
@@ -9,5 +9,5 @@ export interface Props {
   currentChatUser: IChatUser;
   chatContentRef: MutableRefObject<HTMLDivElement>;
   handleSubmit: MouseEventHandler<HTMLButtonElement>;
-  handleKeyPress: (event: KeyboardEvent) => void;
+  handleKeyPress: (event: KeyboardEvent<HTMLFormElement>) => void;
 }

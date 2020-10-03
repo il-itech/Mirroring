@@ -19,7 +19,7 @@ export const getMuiTheme = (): Theme =>
           color: white,
         },
       },
-      MUIDataTable: {
+      MuiTable: {
         root: {
           backgroundColor: ebony,
         },

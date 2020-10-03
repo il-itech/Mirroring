@@ -1,4 +1,4 @@
-import { useCallback, MouseEventHandler } from 'react';
+import { useCallback, ChangeEvent } from 'react';
 import { useDispatch } from 'react-redux';
 import * as R from 'ramda';
 
@@ -6,7 +6,7 @@ import { uploadFile } from 'actions/files';
 import { useShallowSelector } from 'hooks/use-shallow-selector';
 
 interface IUseFile {
-  handleUploadFile: MouseEventHandler<HTMLInputElement>;
+  handleUploadFile: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const useFile = (): IUseFile => {

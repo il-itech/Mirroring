@@ -1,6 +1,5 @@
-import React, { useCallback } from 'react';
+import React, { FC, useCallback, ChangeEvent } from 'react';
 import { useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
 import * as R from 'ramda';
 
 import { setFormData, setFormError, clearFormError } from 'actions/forms/common';
@@ -8,6 +7,7 @@ import { checkErrors } from 'helpers/form';
 import { isEmptyOrNil } from 'helpers/utils';
 import { FORM_FIELD_TYPES, FORM_TARGET_VALUES_SERIALIZE } from 'enums';
 import elements from './elements';
+import { Props } from './types';
 
 const {
   RADIO,
@@ -32,14 +32,13 @@ const getElement = R.cond([
   [R.equals(SELECT), R.always(CustomSelect)],
   [R.equals(SWITCH), R.always(CustomSwitch)],
   [R.equals(CHECKBOX), R.always(CustomCheckbox)],
-  [type => R.includes(type, [TEXT, PASSWORD, TEXTAREA]), R.always(CustomTextField)],
+  [(type: FORM_FIELD_TYPES) => [TEXT, PASSWORD, TEXTAREA].includes(type), R.always(CustomTextField)],
   [R.T, R.always(null)],
 ]);
 
-export const FormElement = ({
+export const FormElement: FC<Props> = ({
   formType,
   field,
-  className,
   elementProps,
   parentProps,
   variant,
@@ -49,7 +48,7 @@ export const FormElement = ({
   isChecked,
 }) => {
   const { type: elementType, validation } = elementProps;
-  const Element = getElement(elementType);
+  const Element = getElement(elementType)!;
   const dispatch = useDispatch();
 
   const handleChange = useCallback(
@@ -60,7 +59,11 @@ export const FormElement = ({
           name,
           [FORM_TARGET_VALUES_SERIALIZE[elementType]]: formValue,
         },
-      }) => setFormData(formType, { [name]: formValue }),
+      }: ChangeEvent<{
+        name?: string | undefined;
+        value?: string;
+        checked?: boolean;
+      }>) => setFormData(formType, { [name as string]: formValue }),
     ),
     [dispatch],
   );
@@ -80,8 +83,6 @@ export const FormElement = ({
 
   return (
     <Element
-      formType={formType}
-      className={className}
       field={field}
       variant={variant}
       handleChange={customHandleChange || handleChange}
@@ -92,33 +93,4 @@ export const FormElement = ({
       {...parentProps}
     />
   );
-};
-
-FormElement.propTypes = {
-  formType: PropTypes.string.isRequired,
-  field: PropTypes.string.isRequired,
-  customHandleChange: PropTypes.func,
-  customHandleBlur: PropTypes.func,
-  handleBlur: PropTypes.func,
-  className: PropTypes.string,
-  elementProps: PropTypes.shape({
-    type: PropTypes.string.isRequired,
-    inputProps: PropTypes.shape({}),
-    validation: PropTypes.arrayOf(PropTypes.shape({})),
-  }).isRequired,
-  parentProps: PropTypes.shape({}),
-  variant: PropTypes.string,
-  value: PropTypes.string,
-  isChecked: PropTypes.bool,
-};
-
-FormElement.defaultProps = {
-  customHandleChange: null,
-  customHandleBlur: null,
-  className: null,
-  parentProps: null,
-  variant: 'standard',
-  handleBlur: null,
-  value: '',
-  isChecked: false,
 };

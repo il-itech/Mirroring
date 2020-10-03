@@ -1,5 +1,4 @@
 import { useCallback, ReactEventHandler } from 'react';
-import { ActionCreator } from 'deox';
 import { useDispatch } from 'react-redux';
 import * as R from 'ramda';
 
@@ -12,10 +11,13 @@ interface IUseFormSubmit {
   onSubmit: ReactEventHandler;
 }
 
+type ActionCreator = ((formData: any) =>
+  { type: string; payload: any }) & { type: string; toString(): string };
+
 export const useFormSubmit = <T>(
   formType: string,
   fields: T,
-  actionFn: ActionCreator<string>,
+  actionFn: ActionCreator,
 ): IUseFormSubmit => {
   const { formData } = useShallowSelector(state => state?.forms?.[formType]);
   const dispatch = useDispatch();

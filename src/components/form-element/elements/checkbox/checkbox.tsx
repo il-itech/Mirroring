@@ -1,10 +1,11 @@
+import { FC } from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import PropTypes from 'prop-types';
 
 import { isEmptyOrNil } from 'helpers/utils';
+import { Props } from './types';
 
-export const CustomCheckbox = ({
+export const CustomCheckbox: FC<Props> = ({
   field,
   label,
   checked,
@@ -13,8 +14,7 @@ export const CustomCheckbox = ({
   icon,
   checkedIcon,
   formControlValue,
-  className,
-  elementClasses,
+  classes,
   parentClasses,
   inputProps,
   handleChange,
@@ -23,10 +23,9 @@ export const CustomCheckbox = ({
     <Checkbox
       name={field}
       checked={checked}
-      className={className}
       disableRipple={disableRipple}
       onChange={handleChange}
-      classes={elementClasses}
+      classes={classes}
       icon={icon}
       checkedIcon={checkedIcon}
       inputProps={inputProps}
@@ -35,17 +34,15 @@ export const CustomCheckbox = ({
     <FormControlLabel
       label={label}
       value={formControlValue}
-      className={className}
       labelPlacement={labelPlacement}
       classes={parentClasses}
       control={(
         <Checkbox
           name={field}
           checked={checked}
-          className={className}
           disableRipple={disableRipple}
           onChange={handleChange}
-          classes={elementClasses}
+          classes={classes}
           icon={icon}
           checkedIcon={checkedIcon}
           inputProps={inputProps}
@@ -53,32 +50,3 @@ export const CustomCheckbox = ({
       )}
     />
   );
-
-CustomCheckbox.propTypes = {
-  field: PropTypes.string.isRequired,
-  label: PropTypes.string,
-  checked: PropTypes.bool,
-  labelPlacement: PropTypes.string,
-  formControlValue: PropTypes.string,
-  className: PropTypes.string,
-  disableRipple: PropTypes.bool,
-  icon: PropTypes.node,
-  checkedIcon: PropTypes.node,
-  elementClasses: PropTypes.shape({}).isRequired,
-  parentClasses: PropTypes.shape({}),
-  inputProps: PropTypes.shape({}),
-  handleChange: PropTypes.func.isRequired,
-};
-
-CustomCheckbox.defaultProps = {
-  className: null,
-  checked: false,
-  label: null,
-  icon: null,
-  checkedIcon: null,
-  disableRipple: true,
-  parentClasses: {},
-  formControlValue: 'value',
-  labelPlacement: 'start',
-  inputProps: {},
-};

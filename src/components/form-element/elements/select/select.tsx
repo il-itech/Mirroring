@@ -1,14 +1,14 @@
-import React, { Fragment } from 'react';
+import React, { FC, Fragment } from 'react';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Select from '@material-ui/core/Select';
-import PropTypes from 'prop-types';
 
-export const CustomSelect = ({
-  // formType,
+import { Props } from './types';
+
+export const CustomSelect: FC<Props> = ({
   field,
-  // inputLabelText,
+  inputLabelText,
   formHelperText,
   options,
   classes,
@@ -23,7 +23,7 @@ export const CustomSelect = ({
     <InputLabel
       className={inputLabelClassName}
     >
-      {/* {inputLabelText} */}
+      {inputLabelText}
     </InputLabel>
     <Select
       id={field}
@@ -53,32 +53,3 @@ export const CustomSelect = ({
     </FormHelperText>
   </Fragment>
 );
-
-CustomSelect.propTypes = {
-  // formType: PropTypes.string.isRequired,
-  field: PropTypes.string.isRequired,
-  // inputLabelText: PropTypes.string.isRequired,
-  formHelperText: PropTypes.string,
-  selectedValue: PropTypes.string,
-  handleChange: PropTypes.func.isRequired,
-  classes: PropTypes.shape({}),
-  options: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    value: PropTypes.string.isRequired,
-  })),
-  MenuProps: PropTypes.shape({}),
-  selectClassName: PropTypes.string,
-  inputLabelClassName: PropTypes.string,
-  formHelperTextClassName: PropTypes.string,
-};
-
-CustomSelect.defaultProps = {
-  selectClassName: null,
-  formHelperText: null,
-  selectedValue: '',
-  options: [],
-  classes: {},
-  MenuProps: {},
-  inputLabelClassName: null,
-  formHelperTextClassName: null,
-};

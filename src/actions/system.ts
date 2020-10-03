@@ -39,7 +39,7 @@ export const setGlobalInProgressStatus = createActionCreator(
 
 export const showNotification = createActionCreator(
   'SHOW_NOTIFICATION',
-  resolve => (notification: { variant: VariantEnum.default; message: string | null }) => resolve(notification),
+  resolve => (notification: { variant: VariantEnum; message: string }) => resolve(notification),
 );
 
 export const clearNotification = createActionCreator('CLEAR_NOTIFICATION');

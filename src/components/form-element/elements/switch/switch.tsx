@@ -1,19 +1,18 @@
+import { FC } from 'react';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import PropTypes from 'prop-types';
 
 import { isEmptyOrNil } from 'helpers/utils';
+import { Props } from './types';
 
-export const CustomSwitch = ({
+export const CustomSwitch: FC<Props> = ({
   field,
   label,
-  className,
   handleChange,
 }) => isEmptyOrNil(label)
   ? (
     <Switch
       name={field}
-      className={className}
       onChange={handleChange}
     />
   ) : (
@@ -22,20 +21,8 @@ export const CustomSwitch = ({
       control={(
         <Switch
           name={field}
-          className={className}
           onChange={handleChange}
         />
       )}
     />
   );
-
-CustomSwitch.propTypes = {
-  field: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  className: PropTypes.string,
-  handleChange: PropTypes.func.isRequired,
-};
-
-CustomSwitch.defaultProps = {
-  className: null,
-};

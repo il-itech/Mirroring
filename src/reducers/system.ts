@@ -14,7 +14,7 @@ import { ERRORS, VariantEnum } from 'enums';
 const initialState = {
   globalError: {},
   globalInProgressStatus: false,
-  notification: { variant: VariantEnum.default, message: null },
+  notification: { variant: VariantEnum.default, message: '' },
   is404: false,
   redirectTo: '',
 };
@@ -42,7 +42,7 @@ export const system = createReducer(initialState, handleAction => ([
   })),
   handleAction(clearNotification, state => ({
     ...state,
-    notification: { variant: VariantEnum.default, message: null },
+    notification: { variant: VariantEnum.default, message: '' },
   })),
   handleAction(clearErrors, state => ({
     ...state,

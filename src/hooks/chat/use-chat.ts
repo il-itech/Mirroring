@@ -5,6 +5,7 @@ import {
   useRef,
   MutableRefObject,
   MouseEventHandler,
+  KeyboardEvent,
 } from 'react';
 import { useDispatch } from 'react-redux';
 import dayjs from 'dayjs';
@@ -27,7 +28,7 @@ interface IUseChat {
   roomHash: string;
   chatContentRef: MutableRefObject<HTMLDivElement>;
   handleSubmit: MouseEventHandler<HTMLButtonElement>;
-  handleKeyPress: (event: KeyboardEvent) => void;
+  handleKeyPress: (event: KeyboardEvent<HTMLFormElement>) => void;
 }
 
 export const useChat = (roomId: string): IUseChat => {

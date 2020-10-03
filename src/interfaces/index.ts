@@ -7,5 +7,9 @@ export type NextContextWithStore = GetServerSidePropsContext & {
   store: Store<any, AnyAction> | Store<CombinedState<IState>, AnyAction>;
 };
 
-export type FormData = { [key: string]: string | number | boolean }
-export type FormErrors = { [key: string]: string | number | boolean }
+export type FormData = { [key: string]: string | number | boolean };
+export type FormErrors = { [key: string]: string | number | boolean };
+export type FieldError = {
+  message: string;
+  values: { [key: string]: string | number };
+} | {};

@@ -1,6 +1,6 @@
 import { createActionCreator } from 'deox';
 
-import { FormErrors, FormData } from 'interfaces';
+import { FormErrors, FormData, FieldError } from 'interfaces';
 
 export const setFormData = createActionCreator(
   'SET_FORM_DATA',
@@ -14,7 +14,7 @@ export const replaceFormData = createActionCreator(
 
 export const setFormError = createActionCreator(
   'SET_FORM_ERROR',
-  resolve => (formName: string, error: FormErrors) => resolve({ formName, error }),
+  resolve => (formName: string, error: FieldError) => resolve({ formName, error }),
 );
 
 export const setFormErrors = createActionCreator(
