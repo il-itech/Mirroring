@@ -16,7 +16,7 @@ export const getLastMessage = (
 export const getRoomHash = (
   profileId: string,
   roomId: string,
-): string => hash({
+) => hash({
   [profileId]: null,
   [roomId]: null,
 });
