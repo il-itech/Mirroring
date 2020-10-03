@@ -6,7 +6,7 @@ import { IChatMessage, IChatMessages } from 'interfaces/state.interfaces/chat-in
 export const getLastMessage = (
   _id: string,
   messages: IChatMessages,
-): string =>
+) =>
   R.compose<IChatMessages, IChatMessage[], IChatMessage, string>(
     R.propOr('...', 'message'),
     R.last,
