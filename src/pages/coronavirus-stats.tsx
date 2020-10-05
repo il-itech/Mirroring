@@ -12,7 +12,6 @@ import withResolveActions from 'helpers/with-resolve-actions';
 import { CoronavirusStats as CoronavirusStatsLayout } from 'layouts/coronavirus-stats/coronavirus-stats';
 import { Props } from 'interfaces/pages.interfaces/coronavirus-stats.interface';
 import { withAuth } from 'helpers/with-auth';
-import { withProps } from 'helpers/with-props';
 import { IStats } from 'interfaces/state.interfaces/coronavirus-interface';
 
 const serializeStatsList = R.compose<IStats, any, [string, number][]>(
@@ -49,13 +48,14 @@ const CoronavirusStats: NextPage<Props> = ({
   );
 };
 
-export const getServerSideProps = R.compose(
-  withProps,
-  withAuth,
-  withResolveActions([
+CoronavirusStats.getInitialProps = async (ctx) => {
+  await withAuth(ctx);
+  await withResolveActions([
     getCoronavirusGlobalStats(),
     getCoronavirusAllCountryStats(),
-  ]),
-);
+  ])(ctx);
+
+  return { ...ctx.store.getState() };
+};
 
 export default CoronavirusStats;

@@ -1,16 +1,16 @@
-import * as R from 'ramda';
+import { NextPage } from 'next';
 
 import { withAuth } from 'helpers/with-auth';
-import { withProps } from 'helpers/with-props';
 import withResolveActions from 'helpers/with-resolve-actions';
 import { Account as AccountLayout } from 'layouts/account/account';
 
-const Account = AccountLayout;
+const Account: NextPage<{}> = AccountLayout;
 
-export const getServerSideProps = R.compose(
-  withProps,
-  withAuth,
-  withResolveActions([]),
-);
+Account.getInitialProps = async (ctx) => {
+  await withAuth(ctx);
+  await withResolveActions([])(ctx);
+
+  return { ...ctx.store.getState() };
+};
 
 export default Account;

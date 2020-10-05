@@ -1,17 +1,15 @@
 import { FC, useEffect } from 'react';
-import { AppProps } from 'next/app';
-import { Provider } from 'react-redux';
+import { AppContext, AppProps } from 'next/app';
 import Head from 'next/head';
 import { SnackbarProvider } from 'notistack';
 
 import { GeneralProvider } from 'context/general-provider';
-
-import { useStore } from '../store/store';
+import { wrapper } from 'store/store';
 
 import '../customizations/entrypoints.scss';
 
-const App: FC<AppProps> = ({ Component, pageProps }) => {
-  const store = useStore(pageProps);
+const App: FC<AppProps> = (props) => {
+  const { Component, pageProps } = props;
 
   useEffect(() => {
     /** Remove the server-side injected CSS. */
@@ -27,15 +25,21 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
       <Head>
         <title>NextJS Project</title>
       </Head>
-      <Provider store={store}>
-        <SnackbarProvider preventDuplicate>
-          <GeneralProvider>
-            <Component {...pageProps} />
-          </GeneralProvider>
-        </SnackbarProvider>
-      </Provider>
+      <SnackbarProvider preventDuplicate>
+        <GeneralProvider>
+          <Component {...pageProps} />
+        </GeneralProvider>
+      </SnackbarProvider>
     </>
   );
 };
 
-export default App;
+App.getInitialProps = async ({ Component, ctx }: AppContext) => {
+  const pageProps = Component.getInitialProps
+    ? await Component.getInitialProps(ctx)
+    : {};
+
+  return { pageProps };
+};
+
+export default wrapper.withRedux(App);

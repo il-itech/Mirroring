@@ -1,5 +1,5 @@
 import { createActionCreator } from 'deox';
-import { VariantEnum } from 'enums';
+import { VariantType } from 'notistack';
 
 import { logError } from 'helpers/logger';
 import { FormErrors } from 'interfaces';
@@ -39,9 +39,11 @@ export const setGlobalInProgressStatus = createActionCreator(
 
 export const showNotification = createActionCreator(
   'SHOW_NOTIFICATION',
-  resolve => (notification: { variant: VariantEnum; message: string }) => resolve(notification),
+  resolve => (notification: { variant: VariantType; message: string }) => resolve(notification),
 );
 
 export const clearNotification = createActionCreator('CLEAR_NOTIFICATION');
 export const clearErrors = createActionCreator('CLEAR_ERRORS');
 export const clearSystem = createActionCreator('CLEAR_SYSTEM');
+
+export const initializeState = createActionCreator('INITIALIZE_STATE');

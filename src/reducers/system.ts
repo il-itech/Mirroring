@@ -1,4 +1,5 @@
 import { createReducer } from 'deox';
+import { VariantType } from 'notistack';
 
 import {
   globalError,
@@ -8,18 +9,24 @@ import {
   clearNotification,
   clearErrors,
   clearSystem,
+  initializeState,
 } from 'actions/system';
 import { ERRORS, VariantEnum } from 'enums';
 
 const initialState = {
   globalError: {},
   globalInProgressStatus: false,
-  notification: { variant: VariantEnum.default, message: '' },
+  notification: { variant: VariantEnum.default as VariantType, message: '' },
   is404: false,
   redirectTo: '',
+  initializedSSRState: false,
 };
 
 export const system = createReducer(initialState, handleAction => ([
+  handleAction(initializeState, state => ({
+    ...state,
+    initializedSSRState: true,
+  })),
   handleAction(globalError, (state, { payload: { error = ERRORS.UNDEFINED, status } }) => ({
     ...state,
     globalError: {

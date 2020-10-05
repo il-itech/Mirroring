@@ -1,12 +1,10 @@
+import { NextPageContext } from 'next';
 import { of } from 'rxjs';
 import { timeout } from 'rxjs/operators';
 import { Action } from 'deox';
-import { GetServerSidePropsContext } from 'next';
-import * as R from 'ramda';
 
-import { initializeStore } from 'store/store';
 import { rootEpic } from 'epics';
-import { NextContextWithStore } from 'interfaces';
+import { initializeState } from 'actions/system';
 
 const DEFAULT_TIMEOUT = 15000;
 const FAILURE_ACTION = { type: '@@ndo/failure_action' };
@@ -20,15 +18,12 @@ const failureAction = <T>(error: T): Action<string, { error: T }> => ({ ...FAILU
  *
  * @param {Array | Object} - array of actions to dispatch
  * @param {Integer} - (optional) timeout applied to all stream provided (default: 30 sec)
- * @return {Object} - next context with redux store
  */
-const withResolveActions = async (
-  actions: Action<any>[],
-  ctx: GetServerSidePropsContext,
-  tout = DEFAULT_TIMEOUT,
-): Promise<NextContextWithStore> => {
-  const store = initializeStore({});
 
+const withResolveActions = (
+  actions: Action<any>[],
+  tout = DEFAULT_TIMEOUT,
+) => async ({ store }: NextPageContext) => {
   const resultActions = await Promise.all(
     makeArray(actions)
       .map(action => ({ ...action }))
@@ -38,9 +33,8 @@ const withResolveActions = async (
         .catch(failureAction)),
   );
 
+  store.dispatch(initializeState());
   resultActions.forEach(action => store.dispatch({ ...action }));
-
-  return { ...ctx, store };
 };
 
-export default R.curry(withResolveActions);
+export default withResolveActions;

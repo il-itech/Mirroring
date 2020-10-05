@@ -7,9 +7,7 @@ import { useChat } from 'hooks/chat/use-chat';
 import { Chat as ChatLayout } from 'layouts/chat/chat';
 import withResolveActions from 'helpers/with-resolve-actions';
 import { withAuth } from 'helpers/with-auth';
-import { withProps } from 'helpers/with-props';
 import { getQueryString } from 'helpers/utils';
-import * as R from 'ramda';
 
 const Chat: NextPage<{}> = () => {
   const { query: { id } } = useRouter();
@@ -34,12 +32,11 @@ const Chat: NextPage<{}> = () => {
   );
 };
 
-export const getServerSideProps = R.compose(
-  withProps,
-  withAuth,
-  withResolveActions([
-    getAllUsers(),
-  ]),
-);
+Chat.getInitialProps = async (ctx) => {
+  await withAuth(ctx);
+  await withResolveActions([getAllUsers()])(ctx);
+
+  return { ...ctx.store.getState() };
+};
 
 export default Chat;
