@@ -23,7 +23,8 @@
   "settings": {
     "import/resolver": {
       "node": {
-        "extensions": [".ts", ".tsx", ".js", ".jsx"]
+        "extensions": [".ts", ".tsx", ".js", ".jsx"],
+        "moduleDirectory": ["node_modules", "src/"]
       },
       "babel-module": {
         "modules": "./node_modules",
@@ -39,11 +40,13 @@
         "reducers": "./src/reducers",
         "layouts": "./src/layouts",
         "services": "./src/services",
+        "interfaces": "./src/interfaces",
         "constants": "./src/constants.js"
       }
     }
   },
   "rules": {
+    "@typescript-eslint/ban-ts-ignore": "off",
     "padding-line-between-statements": [
       "error",
       { "blankLine": "always", "prev": "*", "next": "return" },
@@ -54,7 +57,9 @@
       { "blankLine": "any", "prev": ["const", "let", "var"], "next": ["const", "let", "var"]},
       { "blankLine": "always", "prev": "function", "next": "function" }
     ],
-    "@typescript-eslint/explicit-function-return-type": "off", // disable the rule for all files
+    "@typescript-eslint/interface-name-prefix": 0,
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-non-null-assertion": 0,
     "@typescript-eslint/no-var-requires": 0,
     "@typescript-eslint/no-explicit-any": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx", ".js", ".jsx"] }],
@@ -67,6 +72,7 @@
         "tsx": "never"
       }
     ],
+    "no-return-await": 0,
     "no-console": "error",
     "no-multiple-empty-lines": ["error", { "max": 1 }],
     "prefer-destructuring": ["error", { "object": true, "array": false }],
@@ -75,6 +81,7 @@
     "react/static-property-placement": 0,
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error",
+    "react/prop-types": 0,
     "no-underscore-dangle": 0,
     "lines-between-class-members": ["error", "always"],
     "implicit-arrow-linebreak": 0,
@@ -127,15 +134,6 @@
       "withinDescribe": "test"
     }]
   },
-  "overrides": [
-    {
-      // enable the rule specifically for TypeScript files
-      "files": ["*.ts", "*.tsx"],
-      "rules": {
-        "@typescript-eslint/explicit-function-return-type": ["error"]
-      }
-    }
-  ],
   "env": {
     "es6": true,
     "browser": true,
