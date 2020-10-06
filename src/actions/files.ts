@@ -1,6 +1,6 @@
 import { createActionCreator } from 'deox';
 
-interface FileData {
+export interface FileData {
   avatar: string;
   avatarName: string;
   uId: string;

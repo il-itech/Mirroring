@@ -4,7 +4,7 @@ import { catchError } from 'rxjs/operators';
 
 import { setInProgressStatus, setSuccessStatus, clearState } from 'actions/common';
 import { redirectTo, globalError, setGlobalInProgressStatus } from 'actions/system';
-import { ERRORS } from 'constants';
+import { ERRORS } from 'enums';
 
 export const getGlobalErrorObservable = R.compose(of, globalError);
 export const setGlobalInProgressStatusAction = R.compose(of, setGlobalInProgressStatus);
@@ -18,7 +18,7 @@ export const clearStateAction = R.compose(of, clearState);
  * @param {string} errorMessageId
  * @returns catchError ready for pipe operator
  */
-export const catchGlobalErrorWith = (errorMessageId) =>
+export const catchGlobalErrorWith = (errorMessageId: string) =>
   catchError(err =>
     getGlobalErrorObservable(errorMessageId, err));
 

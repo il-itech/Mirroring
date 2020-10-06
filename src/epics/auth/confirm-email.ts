@@ -1,5 +1,5 @@
-import { ofType } from 'redux-observable';
-import { of } from 'rxjs';
+import { ActionType, ofType } from 'deox';
+import { of, Observable } from 'rxjs';
 import { switchMap, mergeMap } from 'rxjs/operators';
 import { ajax } from 'rxjs/ajax';
 import cookies from 'js-cookie';
@@ -8,10 +8,14 @@ import { showNotification } from 'actions/system';
 import { setProfile } from 'actions/profile';
 import { confirmEmail, setAuthStatus } from 'actions/auth';
 import { confirmEmail as confirmEmailApi } from 'services/http/auth';
-import { SNACKBAR_VARIANTS } from 'constants';
+import { SNACKBAR_VARIANTS } from 'enums';
 import { catchGlobalErrorWithUndefinedId } from '../common-operators';
 
-export const confirmEmailEpic = action$ =>
+type Action = ActionType<
+  typeof confirmEmail
+>;
+
+export const confirmEmailEpic = (action$: Observable<Action>) =>
   action$.pipe(
     ofType(confirmEmail),
     switchMap(({ payload: token }) =>

@@ -38,7 +38,7 @@ export const CustomTextField: FC<Props> = ({
     InputLabelProps={InputLabelProps}
     // eslint-disable-next-line react/jsx-no-duplicate-props
     inputProps={inputProps}
-    onChange={handleChange}
+    onChange={handleChange as any}
     onBlur={handleBlur}
   />
 );

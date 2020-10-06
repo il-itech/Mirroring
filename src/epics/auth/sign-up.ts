@@ -1,5 +1,5 @@
-import { ofType } from 'redux-observable';
-import { concat, of } from 'rxjs';
+import { ActionType, ofType } from 'deox';
+import { concat, of, Observable } from 'rxjs';
 import { switchMap, mergeMap, catchError } from 'rxjs/operators';
 import { ajax } from 'rxjs/ajax';
 
@@ -7,14 +7,18 @@ import { setSuccessStatus } from 'actions/common';
 import { signUp } from 'actions/auth';
 import { showNotification } from 'actions/system';
 import { signUp as signUpApi } from 'services/http/auth';
-import { FORM_TYPES, SNACKBAR_VARIANTS } from 'constants';
+import { FORM_TYPES, SNACKBAR_VARIANTS } from 'enums';
 import {
   getGlobalErrorObservable,
   setInProgressStatusAction,
   catchGlobalErrorWithUndefinedId,
 } from '../common-operators';
 
-export const signUpEpic = action$ =>
+type Action = ActionType<
+  typeof signUp
+>;
+
+export const signUpEpic = (action$: Observable<Action>) =>
   action$.pipe(
     ofType(signUp),
     switchMap(({ payload }) => concat(

@@ -1,6 +1,4 @@
-import { Observable } from 'rxjs/internal/Observable';
-import { AjaxCreationMethod, AjaxResponse } from 'rxjs/internal/observable/dom/AjaxObservable';
-
+import { AjaxCreationMethod } from 'epics/types';
 import { getConfig } from 'helpers/env';
 
 const api = getConfig('HTTP_API_URL');
@@ -9,7 +7,7 @@ const api = getConfig('HTTP_API_URL');
  * API for receive list of all users
  * @param {AjaxCreationMethod} ajax
  */
-export const getAllUsers = (ajax: AjaxCreationMethod, token: string): Observable<AjaxResponse> => ajax({
+export const getAllUsers = (ajax: AjaxCreationMethod, token: string) => ajax({
   url: `${api}/user/get-all-users`,
   method: 'GET',
   headers: {
@@ -25,7 +23,7 @@ export const getChatMessages = (
   ajax: AjaxCreationMethod,
   roomHash: string,
   token: string,
-): Observable<AjaxResponse> => ajax({
+) => ajax({
   url: `${api}/chat/get-chat-messages?roomHash=${roomHash}`,
   method: 'GET',
   headers: {

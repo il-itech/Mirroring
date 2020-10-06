@@ -1,5 +1,5 @@
-import { ofType } from 'redux-observable';
-import { concat, of } from 'rxjs';
+import { ActionType, ofType } from 'deox';
+import { concat, of, Observable } from 'rxjs';
 import { switchMap, mergeMap } from 'rxjs/operators';
 import { ajax } from 'rxjs/ajax';
 import cookies from 'js-cookie';
@@ -9,15 +9,19 @@ import { showNotification, redirectTo, clearSystem } from 'actions/system';
 import { signOut } from 'actions/auth';
 import { signOut as signOutApi } from 'services/http/auth';
 import { getToken } from 'helpers/auth';
-import { REDUCER_TYPES, SNACKBAR_VARIANTS } from 'constants';
+import { REDUCER_TYPES, SNACKBAR_VARIANTS } from 'enums';
 import { setGlobalInProgressStatusAction, catchGlobalErrorWithUndefinedId } from '../common-operators';
 
-export const signOutEpic = action$ =>
+type Action = ActionType<
+  typeof signOut
+>;
+
+export const signOutEpic = (action$: Observable<Action>) =>
   action$.pipe(
     ofType(signOut),
     switchMap(() => concat(
       setGlobalInProgressStatusAction(true),
-      signOutApi(ajax, getToken()).pipe(
+      signOutApi(ajax, getToken() as string).pipe(
         mergeMap(() => {
           cookies.remove('accessToken');
 

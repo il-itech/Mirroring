@@ -1,5 +1,7 @@
 import { Observable } from 'rxjs/internal/Observable';
 import { AjaxCreationMethod, AjaxResponse } from 'rxjs/internal/observable/dom/AjaxObservable';
+import { ISignInFormData } from 'interfaces/state.interfaces/forms.interfaces/form-sign-in.interface';
+import { ISignUpFormData } from 'interfaces/state.interfaces/forms.interfaces/form-sign-up.interface';
 
 import { getConfig } from 'helpers/env';
 
@@ -10,7 +12,10 @@ const api = getConfig('HTTP_API_URL');
  * @param {AjaxCreationMethod} ajax
  * @param {Object} body
  */
-export const signIn = (ajax: AjaxCreationMethod, body): Observable<AjaxResponse> => ajax({
+export const signIn = (
+  ajax: AjaxCreationMethod,
+  body: ISignInFormData,
+): Observable<AjaxResponse> => ajax({
   url: `${api}/auth/sign-in`,
   method: 'POST',
   headers: {
@@ -24,7 +29,10 @@ export const signIn = (ajax: AjaxCreationMethod, body): Observable<AjaxResponse>
  * @param {AjaxCreationMethod} ajax
  * @param {Object} body
  */
-export const signUp = (ajax: AjaxCreationMethod, body): Observable<AjaxResponse> => ajax({
+export const signUp = (
+  ajax: AjaxCreationMethod,
+  body: ISignUpFormData,
+): Observable<AjaxResponse> => ajax({
   url: `${api}/auth/sign-up`,
   method: 'POST',
   headers: {
