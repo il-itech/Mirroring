@@ -20,6 +20,7 @@
         "reducers": "./src/reducers",
         "layouts": "./src/layouts",
         "services": "./src/services",
+        "interfaces": "./src/interfaces",
         "constants": "./src/constants.js"
       }
     }]

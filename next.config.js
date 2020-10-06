@@ -12,6 +12,7 @@ const CURRENT_DIRECTORY = process.cwd();
 const nextConfig = {
   typescript: {
     ignoreDevErrors: true,
+    ignoreBuildErrors: true,
   },
 };
 
