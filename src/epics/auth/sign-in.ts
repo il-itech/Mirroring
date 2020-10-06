@@ -1,9 +1,12 @@
 import { ActionType, ofType } from 'deox';
 import { concat, of, Observable } from 'rxjs';
-import { switchMap, mergeMap, catchError } from 'rxjs/operators';
+import {
+  switchMap, mergeMap, catchError, delay,
+} from 'rxjs/operators';
 import { ajax } from 'rxjs/ajax';
 import cookies from 'js-cookie';
 
+import { setInProgressStatus } from 'actions/common';
 import { showNotification } from 'actions/system';
 import { setProfile } from 'actions/profile';
 import { signIn, setAuthStatus } from 'actions/auth';
@@ -31,7 +34,7 @@ export const signInEpic = (action$: Observable<Action>) =>
           return of(
             setProfile(user),
             setAuthStatus(true),
-            showNotification({ variant: SNACKBAR_VARIANTS.SUCCESS, message: 'Authentication has been success' }),
+            setInProgressStatus(FORM_TYPES.SIGN_IN, false),
           );
         }),
         catchError((error) => {
@@ -40,7 +43,11 @@ export const signInEpic = (action$: Observable<Action>) =>
           return getGlobalErrorObservable(message, error);
         }),
       ),
-      setInProgressStatusAction(FORM_TYPES.SIGN_IN, false),
+      of(
+        showNotification({ variant: SNACKBAR_VARIANTS.SUCCESS, message: 'Authentication has been success' }),
+      ).pipe(
+        delay(500),
+      ),
     )),
     catchGlobalErrorWithUndefinedId,
   );

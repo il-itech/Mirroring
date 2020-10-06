@@ -1,16 +1,9 @@
 @import '../../../customizations/pre-customization';
 
-// .app-sign-in {
-//   width: 600px;
-
-//   .form-sign-in {
-    
-//   }
-// }
-
-
-.form-icon {
-  height: 64px;
-  top: -32px;
-  width: 64px;
+.app-sign-in {
+  .form-icon {
+    height: 64px;
+    top: -32px;
+    width: 64px;
+  }  
 }
