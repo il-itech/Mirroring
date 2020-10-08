@@ -2,6 +2,7 @@ import React, { memo, useCallback, FC } from 'react';
 import { useDispatch } from 'react-redux';
 import classnames from 'classnames';
 import Container from '@material-ui/core/Container';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import * as R from 'ramda';
 
 import { useShallowSelector } from 'hooks/use-shallow-selector';
@@ -9,7 +10,7 @@ import { clearErrors } from 'actions/system';
 import { ErrorBoundary } from 'components/error-boundary/error-boundary';
 import { GlobalAlert } from 'components/global-alert/global-alert';
 import { isEmptyOrNil } from 'helpers/utils';
-
+import { MEDIA_QUERIES } from 'enums';
 import { Props } from './types';
 
 import './main.scss';
@@ -27,12 +28,15 @@ export const MainUI: FC<Props> = ({
     [dispatch],
   );
 
+  const matchesMD = useMediaQuery(`(max-width:${MEDIA_QUERIES.MD})`);
+
   return (
     <Container
       disableGutters={disableGutters}
       maxWidth={false}
       className={classnames('main-container pr-0', className, {
-        'side-bar-indent': showSideBar,
+        'side-bar-indent': showSideBar && !matchesMD,
+        'pl-0': matchesMD,
       })}
     >
       {!isEmptyOrNil(errorId) && (

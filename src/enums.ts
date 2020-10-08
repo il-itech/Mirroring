@@ -1,3 +1,5 @@
+import scssVariables from 'customizations/js/variables';
+
 export enum PROJECT_ENVS {
   DEV = 'development',
   PROD = 'production',
@@ -104,6 +106,7 @@ export enum REDUCER_TYPES {
   FORMS = 'forms',
   AUTH = 'auth',
   PROFILE = 'profile',
+  DRAWERS = 'drawers',
 }
 
 export enum CORONAVIRUS_REDUCER_TYPES {
@@ -121,10 +124,22 @@ export enum SNACKBAR_VARIANTS {
   INFO = 'info',
 }
 
-export enum VariantEnum {
-  default = 'default',
-  error = 'error',
-  success = 'success',
-  warning = 'warning',
-  info = 'info',
+export enum VARIANT_ENUM {
+  DEFAULT = 'default',
+  ERROR = 'error',
+  SUCCESS = 'success',
+  WARNING = 'warning',
+  INFO = 'info',
+}
+
+export enum MEDIA_QUERIES {
+  XS = scssVariables.breakpoints.xs,
+  SM = scssVariables.breakpoints.sm,
+  MD = scssVariables.breakpoints.md,
+  LG = scssVariables.breakpoints.lg,
+  XL = scssVariables.breakpoints.xl,
+}
+
+export enum DRAWERS {
+  SIDE_BAR = 'SIDE_BAR',
 }

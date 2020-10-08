@@ -7,6 +7,7 @@ import { IProfile } from './profile-interface';
 
 export interface IState {
   system: ISystem;
+  drawers: { [key: string]: boolean };
   coronavirus: ICoronavirus;
   chat: IChat;
   forms: IForms;

@@ -6,6 +6,7 @@ import * as R from 'ramda';
 
 import { isEmptyOrNil } from 'helpers/utils';
 import { system } from './system';
+import { drawers } from './drawers';
 import { coronavirus } from './coronavirus';
 import { chat } from './chat';
 import { forms } from './forms';
@@ -14,6 +15,7 @@ import { profile } from './profile';
 
 export const combinedReducer = combineReducers({
   system,
+  drawers,
   coronavirus,
   chat,
   forms,

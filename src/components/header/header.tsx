@@ -1,17 +1,20 @@
 import { memo, FC } from 'react';
 import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
+import MenuIcon from '@material-ui/icons/Menu';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import * as R from 'ramda';
 
 import { useShallowSelector } from 'hooks/use-shallow-selector';
 import { useMenu } from 'hooks/use-menu';
+import { useDrawer } from 'hooks/use-drawer';
 import { RouteLink } from 'components/route-link/route-link';
 import { ProfileMenu } from 'components/profile-menu/profile-menu';
 import { IconLogo } from 'components/icons/icon-logo';
 import { isEmptyOrNil } from 'helpers/utils';
+import { DRAWERS, MEDIA_QUERIES } from 'enums';
 
 import './header.scss';
 
@@ -22,6 +25,7 @@ export const HeaderUI: FC<{}> = () => {
     lastname,
     avatar,
   } = useShallowSelector(state => state?.profile);
+
   const {
     anchorElement,
     handleClick,
@@ -29,20 +33,28 @@ export const HeaderUI: FC<{}> = () => {
     handleSignOut,
   } = useMenu();
 
+  const {
+    handleToggleDrawer,
+  } = useDrawer(DRAWERS.SIDE_BAR);
+
+  const matchesMD = useMediaQuery(`(max-width:${MEDIA_QUERIES.MD})`);
+
   return (
     <AppBar
       classes={{
         root: 'next-header',
+        colorPrimary: 'bg-ebony',
       }}
       position="fixed"
     >
-      <Toolbar classes={{
-        root: 'd-flex justify-content-between bg-ebony',
-      }}
-      >
-        <RouteLink to="/">
-          <IconLogo />
-        </RouteLink>
+      <div className="h-100 px-2 d-flex align-items-center justify-content-between bg-ebony">
+        {matchesMD ? (
+          <MenuIcon onClick={handleToggleDrawer} />
+        ) : (
+          <RouteLink to="/">
+            <IconLogo />
+          </RouteLink>
+        )}
         {isEmptyOrNil(_id)
           ? (
             <RouteLink
@@ -62,7 +74,7 @@ export const HeaderUI: FC<{}> = () => {
             >
               <Avatar
                 className="mr-1"
-                src={avatar || ''}
+                src={avatar}
               >
                 {`${R.head(firstname)} ${R.head(lastname)}`}
               </Avatar>
@@ -70,7 +82,7 @@ export const HeaderUI: FC<{}> = () => {
               <Typography>{lastname}</Typography>
             </div>
           )}
-      </Toolbar>
+      </div>
       <ProfileMenu
         anchorElement={anchorElement}
         handleClose={handleClose}

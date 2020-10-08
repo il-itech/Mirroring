@@ -1,3 +1,7 @@
+@import '../../customizations/pre-customization';
+
 .next-header {
+  height: $header-height;
   top: 0;
+  z-index: 1400 !important;
 }

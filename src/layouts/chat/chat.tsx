@@ -37,7 +37,7 @@ export const Chat: FC<Props> = ({
     <Main
       showSideBar
       disableGutters
-      className="h-100vhh d-flex d-flex justify-content-center align-items-center mt-8 mx-xl-0"
+      className="h-100vhh d-flex d-flex justify-content-center align-items-center mt-7 mx-xl-0"
     >
       <Header />
       <DrawerSideBar />

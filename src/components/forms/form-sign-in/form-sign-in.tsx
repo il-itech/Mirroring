@@ -29,7 +29,7 @@ export const FormSignIn: FC<Props> = ({
   } = useFormSubmit(formType, fields, signIn);
 
   return (
-    <div className="m-auto w-50 app-sign-in">
+    <div className="m-auto app-sign-in">
       <BackHome className="mb-7" />
 
       <div className="w-100 d-flex flex-column position-relative px-4 pt-8 pb-3 bg-ebony form-sign-in">
