@@ -5,6 +5,8 @@ import { ChatMessagingContent } from './chat-messaging-content/chat-messaging-co
 import { ChatMessagingText } from './chat-messaging-text/chat-messaging-text';
 import { Props } from './types';
 
+import './chat-messaging.scss';
+
 export const ChatMessaging: FC<Props> = ({
   roomId,
   profileId,
@@ -15,7 +17,7 @@ export const ChatMessaging: FC<Props> = ({
   handleSubmit,
   handleKeyPress,
 }) => (
-  <div className="h-100 w-75 d-flex flex-column">
+  <div className="h-100 d-flex flex-column pt-7 pt-sm-0 chat-messaging">
     <ChatMessagingTitle currentChatUser={currentChatUser} />
     <ChatMessagingContent
       profileId={profileId}

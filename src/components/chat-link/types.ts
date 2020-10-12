@@ -5,4 +5,5 @@ export interface Props {
   lastname: string;
   lastMessage: string;
   avatar: string;
+  handleToggleDrawer?: () => void;
 }

@@ -37,7 +37,7 @@ export const HeaderUI: FC<{}> = () => {
     handleToggleDrawer,
   } = useDrawer(DRAWERS.SIDE_BAR);
 
-  const matchesMD = useMediaQuery(`(max-width:${MEDIA_QUERIES.MD})`);
+  const matchesLG = useMediaQuery(`(max-width:${MEDIA_QUERIES.LG})`);
 
   return (
     <AppBar
@@ -48,7 +48,7 @@ export const HeaderUI: FC<{}> = () => {
       position="fixed"
     >
       <div className="h-100 px-2 d-flex align-items-center justify-content-between bg-ebony">
-        {matchesMD ? (
+        {matchesLG ? (
           <MenuIcon onClick={handleToggleDrawer} />
         ) : (
           <RouteLink to="/">

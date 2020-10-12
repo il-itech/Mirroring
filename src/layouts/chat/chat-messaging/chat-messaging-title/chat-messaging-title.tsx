@@ -16,7 +16,7 @@ export const ChatMessagingTitleUI: FC<Props> = ({
 }) => (
   <div className="w-100 d-flex align-items-center p-2 bg-ebony chat-messaging-title">
     <Avatar src={avatar} />
-    <div className="d-flex flex-column ml-2">
+    <div className="d-flex flex-column ml-2 text-white">
       <div className="d-flex">
         <Typography
           variant="body2"

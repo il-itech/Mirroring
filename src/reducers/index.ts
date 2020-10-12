@@ -35,7 +35,11 @@ export const rootReducer = (state: IState, action: AnyAction) => {
     const wasBumpedOnClient = !isEmptyOrNil(stateDiff) && action.payload.system.initializedSSRState;
 
     return wasBumpedOnClient ? {
-      ...R.mergeDeepWithKey(concatValues, state, action.payload),
+      ...R.mergeDeepWithKey(
+        concatValues,
+        state,
+        action.payload,
+      ),
     } : {
       ...state,
     };

@@ -40,7 +40,7 @@ const getRoutesList = (profileId: string | null): RouteList[] => ([
 export const DrawerSideBarUI: FC<{}> = () => {
   const { _id } = useShallowSelector(state => state?.profile);
   const routesList = useMemo(() => getRoutesList(_id), [_id]);
-  const matchesMD = useMediaQuery(`(max-width:${MEDIA_QUERIES.MD})`);
+  const matchesLG = useMediaQuery(`(max-width:${MEDIA_QUERIES.LG})`);
   const {
     isDrawerOpen,
     handleToggleDrawer,
@@ -49,7 +49,7 @@ export const DrawerSideBarUI: FC<{}> = () => {
   return (
     <NoSsr>
       <Drawer
-        variant={matchesMD ? 'temporary' : 'permanent'}
+        variant={matchesLG ? 'temporary' : 'permanent'}
         classes={{
           root: 'drawer-side-bar',
           paper: 'position-fixed bg-ebony drawer-side-bar-paper border-white-12',

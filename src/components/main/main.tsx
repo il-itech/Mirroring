@@ -28,15 +28,15 @@ export const MainUI: FC<Props> = ({
     [dispatch],
   );
 
-  const matchesMD = useMediaQuery(`(max-width:${MEDIA_QUERIES.MD})`);
+  const matchesLG = useMediaQuery(`(max-width:${MEDIA_QUERIES.LG})`);
 
   return (
     <Container
       disableGutters={disableGutters}
       maxWidth={false}
       className={classnames('main-container pr-0', className, {
-        'side-bar-indent': showSideBar && !matchesMD,
-        'pl-0': matchesMD,
+        'side-bar-indent': showSideBar && !matchesLG,
+        'pl-0': matchesLG,
       })}
     >
       {!isEmptyOrNil(errorId) && (

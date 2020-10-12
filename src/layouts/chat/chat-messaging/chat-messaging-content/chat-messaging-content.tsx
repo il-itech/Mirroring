@@ -16,13 +16,13 @@ const ChatMessagingContentUI: FC<Props> = ({
   chatContentRef,
 }) => {
   useEffect(() => {
-    const { scrollHeight } = chatContentRef.current!;
+    const { scrollHeight } = chatContentRef.current;
 
-    chatContentRef.current!.scrollTop = scrollHeight;
-  }, [chatContentRef]);
+    chatContentRef.current.scrollTop = scrollHeight;
+  });
 
   return (
-    <div ref={chatContentRef} className="h-100 p-2 overflow-auto chat-messaging">
+    <div ref={chatContentRef} className="h-100 p-2 overflow-auto chat-messaging-content">
       {messages.map(({ sender: senderId, message, date }) => {
         const { firstname, lastname } = R.find<IChatUser>(R.propEq('_id', senderId))(allUserList) || {};
         const isAuthorMessage = profileId === senderId;

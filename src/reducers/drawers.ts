@@ -1,6 +1,6 @@
 import { createReducer } from 'deox';
 
-import { toggleDrawer } from 'actions/drawers';
+import { toggleDrawer, closeAllDrawers } from 'actions/drawers';
 
 const initialState: { [key: string]: boolean } = {};
 
@@ -11,5 +11,6 @@ export const drawers = createReducer(
       ...state,
       [drawerId]: !state[drawerId],
     })),
+    handleAction(closeAllDrawers, () => ({})),
   ]),
 );
