@@ -45,6 +45,7 @@ export const getMuiTheme = (): Theme =>
       MuiTableCell: {
         root: {
           borderBottom: '1px solid rgba(81, 81, 81, 1)',
+          height: 'auto !important',
         },
         head: {
           color: white,
@@ -111,6 +112,11 @@ export const getMuiTheme = (): Theme =>
       MuiSvgIcon: {
         root: {
           fill: mischka,
+        },
+      },
+      MuiIconButton: {
+        root: {
+          color: mischka,
         },
       },
     },

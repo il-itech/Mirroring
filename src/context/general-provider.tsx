@@ -1,13 +1,12 @@
 import React, { useEffect, createContext } from 'react';
 import { useDispatch } from 'react-redux';
-import Router, { useRouter } from 'next/router';
+import Router from 'next/router';
 import { useSnackbar, OptionsObject } from 'notistack';
 import CloseIcon from '@material-ui/icons/Close';
 import * as R from 'ramda';
 
 import { clearState } from 'actions/common';
 import { clearNotification } from 'actions/system';
-import { closeAllDrawers } from 'actions/drawers';
 import { useShallowSelector } from 'hooks/use-shallow-selector';
 import { LinearLoader } from 'components/progress-bar/linear-loader/linear-loader';
 import { isEmptyOrNil } from 'helpers/utils';
@@ -28,7 +27,6 @@ const NOTIFY_SETTINGS: OptionsObject = {
 };
 
 export const GeneralProvider = ({ children }: Props) => {
-  const { asPath } = useRouter();
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const dispatch = useDispatch();
   const isUserAuth = useShallowSelector(state => state?.auth.isUserAuth);
@@ -56,13 +54,6 @@ export const GeneralProvider = ({ children }: Props) => {
       R.compose(dispatch, clearNotification)();
     };
   }, [closeSnackbar, dispatch, enqueueSnackbar, message, variant]);
-
-  /**
-   * Close all drawers if route string was changed
-   */
-  useEffect(() => {
-    R.compose(dispatch, closeAllDrawers)();
-  }, [asPath, dispatch]);
 
   /**
    * Redirect to home if user authed

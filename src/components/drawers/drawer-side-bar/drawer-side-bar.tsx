@@ -45,6 +45,7 @@ export const DrawerSideBarUI: FC<{}> = () => {
   const {
     isDrawerOpen,
     handleToggleDrawer,
+    handleCloseAll,
   } = useDrawer(DRAWERS.SIDE_BAR);
 
   return (
@@ -77,6 +78,7 @@ export const DrawerSideBarUI: FC<{}> = () => {
               to={href}
               as={as}
               copmonentClassName="text-white font-weight-bold link-hover"
+              handleClick={handleCloseAll}
             >
               <ListItem>
                 <ListItemText>{value}</ListItemText>
