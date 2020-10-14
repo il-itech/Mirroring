@@ -16,7 +16,7 @@ const ChatMessagingContentUI: FC<Props> = ({
   chatContentRef,
 }) => {
   useEffect(() => {
-    const { scrollHeight } = chatContentRef.current!;
+    const { scrollHeight } = chatContentRef.current;
 
     chatContentRef.current.scrollTop = scrollHeight;
   });
