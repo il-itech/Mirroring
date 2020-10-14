@@ -1,4 +1,10 @@
 .account-avatar {
+  width: 100%;
+
+  @include media-breakpoint-up(sm) {
+    width: 25%;
+  }
+
   .user-avatar {
     height: 100px;
     width: 100px;

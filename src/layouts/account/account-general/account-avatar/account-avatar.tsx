@@ -16,7 +16,7 @@ export const AccountAvatar: FC<Props> = ({
   } = useFile();
 
   return (
-    <div className="w-25 d-flex flex-column align-items-center p-2 bg-ebony rounded account-avatar">
+    <div className="d-flex flex-column align-items-center p-2 bg-ebony rounded account-avatar">
       <Avatar
         src={avatar}
         classes={{

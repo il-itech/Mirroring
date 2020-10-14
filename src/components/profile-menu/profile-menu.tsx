@@ -36,15 +36,16 @@ export const ProfileMenu: FC<Props> = ({
     onClose={handleClose}
   >
     {PROFILE_MENU.map(({ id, value, href }) => (
-      <RouteLink
-        key={id}
-        to={href}
-        component={MenuItem}
-        copmonentClassName="py-1_5 link-hover"
-        handleClick={handleClose}
-      >
-        {value}
-      </RouteLink>
+      <div key={id}>
+        <RouteLink
+          to={href}
+          component={MenuItem}
+          copmonentClassName="py-1_5 link-hover"
+          handleClick={handleClose}
+        >
+          {value}
+        </RouteLink>
+      </div>
     ))}
     <MenuItem
       onClick={handleSignOut}

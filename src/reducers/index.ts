@@ -6,6 +6,7 @@ import * as R from 'ramda';
 
 import { isEmptyOrNil } from 'helpers/utils';
 import { system } from './system';
+import { drawers } from './drawers';
 import { coronavirus } from './coronavirus';
 import { chat } from './chat';
 import { forms } from './forms';
@@ -14,6 +15,7 @@ import { profile } from './profile';
 
 export const combinedReducer = combineReducers({
   system,
+  drawers,
   coronavirus,
   chat,
   forms,
@@ -33,7 +35,11 @@ export const rootReducer = (state: IState, action: AnyAction) => {
     const wasBumpedOnClient = !isEmptyOrNil(stateDiff) && action.payload.system.initializedSSRState;
 
     return wasBumpedOnClient ? {
-      ...R.mergeDeepWithKey(concatValues, state, action.payload),
+      ...R.mergeDeepWithKey(
+        concatValues,
+        state,
+        action.payload,
+      ),
     } : {
       ...state,
     };

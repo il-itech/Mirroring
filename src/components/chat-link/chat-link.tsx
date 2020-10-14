@@ -13,12 +13,17 @@ export const ChatLink: FC<Props> = ({
   lastname,
   lastMessage,
   avatar,
+  handleToggleDrawer,
 }) => (
-  <Link href={href} as={as}>
+  <Link
+    href={href}
+    as={as}
+  >
     <Button
       classes={{
         root: 'd-flex justify-content-start w-100 py-1_5 px-2 text-white text-capitalize link-hover',
       }}
+      onClick={handleToggleDrawer}
     >
       <Avatar src={avatar} />
       <div className="d-flex flex-column align-items-start ml-2 text-truncate">

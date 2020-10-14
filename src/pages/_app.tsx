@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { AppContext, AppProps } from 'next/app';
 import Head from 'next/head';
 import { SnackbarProvider } from 'notistack';
@@ -23,7 +23,12 @@ const App = ({ Component, pageProps }: AppProps) => {
       <Head>
         <title>NextJS Project</title>
       </Head>
-      <SnackbarProvider preventDuplicate>
+      <SnackbarProvider
+        preventDuplicate
+        classes={{
+          containerRoot: 'snackbar-container',
+        }}
+      >
         <GeneralProvider>
           <Component {...pageProps} />
         </GeneralProvider>

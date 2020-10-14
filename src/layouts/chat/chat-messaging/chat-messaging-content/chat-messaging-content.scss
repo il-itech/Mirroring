@@ -1,11 +1,15 @@
-.chat-messaging {
-  scroll-behavior: smooth;
-
+.chat-messaging-content {
   .message-block {
-    width: 35%;
+    width: 100%;
+
+    @include media-breakpoint-up(md) {
+      width: 35%;
+    }
   }
 
   .author-message {
-    margin-left: 65%;
+    @include media-breakpoint-up(md) {
+      margin-left: 65%;
+    }
   }
 }
