@@ -3,9 +3,9 @@ const withSass = require('@zeit/next-sass');
 const withImages = require('next-images');
 const withBundleAnalyzer = require('@next/bundle-analyzer');
 const withPlugins = require('next-compose-plugins');
-const autoprefixer = require('autoprefixer');
-const precss = require('precss');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// const autoprefixer = require('autoprefixer');
+// const precss = require('precss');
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const CURRENT_DIRECTORY = process.cwd();
 
@@ -18,32 +18,24 @@ const nextConfig = {
 
 module.exports = withPlugins([
   [withImages],
-  [withSass, {
-    test: /\.scss$/,
-    use: [
-      'cache-loader',
-      'css-loader',
-      'sass-loader',
-      MiniCssExtractPlugin.loader,
-      {
-        loader: 'postcss-loader',
-        options: {
-          plugins() {
-            return [
-              autoprefixer({ grid: true }),
-              precss,
-            ];
+  [withSass({
+    webpack: (config) => {
+      config.module.rules.push({
+        enforce: 'pre',
+        test: /\.scss$/,
+        use: [
+          {
+            loader: 'sass-resources-loader',
+            options: {
+              resources: path.join(CURRENT_DIRECTORY, 'src/customizations/resources.scss'),
+            },
           },
-        },
-      },
-      {
-        loader: 'sass-resources-loader',
-        options: {
-          resources: path.join(CURRENT_DIRECTORY, 'src/customizations/resources.scss'),
-        },
-      },
-    ],
-  }],
+        ],
+      });
+
+      return config;
+    },
+  })],
   [withBundleAnalyzer({
     enabled: process.env.ANALYZE === 'true',
   }), {}],

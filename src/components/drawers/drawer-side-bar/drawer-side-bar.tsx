@@ -3,6 +3,7 @@ import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import CloseIcon from '@material-ui/icons/Close';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import NoSsr from '@material-ui/core/NoSsr';
 import * as R from 'ramda';
@@ -58,6 +59,10 @@ export const DrawerSideBarUI: FC<{}> = () => {
         open={isDrawerOpen}
         onClose={handleToggleDrawer}
       >
+        <CloseIcon
+          onClick={handleToggleDrawer}
+          className="text-white ml-2 mt-2_5"
+        />
         <List
           className="d-flex flex-column"
         >

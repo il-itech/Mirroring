@@ -17,8 +17,11 @@ export const ChatMessaging: FC<Props> = ({
   handleSubmit,
   handleKeyPress,
 }) => (
-  <div className="h-100 d-flex flex-column pt-7 pt-sm-0 chat-messaging">
-    <ChatMessagingTitle currentChatUser={currentChatUser} />
+  <div className="h-100 d-flex flex-column chat-messaging">
+    <ChatMessagingTitle
+      roomId={roomId}
+      currentChatUser={currentChatUser}
+    />
     <ChatMessagingContent
       profileId={profileId}
       messages={messages}

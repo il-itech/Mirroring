@@ -9,7 +9,7 @@ export const AccountGeneral: FC<{}> = () => {
   } = useShallowSelector(state => state);
 
   return (
-    <div className="d-flex">
+    <div className="d-flex flex-column flex-sm-row">
       <AccountAvatar profile={profile} />
       <AccountProfile />
     </div>

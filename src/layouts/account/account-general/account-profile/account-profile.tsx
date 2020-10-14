@@ -13,7 +13,7 @@ export const AccountProfile: FC<{}> = () => {
   const { formData, errors, isInProgress } = useShallowSelector(state => state?.forms?.[FORM_TYPE]);
 
   return (
-    <div className="w-75 d-flex flex-column ml-3 p-2 bg-ebony account-profile">
+    <div className="d-flex flex-column mt-2 mt-sm-0 ml-sm-3 p-2 bg-ebony account-profile">
       <Typography className="pb-2 border-bottom border-white-12">Profile</Typography>
       <FormChangeCredentials
         formType={FORM_TYPE}
