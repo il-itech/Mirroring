@@ -11,7 +11,7 @@ export const AccountSecurity: FC<{}> = () => {
   const { formData, errors, isInProgress } = useShallowSelector(state => state?.forms?.[FORM_TYPE]);
 
   return (
-    <div className="w-100 d-flex flex-column ml-3 p-2 bg-ebony account-security">
+    <div className="w-100 d-flex flex-column p-2 bg-ebony account-security">
       <Typography className="pb-2 border-bottom border-white-12">Change Password</Typography>
       <FormChangePassword
         formType={FORM_TYPE}

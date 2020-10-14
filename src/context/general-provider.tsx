@@ -2,6 +2,7 @@ import React, { useEffect, createContext } from 'react';
 import { useDispatch } from 'react-redux';
 import Router from 'next/router';
 import { useSnackbar, OptionsObject } from 'notistack';
+import CloseIcon from '@material-ui/icons/Close';
 import * as R from 'ramda';
 
 import { clearState } from 'actions/common';
@@ -15,6 +16,8 @@ interface Props {
   children: JSX.Element | JSX.Element[];
 }
 
+export const GeneralContext = createContext(null);
+
 const NOTIFY_SETTINGS: OptionsObject = {
   preventDuplicate: true,
   anchorOrigin: {
@@ -23,10 +26,8 @@ const NOTIFY_SETTINGS: OptionsObject = {
   },
 };
 
-export const GeneralContext = createContext(null);
-
-export const GeneralProvider = ({ children }: Props): JSX.Element => {
-  const { enqueueSnackbar } = useSnackbar();
+export const GeneralProvider = ({ children }: Props) => {
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const dispatch = useDispatch();
   const isUserAuth = useShallowSelector(state => state?.auth.isUserAuth);
   const {
@@ -40,14 +41,23 @@ export const GeneralProvider = ({ children }: Props): JSX.Element => {
    */
   useEffect(() => {
     if (!isEmptyOrNil(message)) {
-      enqueueSnackbar(message, { ...NOTIFY_SETTINGS, variant });
+      enqueueSnackbar(message, {
+        ...NOTIFY_SETTINGS,
+        action: key => (
+          <CloseIcon className="cursor-pointer" onClick={() => closeSnackbar(key)} />
+        ),
+        variant,
+      });
     }
 
     return () => {
       R.compose(dispatch, clearNotification)();
     };
-  }, [dispatch, enqueueSnackbar, message, variant]);
+  }, [closeSnackbar, dispatch, enqueueSnackbar, message, variant]);
 
+  /**
+   * Redirect to home if user authed
+   */
   useEffect(() => {
     if (isUserAuth) {
       Router.push('/');
@@ -58,6 +68,9 @@ export const GeneralProvider = ({ children }: Props): JSX.Element => {
     };
   }, [dispatch, isUserAuth]);
 
+  /**
+   * Redirect to somewhere if redirect path was changed
+   */
   useEffect(() => {
     if (!isEmptyOrNil(redirectTo)) {
       Router.push(redirectTo);

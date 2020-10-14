@@ -24,7 +24,7 @@ export const SignUp: FC<Props> = ({
   isInProgress,
   isSuccess,
 }) => (
-  <Main className="mt-10_5">
+  <Main className="h-100vh d-flex pl-0">
     {isSuccess
       ? (
         <div className="d-flex justify-content-center">

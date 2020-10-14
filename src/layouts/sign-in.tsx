@@ -21,7 +21,7 @@ export const SignIn: FC<Props> = ({
   errors,
   isInProgress,
 }) => (
-  <Main className="mt-10_5">
+  <Main className="h-100vh d-flex pl-0">
     <FormSignIn
       formType={formType}
       fields={fields}
