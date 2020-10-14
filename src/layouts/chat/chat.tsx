@@ -1,10 +1,13 @@
 import { FC, useMemo } from 'react';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import * as R from 'ramda';
 
 import { Main } from 'components/main/main';
 import { Header } from 'components/header/header';
 import { DrawerSideBar } from 'components/drawers/drawer-side-bar/drawer-side-bar';
+import { DrawerChatMessaging } from 'components/drawers/drawer-chat-messaging/drawer-chat-messaging';
 import { IChatUser } from 'interfaces/state.interfaces/chat-interface';
+import { MEDIA_QUERIES } from 'enums';
 import { ChatList } from './chat-list/chat-list';
 import { ChatMessaging } from './chat-messaging/chat-messaging';
 import { Props } from './types';
@@ -32,12 +35,13 @@ export const Chat: FC<Props> = ({
     [allUserList, roomId],
   );
   const messagesById = useMemo(() => R.prop(roomId, messages) || [], [messages, roomId]);
+  const matchesSM = useMediaQuery(`(max-width:${MEDIA_QUERIES.SM})`);
 
   return (
     <Main
       showSideBar
       disableGutters
-      className="h-100vhh d-flex d-flex justify-content-center align-items-center mt-8 mx-xl-0"
+      className="h-100vhh d-flex d-flex justify-content-center align-items-center mt-7 mx-xl-0"
     >
       <Header />
       <DrawerSideBar />
@@ -45,17 +49,31 @@ export const Chat: FC<Props> = ({
         <ChatList
           allUserList={allUserList}
           messages={messages}
+          matchesSM={matchesSM}
         />
-        <ChatMessaging
-          roomId={roomId}
-          profileId={profileId}
-          messages={messagesById}
-          allUserList={allUserList}
-          currentChatUser={currentChatUser}
-          chatContentRef={chatContentRef}
-          handleSubmit={handleSubmit}
-          handleKeyPress={handleKeyPress}
-        />
+        {matchesSM ? (
+          <DrawerChatMessaging
+            roomId={roomId}
+            profileId={profileId}
+            messages={messagesById}
+            allUserList={allUserList}
+            currentChatUser={currentChatUser}
+            chatContentRef={chatContentRef}
+            handleSubmit={handleSubmit}
+            handleKeyPress={handleKeyPress}
+          />
+        ) : (
+          <ChatMessaging
+            roomId={roomId}
+            profileId={profileId}
+            messages={messagesById}
+            allUserList={allUserList}
+            currentChatUser={currentChatUser}
+            chatContentRef={chatContentRef}
+            handleSubmit={handleSubmit}
+            handleKeyPress={handleKeyPress}
+          />
+        )}
       </div>
     </Main>
   );

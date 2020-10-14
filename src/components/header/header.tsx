@@ -74,7 +74,7 @@ export const HeaderUI: FC<{}> = () => {
             >
               <Avatar
                 className="mr-1"
-                src={avatar || ''}
+                src={avatar}
               >
                 {`${R.head(firstname)} ${R.head(lastname)}`}
               </Avatar>
