@@ -1,17 +1,18 @@
 import { ActionType, ofType } from 'deox';
 import { concat, of, Observable } from 'rxjs';
 import {
-  switchMap, mergeMap, catchError, delay,
+  switchMap, mergeMap, catchError,
 } from 'rxjs/operators';
 import { ajax } from 'rxjs/ajax';
 import cookies from 'js-cookie';
+import * as R from 'ramda';
 
-import { setInProgressStatus } from 'actions/common';
-import { showNotification } from 'actions/system';
+import { setAccessToken, showNotification } from 'actions/system';
 import { setProfile } from 'actions/profile';
 import { signIn, setAuthStatus } from 'actions/auth';
 import { signIn as signInApi } from 'services/http/auth';
 import { FORM_TYPES, SNACKBAR_VARIANTS } from 'enums';
+import { IProfile } from 'interfaces/state.interfaces/profile-interface';
 import {
   setInProgressStatusAction,
   getGlobalErrorObservable,
@@ -28,13 +29,17 @@ export const signInEpic = (action$: Observable<Action>) =>
     switchMap(({ payload }) => concat(
       setInProgressStatusAction(FORM_TYPES.SIGN_IN, true),
       signInApi(ajax, payload).pipe(
-        mergeMap(({ response: user }) => {
-          cookies.set('accessToken', user.accessToken);
+        mergeMap(({ response }) => {
+          const { accessToken } = response;
+          const profile = R.omit(['accessToken'], response) as IProfile;
+
+          cookies.set('accessToken', accessToken);
 
           return of(
-            setProfile(user),
+            setProfile(profile),
+            setAccessToken(accessToken),
             setAuthStatus(true),
-            setInProgressStatus(FORM_TYPES.SIGN_IN, false),
+            showNotification({ variant: SNACKBAR_VARIANTS.SUCCESS, message: 'Authentication has been success' }),
           );
         }),
         catchError((error) => {
@@ -43,11 +48,7 @@ export const signInEpic = (action$: Observable<Action>) =>
           return getGlobalErrorObservable(message, error);
         }),
       ),
-      of(
-        showNotification({ variant: SNACKBAR_VARIANTS.SUCCESS, message: 'Authentication has been success' }),
-      ).pipe(
-        delay(500),
-      ),
+      setInProgressStatusAction(FORM_TYPES.SIGN_IN, false),
     )),
     catchGlobalErrorWithUndefinedId,
   );

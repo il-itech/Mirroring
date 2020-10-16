@@ -13,6 +13,7 @@ import { CoronavirusStats as CoronavirusStatsLayout } from 'layouts/coronavirus-
 import { Props } from 'interfaces/pages.interfaces/coronavirus-stats.interface';
 import { withAuth } from 'helpers/with-auth';
 import { IStats } from 'interfaces/state.interfaces/coronavirus-interface';
+import { wrapper } from 'store/store';
 
 const serializeStatsList = R.compose<IStats, any, [string, number][]>(
   R.dropLast(1),
@@ -48,14 +49,14 @@ const CoronavirusStats: NextPage<Props> = ({
   );
 };
 
-CoronavirusStats.getInitialProps = async (ctx) => {
+export const getServerSideProps = wrapper.getServerSideProps(async (ctx) => {
   await withAuth(ctx);
   await withResolveActions([
     getCoronavirusGlobalStats(),
     getCoronavirusAllCountryStats(),
   ])(ctx);
 
-  return { ...ctx.store.getState() };
-};
+  return { props: ctx.store.getState() };
+});
 
 export default CoronavirusStats;

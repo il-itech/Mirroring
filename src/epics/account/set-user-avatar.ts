@@ -1,7 +1,7 @@
 import { ActionType, ofType } from 'deox';
 import { StateObservable } from 'redux-observable';
 import { of, concat, Observable } from 'rxjs';
-import { switchMap, mergeMap } from 'rxjs/operators';
+import { switchMap, mergeMap, catchError } from 'rxjs/operators';
 import { ajax } from 'rxjs/ajax';
 
 import { IState } from 'interfaces/state.interfaces/index';
@@ -13,6 +13,7 @@ import { getToken } from 'helpers/auth';
 import { SNACKBAR_VARIANTS } from 'enums';
 import {
   catchGlobalErrorWithUndefinedId,
+  getGlobalErrorObservable,
   setGlobalInProgressStatusAction,
 } from '../common-operators';
 
@@ -36,6 +37,11 @@ export const setUserAvatarEpic = (
             setProfile({ ...profile, ...response }),
             showNotification({ variant: SNACKBAR_VARIANTS.SUCCESS, message: 'Avatar has been updated' }),
           );
+        }),
+        catchError((error) => {
+          const { response: { message } } = error;
+
+          return getGlobalErrorObservable(message, error);
         }),
       ),
       setGlobalInProgressStatusAction(false),

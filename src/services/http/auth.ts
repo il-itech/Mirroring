@@ -51,6 +51,7 @@ export const signOut = (ajax: AjaxCreationMethod, token: string): Observable<Aja
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
+    Authorization: `Bearer ${token}`,
   },
   body: { token },
 });

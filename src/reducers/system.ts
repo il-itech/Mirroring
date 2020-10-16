@@ -4,6 +4,7 @@ import { VariantType } from 'notistack';
 import {
   globalError,
   redirectTo,
+  setAccessToken,
   setGlobalInProgressStatus,
   showNotification,
   clearNotification,
@@ -19,6 +20,7 @@ const initialState = {
   notification: { variant: VARIANT_ENUM.DEFAULT as VariantType, message: '' },
   is404: false,
   redirectTo: '',
+  accessToken: '',
   initializedSSRState: false,
 };
 
@@ -38,6 +40,10 @@ export const system = createReducer(initialState, handleAction => ([
   handleAction(redirectTo, (state, { payload }) => ({
     ...state,
     redirectTo: payload,
+  })),
+  handleAction(setAccessToken, (state, { payload }) => ({
+    ...state,
+    accessToken: payload,
   })),
   handleAction(setGlobalInProgressStatus, (state, { payload }) => ({
     ...state,

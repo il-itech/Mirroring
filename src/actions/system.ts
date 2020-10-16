@@ -42,6 +42,11 @@ export const showNotification = createActionCreator(
   resolve => (notification: { variant: VariantType; message: string }) => resolve(notification),
 );
 
+export const setAccessToken = createActionCreator(
+  'SET_ACCESS_TOKEN',
+  resolve => (token: string) => resolve(token),
+);
+
 export const clearNotification = createActionCreator('CLEAR_NOTIFICATION');
 export const clearErrors = createActionCreator('CLEAR_ERRORS');
 export const clearSystem = createActionCreator('CLEAR_SYSTEM');

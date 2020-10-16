@@ -30,3 +30,8 @@ export const getMonetaryValue = R.compose(
 export const getQueryString = (
   query: string | string[] | undefined = '',
 ): string => R.is(Array, query) ? query[0] : query;
+
+export const isClient = (
+  (typeof window !== 'undefined'
+    && window.document && window.document.createElement)
+);

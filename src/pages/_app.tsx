@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { AppContext, AppProps } from 'next/app';
+import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { SnackbarProvider } from 'notistack';
 
@@ -35,14 +35,6 @@ const App = ({ Component, pageProps }: AppProps) => {
       </SnackbarProvider>
     </>
   );
-};
-
-App.getInitialProps = async ({ Component, ctx }: AppContext) => {
-  const pageProps = Component.getInitialProps
-    ? await Component.getInitialProps(ctx)
-    : {};
-
-  return { pageProps };
 };
 
 export default wrapper.withRedux(App);
