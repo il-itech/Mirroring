@@ -5,5 +5,14 @@
     height: 64px;
     top: -32px;
     width: 64px;
-  }  
+  }
+
+  .form-sign-in {
+    .bg-hover-none {
+      &:focus,
+      &:hover {
+        background-color: $vulcan !important;
+      }
+    }
+  }
 }

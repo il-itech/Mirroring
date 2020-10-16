@@ -8,6 +8,7 @@ import { Chat as ChatLayout } from 'layouts/chat/chat';
 import withResolveActions from 'helpers/with-resolve-actions';
 import { withAuth } from 'helpers/with-auth';
 import { getQueryString } from 'helpers/utils';
+import { wrapper } from 'store/store';
 
 const Chat: NextPage<{}> = () => {
   const { query: { id } } = useRouter();
@@ -32,11 +33,15 @@ const Chat: NextPage<{}> = () => {
   );
 };
 
-Chat.getInitialProps = async (ctx) => {
-  await withAuth(ctx);
-  await withResolveActions([getAllUsers()])(ctx);
+export const getServerSideProps = wrapper.getServerSideProps(
+  async (ctx) => {
+    await withAuth(ctx);
+    await withResolveActions([
+      getAllUsers(),
+    ])(ctx);
 
-  return { ...ctx.store.getState() };
-};
+    return { props: ctx.store.getState() };
+  },
+);
 
 export default Chat;

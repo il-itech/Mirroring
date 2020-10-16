@@ -9,7 +9,6 @@ const initialState = getInitialState({
   firstname: '',
   lastname: '',
   email: '',
-  accessToken: '',
   avatar: '',
 });
 

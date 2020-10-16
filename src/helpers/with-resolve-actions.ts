@@ -1,10 +1,11 @@
-import { NextPageContext } from 'next';
-import { of } from 'rxjs';
+import { StateObservable } from 'redux-observable';
+import { of, Subject } from 'rxjs';
 import { timeout } from 'rxjs/operators';
 import { Action } from 'deox';
 
 import { rootEpic } from 'epics';
 import { initializeState } from 'actions/system';
+import { NextContext } from 'interfaces';
 
 const DEFAULT_TIMEOUT = 15000;
 const FAILURE_ACTION = { type: '@@ndo/failure_action' };
@@ -23,11 +24,13 @@ const failureAction = <T>(error: T): Action<string, { error: T }> => ({ ...FAILU
 const withResolveActions = (
   actions: Action<any>[],
   tout = DEFAULT_TIMEOUT,
-) => async ({ store }: NextPageContext) => {
+) => async ({ store }: NextContext) => {
+  const state$ = new StateObservable(new Subject(), store.getState());
+
   const resultActions = await Promise.all(
     makeArray(actions)
       .map(action => ({ ...action }))
-      .map(action => rootEpic(of(action))
+      .map(action => rootEpic(of(action), state$)
         .pipe(timeout(tout))
         .toPromise()
         .catch(failureAction)),
