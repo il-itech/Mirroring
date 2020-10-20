@@ -112,13 +112,23 @@ export const FormSignIn: FC<Props> = ({
           </Button>
         </form>
         <Divider className="my-2 bg-vulcan" />
-        <RouteLink
-          to="/sign-up"
-          component={Typography}
-          copmonentClassName="text-gray cursor-pointer"
-        >
-          Create new account
-        </RouteLink>
+        <div className="d-flex">
+          <RouteLink
+            to="/sign-up"
+            component={Typography}
+            copmonentClassName="text-gray cursor-pointer"
+          >
+            Create new account
+          </RouteLink>
+          <span className="px-1">or</span>
+          <RouteLink
+            to="/reset-password"
+            component={Typography}
+            copmonentClassName="text-gray cursor-pointer"
+          >
+            reset your password
+          </RouteLink>
+        </div>
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import { ISignInFormData } from 'interfaces/state.interfaces/forms.interfaces/fo
 import { ISignUpFormData } from 'interfaces/state.interfaces/forms.interfaces/form-sign-up.interface';
 import { IChangeCredentialsFormData } from 'interfaces/state.interfaces/forms.interfaces/form-change-credentials.interface';
 import { IChangePasswordFormData } from 'interfaces/state.interfaces/forms.interfaces/form-change-password.interface';
+import { IResetPasswordFormData } from 'interfaces/state.interfaces/forms.interfaces/form-reset-password';
 
 export const signIn = createActionCreator(
   'SIGN_IN',
@@ -29,7 +30,12 @@ export const changeCredentials = createActionCreator(
 
 export const changePassword = createActionCreator(
   'CHANGE_PASSWORD',
-  resolve => (formData: IChangePasswordFormData) => resolve(formData),
+  resolve => (formData: IChangePasswordFormData & { token: string }) => resolve(formData),
+);
+
+export const resetPassword = createActionCreator(
+  'RESET_PASSWORD',
+  resolve => (formData: IResetPasswordFormData) => resolve(formData),
 );
 
 export const setAuthStatus = createActionCreator(

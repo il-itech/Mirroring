@@ -29,9 +29,9 @@ export const signOutEpic = (action$: Observable<Action>) =>
 
           return of(
             clearState(REDUCER_TYPES.PROFILE),
-            redirectTo('/'),
             clearSystem(REDUCER_TYPES.SYSTEM),
             showNotification({ variant: SNACKBAR_VARIANTS.SUCCESS, message: 'You were sign out' }),
+            redirectTo('/'),
           );
         }),
         catchError((error) => {

@@ -27,14 +27,14 @@ export const SignUp: FC<Props> = ({
   <Main className="h-100vh d-flex pl-0">
     {isSuccess
       ? (
-        <div className="d-flex justify-content-center">
-          <div className="w-50 flex-column">
+        <div className="w-100 d-flex justify-content-center">
+          <div className="d-flex flex-column align-items-center justify-content-center">
             <BackHome />
             <Typography
               variant="h5"
               className="mt-3 py-2 px-5 bg-ebony text-white text-capitalize"
             >
-              Thank you for registretion. Please, check your email.
+              Thanks for registretion. Please, check your email.
             </Typography>
           </div>
         </div>

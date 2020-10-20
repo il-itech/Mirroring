@@ -23,7 +23,7 @@ const Confirm: NextPage<{}> = () => {
 
   return (
     <div className="h-100vh d-flex justify-content-center align-items-center">
-      <div className="w-50 bg-ebony">
+      <div className="bg-ebony">
         <Typography
           variant="h5"
           className="py-2 px-5 text-white text-center text-capitalize"

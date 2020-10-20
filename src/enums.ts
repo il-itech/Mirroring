@@ -39,6 +39,7 @@ export enum FORM_TYPES {
   CHAT_MESSAGE = 'chatMessage',
   CHANGE_CREDENTIALS = 'changeCredentials',
   CHANGE_PASSWORD = 'changePassword',
+  RESET_PASSWORD = 'resetPassword',
 }
 
 export enum FORM_FIELD_TYPES {
