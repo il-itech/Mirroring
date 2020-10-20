@@ -1,35 +1,38 @@
 import { FC, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import classnames from 'classnames';
 import * as R from 'ramda';
 
 import { useShallowSelector } from 'hooks/use-shallow-selector';
+import { resetPassword } from 'actions/auth';
 import { clearForm } from 'actions/forms/common';
-import { changePassword } from 'actions/auth';
 import { useFormSubmit } from 'hooks/use-form-submit';
 import { FormElement } from 'components/form-element/form-element';
 import { CircularLoader } from 'components/progress-bar/circular-loader/circular-loader';
 import { isEmptyOrNil } from 'helpers/utils';
 import CONFIG from 'config/config';
 import { FORM_TYPES } from 'enums';
-import { useRouter } from 'next/router';
 
-const { FORM_TYPE, FIELDS } = CONFIG?.FORMS?.CHANGE_PASSWORD;
+const { FORM_TYPE, FIELDS } = CONFIG?.FORMS?.RESET_PASSWORD;
 
-export const FormChangePassword: FC<{}> = () => {
-  const { query } = useRouter();
+export const FormResetPassword: FC<{}> = () => {
   const dispatch = useDispatch();
-  const { formData, errors, isInProgress } = useShallowSelector(state => state?.forms?.changePassword);
-  const { onSubmit } = useFormSubmit(FORM_TYPE, FIELDS, changePassword, { token: query?.token });
+  const { formData, errors, isInProgress } = useShallowSelector(state => state?.forms?.resetPassword);
+  const { onSubmit } = useFormSubmit(FORM_TYPE, FIELDS, resetPassword);
 
   useEffect(() => () => {
-    R.compose(dispatch, clearForm)(FORM_TYPES.CHANGE_PASSWORD);
+    R.compose(dispatch, clearForm)(FORM_TYPES.RESET_PASSWORD);
   }, [dispatch]);
 
   return (
     <>
-      <form className="pb-1_5 border-bottom border-white-12 account-forms">
+      <Typography className="text-white" variant="h6">
+        Type your email to reset password
+      </Typography>
+
+      <form>
         {Object.entries(FIELDS).map(([field, item]) => {
           const error = errors[field];
           const hasError = !isEmptyOrNil(error);
@@ -79,7 +82,7 @@ export const FormChangePassword: FC<{}> = () => {
         onClick={onSubmit}
         disabled={isInProgress}
       >
-        Change password
+        Reset password
         {isInProgress && (
           <CircularLoader
             colorPrimary={classnames({

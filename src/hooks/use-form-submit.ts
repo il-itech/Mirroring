@@ -18,6 +18,7 @@ export const useFormSubmit = <T>(
   formType: string,
   fields: T,
   actionFn: ActionCreator,
+  additionalFormData: {} = {},
 ): IUseFormSubmit => {
   const { formData } = useShallowSelector(state => state?.forms?.[formType]);
   const dispatch = useDispatch();
@@ -30,12 +31,12 @@ export const useFormSubmit = <T>(
 
       if (isEmptyOrNil(errors)) {
         R.compose(dispatch, clearFormErrors)(formType);
-        R.compose(dispatch, actionFn)(formData);
+        R.compose(dispatch, actionFn)(R.mergeDeepLeft(formData, additionalFormData));
       } else {
         R.compose(dispatch, setFormErrors)(formType, errors);
       }
     },
-    [actionFn, dispatch, fields, formData, formType],
+    [actionFn, additionalFormData, dispatch, fields, formData, formType],
   );
 
   return {
