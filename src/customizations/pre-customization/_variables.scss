@@ -19,14 +19,17 @@ $grid-breakpoints: (
 // );
 
 // Backgrounds
-$body-bg: $default-bg;
-$body-color: $black;
+$body-bg: $black-of-pearl;
+$body-color: $white;
 
 $link-color: $text-color;
 $link-hover-color: $text-color;
 
 $theme-colors: (
   // custom
+  'white-4':                        $white-4,
+  'white-12':                       $white-12,
+  'white-23':                       $white-23,
   'light':                          $light,
   'maire':                          $maire,
   'swans-down':                     $swans-down,
@@ -47,6 +50,11 @@ $theme-colors: (
   'ironside':                       $ironside,
   'granny-apple':                   $granny-apple,
   'vulcan':                         $vulcan,
+  'black-of-pearl':                 $black-of-pearl,
+  'ebony':                          $ebony,
+  'mischka':                        $mischka,
+  'blue':                           $blue,
+  'jackson':                        $jackson,
 );
 
 // Spaces
@@ -100,4 +108,7 @@ $h1-font-size: $font-size-base * 6.25;  // 100px
 $h2-font-size: $font-size-base * 5;     // 80px
 $h3-font-size: $font-size-base * 2.5;   // 40px
 $h4-font-size: $font-size-base * 1.875; // 30px
-$h5-font-size: $font-size-base * 1.25; // 30px
+$h5-font-size: $font-size-base * 1.25;  // 30px
+
+$header-height: 56px;
+$side-bar-width: 235px;

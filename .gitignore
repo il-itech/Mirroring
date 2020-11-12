@@ -1,10 +1,12 @@
 .idea
-.DS_Store
 .next
 next-env.d.ts
+.DS_Store
 
 # Always ignore .env
 .env
+.env.development
+.env.production
 
 # System folder for caches, etc.
 .etmp

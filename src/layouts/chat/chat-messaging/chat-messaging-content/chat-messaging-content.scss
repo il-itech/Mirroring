@@ -1,0 +1,15 @@
+.chat-messaging-content {
+  .message-block {
+    width: 100%;
+
+    @include media-breakpoint-up(md) {
+      width: 35%;
+    }
+  }
+
+  .author-message {
+    @include media-breakpoint-up(md) {
+      margin-left: 65%;
+    }
+  }
+}

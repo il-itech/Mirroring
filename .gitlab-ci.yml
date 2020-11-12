@@ -31,18 +31,6 @@ Lint:
       - node_modules/
       - .next/cache/
 
-Build Production:
-  stage: build_production
-  script: yarn build
-  cache:
-    key: "$CI_BUILD_REF_NAME"
-    paths:
-      - node_modules/
-      - .next/cache/
-  only:
-    - staging
-    - master
-
 Deploy:
   stage: deploy
   image: docker:latest

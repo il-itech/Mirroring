@@ -41,7 +41,7 @@ button {
   border: 1px solid $black;
 }
 
-.v-none {
+.v-hidden {
   visibility: hidden;
 }
 
@@ -49,16 +49,28 @@ button {
   visibility: visible;
 }
 
+.h-100vh {
+  height: 100vh;
+}
+
+.h-100vhh {
+  height: calc(100vh - #{$header-height});
+}
+
 .w-100vw {
   width: 100vw;
 }
 
-.overflow-x-hidden {
+.ov-x-hidden {
   overflow-x: hidden;
 }
 
-.overflow-y-hidden {
+.ov-y-hidden {
   overflow-y: hidden;
+}
+
+.flex-none {
+  flex: none;
 }
 
 .scroll-disable {
@@ -68,6 +80,6 @@ button {
   width: 100%;
 }
 
-.flex-none {
-  flex: none;
+.snackbar-container {
+  top: 60px !important;
 }

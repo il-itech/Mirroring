@@ -1,0 +1,6 @@
+.drawer-side-bar {
+  &-paper {
+    width: $side-bar-width;
+    z-index: 1 !important;
+  }
+}

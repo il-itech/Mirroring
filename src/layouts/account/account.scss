@@ -1,0 +1,11 @@
+.account {
+  .account-forms {
+    display: grid;
+    grid-column-gap: 20px;
+    grid-template-columns: 1fr;
+
+    @include media-breakpoint-up(sm) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}
