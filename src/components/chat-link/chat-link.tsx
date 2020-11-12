@@ -8,7 +8,6 @@ import { Props } from './types';
 
 export const ChatLink: FC<Props> = ({
   href,
-  as,
   firstname,
   lastname,
   lastMessage,
@@ -17,7 +16,6 @@ export const ChatLink: FC<Props> = ({
 }) => (
   <Link
     href={href}
-    as={as}
   >
     <Button
       classes={{

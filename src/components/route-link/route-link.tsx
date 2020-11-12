@@ -6,7 +6,6 @@ import { Props } from './types';
 
 export const RouteLink: FC<Props> = ({
   to,
-  as = {},
   children,
   component: Component = Button,
   copmonentClassName,
@@ -17,7 +16,6 @@ export const RouteLink: FC<Props> = ({
 }) => (
   <Link
     href={to}
-    as={as}
     {...linkProps}
   >
     <Component

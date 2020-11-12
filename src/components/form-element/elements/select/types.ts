@@ -10,9 +10,7 @@ export interface Props {
   selectClassName?: string;
   formHelperTextClassName?: string;
   inputLabelClassName?: string;
-  classes?: {
-    [key: string]: string;
-  };
+  classes?: Record<string, string>;
   options: {
     id: string;
     value: string | number;

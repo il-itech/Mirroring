@@ -7,7 +7,7 @@ import { IProfile } from './profile-interface';
 
 export interface IState {
   system: ISystem;
-  drawers: { [key: string]: boolean };
+  drawers: Record<string, boolean>;
   coronavirus: ICoronavirus;
   chat: IChat;
   forms: IForms;
@@ -15,6 +15,4 @@ export interface IState {
   profile: IProfile;
 }
 
-export interface IAdditionalState {
-  [key: string]: string;
-}
+export type IAdditionalState = Record<string, string>;

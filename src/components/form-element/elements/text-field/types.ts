@@ -13,9 +13,7 @@ export interface Props {
   autoFocus?: boolean;
   hasError?: boolean;
   helperText?: string;
-  classes?: {
-    [key: string]: string;
-  };
+  classes?: Record<string, string>;
   InputProps: InputProps;
   InputLabelProps: InputLabelProps;
   inputProps: {};

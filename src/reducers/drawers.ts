@@ -2,7 +2,7 @@ import { createReducer } from 'deox';
 
 import { toggleDrawer, closeAllDrawers } from 'actions/drawers';
 
-const initialState: { [key: string]: boolean } = {};
+const initialState: Record<string, boolean> = {};
 
 export const drawers = createReducer(
   initialState,

@@ -14,9 +14,7 @@ export interface IChatMessage {
   date: string;
 }
 
-export interface IChatMessages {
-  [key: string]: IChatMessage[];
-}
+export type IChatMessages = Record<string, IChatMessage[]>;
 
 export interface IChat extends ICommon {
   messages: IChatMessages;

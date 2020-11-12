@@ -14,9 +14,7 @@ export interface Props {
   elementProps: {
     type: string;
     validation: [];
-    classes?: {
-      [key: string]: string;
-    };
+    classes?: Record<string, string>;
     InputLabelProps?: InputLabelProps;
     InputProps?: InputProps;
     selectedValue?: string;

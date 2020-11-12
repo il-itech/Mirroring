@@ -2,7 +2,7 @@ import { IStats } from 'interfaces/state.interfaces/coronavirus-interface';
 import * as R from 'ramda';
 
 export const serializeTable = R.compose<
-  { [key: number]: IStats },
+  Record<number, IStats>,
   IStats[],
   IStats[],
   [string | number][],

@@ -22,20 +22,17 @@ const getRoutesList = (profileId: string | null): RouteList[] => ([
     id: 1,
     value: 'Home',
     href: '/',
-    as: {},
   },
   {
     id: 2,
     value: 'Chat',
-    href: isEmptyOrNil(profileId) ? '/sign-in' : '/chat/[id]',
-    as: isEmptyOrNil(profileId) ? '/sign-in' : `/chat/${profileId}`,
+    href: isEmptyOrNil(profileId) ? '/sign-in' : `/chat/${profileId}`,
   },
-  {
-    id: 3,
-    value: 'Coronavirus Stats',
-    href: '/coronavirus-stats',
-    as: {},
-  },
+  // {
+  //   id: 3,
+  //   value: 'Coronavirus Stats',
+  //   href: '/coronavirus-stats',
+  // },
 ]);
 
 export const DrawerSideBarUI: FC<{}> = () => {
@@ -71,12 +68,10 @@ export const DrawerSideBarUI: FC<{}> = () => {
             id,
             value,
             href,
-            as,
           }) => (
             <RouteLink
               key={id}
               to={href}
-              as={as}
               copmonentClassName="text-white font-weight-bold link-hover"
               handleClick={handleCloseAll}
             >

@@ -8,12 +8,8 @@ export interface Props {
   checked?: boolean;
   labelPlacement?: 'end' | 'start' | 'top' | 'bottom';
   disableRipple?: boolean ;
-  classes?: {
-    [key: string]: string;
-  };
-  parentClasses?: {
-    [key: string]: string;
-  };
+  classes?: Record<string, string>;
+  parentClasses?: Record<string, string>;
   inputProps?: {};
 
   /** Generic props */

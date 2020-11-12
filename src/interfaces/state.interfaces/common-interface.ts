@@ -4,10 +4,6 @@ export interface ICommon {
 }
 
 export interface IFormCommon extends ICommon {
-  formData: {
-    [key: string]: any;
-  };
-  errors: {
-    [key: string]: any;
-  };
+  formData: Record<string, any>;
+  errors: Record<string, any>;
 }

@@ -37,8 +37,7 @@ export const ChatListUI: FC<Props> = ({ allUserList, messages, matchesSM }) => {
           return (
             <ChatLink
               key={_id}
-              href="/chat/[id]"
-              as={`/chat/${_id}`}
+              href={`/chat/${_id}`}
               firstname={firstname}
               lastname={lastname}
               lastMessage={lastMessage}

@@ -10,7 +10,7 @@ import { CoronavirusCountryStatsTable } from './coronavirus-country-stats-table/
 
 interface Props {
   statsList: [string, number][];
-  allCountryStats: { [key: number]: IStats };
+  allCountryStats: Record<number, IStats>;
 }
 
 export const CoronavirusStats: FC<Props> = ({ statsList, allCountryStats }) => (

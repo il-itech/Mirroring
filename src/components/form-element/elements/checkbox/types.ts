@@ -11,12 +11,8 @@ export interface Props {
   icon?: ReactNode;
   checkedIcon?: ReactNode;
   formControlValue?: string;
-  classes?: {
-    [key: string]: string;
-  };
-  parentClasses?: {
-    [key: string]: string;
-  };
+  classes?: Record<string, string>;
+  parentClasses?: Record<string, string>;
   inputProps?: {};
   handleChange?: CustomHandleChange;
 

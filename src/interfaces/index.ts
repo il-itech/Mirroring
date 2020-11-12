@@ -7,9 +7,9 @@ export type NextContext = GetServerSidePropsContext & {
   store: Store<IState, AnyAction>;
 };
 
-export type FormData = { [key: string]: string | number | boolean };
-export type FormErrors = { [key: string]: string | number | boolean };
+export type FormData = Record<string, string | number | boolean>;
+export type FormErrors = Record<string, string | number | boolean>;
 export type FieldError = {
   message: string;
-  values: { [key: string]: string | number };
+  values: Record<string, string | number>;
 } | {};
