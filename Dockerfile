@@ -1,4 +1,4 @@
-FROM node:13.11.0
+FROM node:14.15.0
 
 # create app directory in container
 RUN mkdir -p /app
