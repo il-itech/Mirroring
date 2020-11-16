@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -17,7 +17,7 @@ import { FORM_TYPES } from 'enums';
 
 const { FORM_TYPE, FIELDS } = CONFIG?.FORMS?.RESET_PASSWORD;
 
-export const FormResetPassword: FC<{}> = () => {
+export const FormResetPassword = () => {
   const dispatch = useDispatch();
   const { formData, errors, isInProgress } = useShallowSelector(state => state?.forms?.resetPassword);
   const { onSubmit } = useFormSubmit(FORM_TYPE, FIELDS, resetPassword);

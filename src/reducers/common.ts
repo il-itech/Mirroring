@@ -18,12 +18,13 @@ import {
   clearForm,
 } from 'actions/forms/common';
 import { ICommon, IFormCommon } from 'interfaces/state.interfaces/common-interface';
+import { UnknownObjectType } from 'interfaces';
 
 /**
  * @param   {Object} additionalState
  * @returns {Object} initial state fields for every reducers
  */
-export const getInitialState = <T extends {}>(additionalState: T): T & ICommon => ({
+export const getInitialState = <T>(additionalState: T): T & ICommon => ({
   isInProgress: false,
   isSuccess: false,
   ...additionalState,
@@ -33,7 +34,7 @@ export const getInitialState = <T extends {}>(additionalState: T): T & ICommon =
  * @param   {Object} additionalState
  * @returns {Object} initial state fields for every form reducers
  */
-export const getInitialFormState = <T extends {}>
+export const getInitialFormState = <T>
   (additionalState: T): T & IFormCommon & ICommon => ({
     formData: {},
     errors: {},
@@ -41,39 +42,38 @@ export const getInitialFormState = <T extends {}>
     ...getInitialState({}),
   });
 
-const reducerChecker = <
-  T extends {},
-  V extends {}
->(
-    reducerFieldName: string,
-    state: T,
-    fieldName: string,
-    result: V,
-  ): T | T & V =>
+const reducerChecker = <T, V>(
+  reducerFieldName: string,
+  state: T,
+  fieldName: string,
+  result: V,
+): T | T & V =>
     R.equals(reducerFieldName, fieldName)
       ? { ...state, ...result }
       : state;
 
-export const getCommonReducers = <T extends {}>(
+export const getCommonReducers = <T>(
   reducerFieldName: string,
   initialState: T,
   handleAction: CreateHandlerMap<T>,
 ) => ([
-    handleAction(setInProgressStatus, (state: T, { payload: { field, status } }) =>
+    handleAction(setInProgressStatus, (state, { payload: { field, status } }) =>
       reducerChecker(reducerFieldName, state, field, { isInProgress: status })),
 
-    handleAction(setSuccessStatus, (state: T, { payload: { field, status } }) =>
+    handleAction(setSuccessStatus, (state, { payload: { field, status } }) =>
       reducerChecker(reducerFieldName, state, field, { isSuccess: status })),
 
-    handleAction(clearState, (state: T, { payload: { field } }) =>
+    handleAction(clearState, (state, { payload: { field } }) =>
       reducerChecker(reducerFieldName, state, field, getInitialState(initialState))),
   ]);
 
-export const getFormsCommonReducer = <T extends { formData: {}; errors: {} }>(
-  reducerFormName: string,
-  initialState: T,
-  handleAction: CreateHandlerMap<T>,
-) => ([
+export const getFormsCommonReducer = <
+  T extends { formData: UnknownObjectType, errors: UnknownObjectType }
+>(
+    reducerFormName: string,
+    initialState: T,
+    handleAction: CreateHandlerMap<T>,
+  ) => ([
     handleAction(setFormData, (state, { payload: { formName, formData } }) =>
       reducerChecker(reducerFormName, state, formName, { formData: { ...state.formData, ...formData } })),
 

@@ -1,4 +1,4 @@
-import React, { useState, memo, FC } from 'react';
+import { useState, memo, FC } from 'react';
 import Alert from '@material-ui/lab/Alert';
 import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';

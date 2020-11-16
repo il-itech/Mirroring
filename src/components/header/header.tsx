@@ -1,4 +1,4 @@
-import { memo, FC } from 'react';
+import { memo } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
@@ -18,7 +18,7 @@ import { DRAWERS, MEDIA_QUERIES } from 'enums';
 
 import './header.scss';
 
-export const HeaderUI: FC<{}> = () => {
+export const HeaderUI = () => {
   const {
     _id,
     firstname,

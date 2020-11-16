@@ -1,4 +1,4 @@
-import { useMemo, memo, FC } from 'react';
+import { useMemo, memo } from 'react';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -28,6 +28,7 @@ const getRoutesList = (profileId: string | null): RouteList[] => ([
     value: 'Chat',
     href: isEmptyOrNil(profileId) ? '/sign-in' : `/chat/${profileId}`,
   },
+  // TODO: Temporarily
   // {
   //   id: 3,
   //   value: 'Coronavirus Stats',
@@ -35,7 +36,7 @@ const getRoutesList = (profileId: string | null): RouteList[] => ([
   // },
 ]);
 
-export const DrawerSideBarUI: FC<{}> = () => {
+export const DrawerSideBarUI = () => {
   const { _id } = useShallowSelector(state => state?.profile);
   const routesList = useMemo(() => getRoutesList(_id), [_id]);
   const matchesLG = useMediaQuery(`(max-width:${MEDIA_QUERIES.LG})`);

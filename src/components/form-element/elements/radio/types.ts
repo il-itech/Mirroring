@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 
 import { CustomHandleBlur, CustomHandleChange } from 'components/form-element/types';
+import { UnknownObjectType } from 'interfaces';
 
 export interface Props {
   field: string;
@@ -10,7 +11,7 @@ export interface Props {
   disableRipple?: boolean ;
   classes?: Record<string, string>;
   parentClasses?: Record<string, string>;
-  inputProps?: {};
+  inputProps?: UnknownObjectType;
 
   /** Generic props */
   variant?: 'filled' | 'outlined' | 'standard';

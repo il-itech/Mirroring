@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import Typography from '@material-ui/core/Typography';
 
 import { useShallowSelector } from 'hooks/use-shallow-selector';
@@ -9,7 +8,7 @@ import './account-profile.scss';
 
 const { FORM_TYPE, FIELDS } = CONFIG?.FORMS?.CHANGE_CREDENTIALS;
 
-export const AccountProfile: FC<{}> = () => {
+export const AccountProfile = () => {
   const { formData, errors, isInProgress } = useShallowSelector(state => state?.forms?.[FORM_TYPE]);
 
   return (

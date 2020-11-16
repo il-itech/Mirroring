@@ -1,4 +1,3 @@
-import { NextPage } from 'next';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
@@ -9,7 +8,7 @@ import { useShallowSelector } from 'hooks/use-shallow-selector';
 import { confirmEmail } from 'actions/auth';
 import { getQueryString, isEmptyOrNil } from 'helpers/utils';
 
-const Confirm: NextPage<{}> = () => {
+const Confirm = () => {
   const { globalError } = useShallowSelector(state => state?.system);
   const dispatch = useDispatch();
   const { query } = useRouter();

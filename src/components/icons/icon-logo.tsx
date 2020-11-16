@@ -1,6 +1,4 @@
-import { FC } from 'react';
-
-export const IconLogo: FC<{}> = () => (
+export const IconLogo = () => (
   <svg width="42px" height="43px" viewBox="0 0 42 43">
     <title>Logo</title>
     <defs>

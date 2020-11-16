@@ -1,12 +1,13 @@
 import { ReactType, ReactEventHandler } from 'react';
 
+import { UnknownObjectType } from 'interfaces';
+
 export interface Props {
   to: string;
-  as?: string | {};
   children: JSX.Element | JSX.Element[] | string;
   component?: ReactType;
   copmonentClassName?: string;
-  linkProps?: {};
+  linkProps?: UnknownObjectType;
   disabled?: boolean;
   handleClick?: ReactEventHandler;
 }

@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 import { InputProps, InputLabelProps } from '@material-ui/core';
 
 import { CustomHandleBlur, CustomHandleChange } from 'components/form-element/types';
+import { UnknownObjectType } from 'interfaces';
 
 export interface Props {
   type: string;
@@ -16,7 +17,7 @@ export interface Props {
   classes?: Record<string, string>;
   InputProps: InputProps;
   InputLabelProps: InputLabelProps;
-  inputProps: {};
+  inputProps: UnknownObjectType;
   handleChange: CustomHandleChange;
   handleBlur?: CustomHandleBlur;
 }

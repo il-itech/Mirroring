@@ -4,8 +4,9 @@ import { withAuth } from 'helpers/with-auth';
 import withResolveActions from 'helpers/with-resolve-actions';
 import { Account as AccountLayout } from 'layouts/account/account';
 import { wrapper } from 'store/store';
+import { UnknownObjectType } from 'interfaces';
 
-const Account: NextPage<{}> = AccountLayout;
+const Account: NextPage<UnknownObjectType> = AccountLayout;
 
 export const getServerSideProps = wrapper.getServerSideProps(async (ctx) => {
   await withAuth(ctx);

@@ -1,6 +1,8 @@
 import { ReactNode, FocusEvent } from 'react';
 import { InputLabelProps, InputProps } from '@material-ui/core';
 
+import { UnknownObjectType } from 'interfaces';
+
 export type CustomHandleChange = (
   event: React.ChangeEvent<{ name?: string; value?: string; checked?: boolean }>,
   child: ReactNode
@@ -13,18 +15,19 @@ export interface Props {
   className?: string;
   elementProps: {
     type: string;
-    validation: [];
+    validation?: [];
     classes?: Record<string, string>;
     InputLabelProps?: InputLabelProps;
     InputProps?: InputProps;
     selectedValue?: string;
+    placeholder?: string;
+    variant?: string;
     options?: {
       id: string;
       value: string | number;
     }[];
-    [key: string]: string | number | {} | undefined;
   };
-  parentProps?: {};
+  parentProps?: UnknownObjectType;
   variant?: 'filled' | 'outlined' | 'standard';
   customHandleChange?: CustomHandleChange;
   customHandleBlur?: CustomHandleBlur;

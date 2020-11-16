@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import classnames from 'classnames';
@@ -17,7 +17,7 @@ import { useRouter } from 'next/router';
 
 const { FORM_TYPE, FIELDS } = CONFIG?.FORMS?.CHANGE_PASSWORD;
 
-export const FormChangePassword: FC<{}> = () => {
+export const FormChangePassword = () => {
   const { query } = useRouter();
   const dispatch = useDispatch();
   const { formData, errors, isInProgress } = useShallowSelector(state => state?.forms?.changePassword);

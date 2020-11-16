@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { SnackbarProvider } from 'notistack';
 
-import { GeneralProvider } from 'context/general-provider';
+import { GeneralProvider } from 'providers/general-provider';
 import { wrapper } from 'store/store';
 
 import '../customizations/entrypoints.scss';

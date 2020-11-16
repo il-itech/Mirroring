@@ -26,7 +26,7 @@ export const checkErrors = <T>(
   fields: T,
   formData: FormData,
 ) => {
-  const errors = {} as FormErrors | {};
+  const errors = {} as FormErrors;
 
   Object.entries(fields).forEach(([field, item]) => {
     let error: FieldError | undefined;

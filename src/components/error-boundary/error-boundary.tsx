@@ -1,15 +1,15 @@
-import React, { PureComponent } from 'react';
+import { ErrorInfo, PureComponent } from 'react';
 
 import { logError } from 'helpers/logger';
 import { GlobalAlert } from '../global-alert/global-alert';
 import { Props } from './types';
 
-export class ErrorBoundary extends PureComponent<Props, {}> {
+export class ErrorBoundary extends PureComponent<Props> {
   state = {
     hasError: false,
   };
 
-  public componentDidCatch(error: Error, errorInfo: {}) {
+  public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     this.setState({ hasError: true });
 
     logError(error, { extra: errorInfo });

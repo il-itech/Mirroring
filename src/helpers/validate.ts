@@ -21,15 +21,15 @@ export const validateMaxLength = (field: string, formData: FormData, value: numb
   toString(formData[field]).length > value
   && getFieldError(VALIDATION_ERRORS.TOO_LONG, value);
 
-export const validateRequired = (field: string, formData: {}) =>
+export const validateRequired = (field: string, formData: Record<string, string>) =>
   (!formData[field] || /^\s+$/.test(formData[field]))
   && getFieldError(VALIDATION_ERRORS.MISSING_REQUIRED);
 
-export const validateEmail = (field: string, formData: {}) =>
+export const validateEmail = (field: string, formData: Record<string, string>) =>
   !isEmptyOrNil(formData[field]) && !isEmail(formData[field].trim())
   && getFieldError(VALIDATION_ERRORS.INVALID_EMAIL);
 
-export const validatePasswordEquality = (field: string, formData: {}) =>
+export const validatePasswordEquality = (field: string, formData: Record<string, string>) =>
   !isEmptyOrNil(formData[field]) && /^([a-zA-Z_]+|\d+)$/.test(formData[field])
   && getFieldError(VALIDATION_ERRORS.INVALID_PASSWORD);
 

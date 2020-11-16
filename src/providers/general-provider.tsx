@@ -1,4 +1,4 @@
-import React, { useEffect, createContext } from 'react';
+import { useEffect, createContext } from 'react';
 import { useDispatch } from 'react-redux';
 import Router from 'next/router';
 import { useSnackbar, OptionsObject } from 'notistack';

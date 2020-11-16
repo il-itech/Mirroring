@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import Typography from '@material-ui/core/Typography';
 
 import { Main } from 'components/main/main';
@@ -20,7 +19,7 @@ const TAB_PANELS = [
   { id: 1, Component: AccountSecurity },
 ];
 
-export const Account: FC<{}> = () => (
+export const Account = () => (
   <Main
     showSideBar
     className="mt-10_5 account"

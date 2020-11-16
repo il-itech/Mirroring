@@ -5,6 +5,7 @@ import * as R from 'ramda';
 import { setFormErrors, clearFormErrors } from 'actions/forms/common';
 import { checkErrors } from 'helpers/form';
 import { isEmptyOrNil } from 'helpers/utils';
+import { UnknownObjectType } from 'interfaces';
 import { useShallowSelector } from './use-shallow-selector';
 
 interface IUseFormSubmit {
@@ -18,7 +19,7 @@ export const useFormSubmit = <T>(
   formType: string,
   fields: T,
   actionFn: ActionCreator,
-  additionalFormData: {} = {},
+  additionalFormData: UnknownObjectType = {},
 ): IUseFormSubmit => {
   const { formData } = useShallowSelector(state => state?.forms?.[formType]);
   const dispatch = useDispatch();

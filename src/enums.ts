@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 import scssVariables from 'customizations/js/variables';
 
 export enum PROJECT_ENVS {

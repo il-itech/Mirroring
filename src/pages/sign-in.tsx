@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { NextPage } from 'next';
 import { useDispatch } from 'react-redux';
 import * as R from 'ramda';
 
@@ -11,7 +10,7 @@ import { FORM_TYPES } from 'enums';
 
 const { FORM_TYPE, FIELDS } = CONFIG?.FORMS?.SIGN_IN;
 
-const SignIn: NextPage<{}> = () => {
+const SignIn = () => {
   const dispatch = useDispatch();
 
   const {

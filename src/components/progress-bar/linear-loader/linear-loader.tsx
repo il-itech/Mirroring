@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import LinearProgress from '@material-ui/core/LinearProgress';
 
 import { Props } from './types';

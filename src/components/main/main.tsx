@@ -1,4 +1,4 @@
-import React, { memo, useCallback, FC } from 'react';
+import { memo, useCallback, FC } from 'react';
 import { useDispatch } from 'react-redux';
 import classnames from 'classnames';
 import Container from '@material-ui/core/Container';
@@ -23,6 +23,8 @@ export const MainUI: FC<Props> = ({
 }) => {
   const { errorId } = useShallowSelector(state => state?.system?.globalError);
   const dispatch = useDispatch();
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const dismissGlobalAlert = useCallback(
     R.compose(dispatch, clearErrors),
     [dispatch],

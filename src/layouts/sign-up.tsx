@@ -6,12 +6,13 @@ import { BackHome } from 'components/back-home/back-home';
 import { FormSignUp } from 'components/forms/form-sign-up/form-sign-up';
 import { ISignUpFormData } from 'interfaces/state.interfaces/forms.interfaces/form-sign-up.interface';
 import { ISignUpFieldsConfig } from 'interfaces/config.interfaces/form-config-sign-up.interface';
+import { FormErrors } from 'interfaces';
 
 interface Props {
   formType: string;
   fields: ISignUpFieldsConfig;
   formData: ISignUpFormData;
-  errors: {};
+  errors: FormErrors;
   isInProgress: boolean;
   isSuccess: boolean;
 }

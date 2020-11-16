@@ -1,4 +1,4 @@
-import React, { FC, Fragment } from 'react';
+import { FC, Fragment } from 'react';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';

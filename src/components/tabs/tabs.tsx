@@ -1,15 +1,15 @@
 import { useState, FC, ChangeEvent } from 'react';
-
 import MUITabs from '@material-ui/core/Tabs';
 import MUITab from '@material-ui/core/Tab';
 
+import { UnknownObjectType } from 'interfaces';
 import { Props } from './types';
 
 export const Tabs: FC<Props> = ({ tabs, tabPanels }) => {
   const [currentTabIdx, setTabIdx] = useState(0);
 
   const handleChange = (
-    event: ChangeEvent<{}>,
+    event: ChangeEvent<UnknownObjectType>,
     newValue: number,
   ) => setTabIdx(newValue);
 
