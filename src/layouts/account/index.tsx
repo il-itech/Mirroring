@@ -1,13 +1,13 @@
 import Typography from '@material-ui/core/Typography';
 
-import { Main } from 'components/main/main';
-import { Header } from 'components/header/header';
-import { DrawerSideBar } from 'components/drawers/drawer-side-bar/drawer-side-bar';
-import { Tabs } from 'components/tabs/tabs';
-import { AccountGeneral } from './account-general/account-general';
-import { AccountSecurity } from './account-security/account-security';
+import { Main } from 'components/main';
+import { Header } from 'components/header';
+import { DrawerSideBar } from 'components/drawers/drawer-side-bar';
+import { Tabs } from 'components/tabs';
+import { AccountGeneral } from './account-general';
+import { AccountSecurity } from './account-security';
 
-import './account.scss';
+import './index.scss';
 
 const TABS = [
   { id: 0, value: 'general' },

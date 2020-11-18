@@ -1,12 +1,12 @@
 import { FC } from 'react';
 
-import { Main } from 'components/main/main';
-import { BackHome } from 'components/back-home/back-home';
+import { Main } from 'components/main';
+import { BackHome } from 'components/back-home';
 import { FormResetPassword } from 'components/forms/form-reset-password/form-reset-password';
 import { FormChangePassword } from 'components/forms/form-change-password/form-change-password';
 import { isEmptyOrNil } from 'helpers/utils';
 
-import './reset-password.scss';
+import './index.scss';
 
 interface Props {
   token: string;

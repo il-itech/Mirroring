@@ -9,11 +9,11 @@ import {
 } from 'actions/coronavirus';
 import { setIntervalActions, clearIntervalActions } from 'actions/common';
 import withResolveActions from 'helpers/with-resolve-actions';
-import { CoronavirusStats as CoronavirusStatsLayout } from 'layouts/coronavirus-stats/coronavirus-stats';
+import { CoronavirusStats as CoronavirusStatsLayout } from 'layouts/coronavirus-stats';
 import { Props } from 'interfaces/pages.interfaces/coronavirus-stats.interface';
 import { withAuth } from 'helpers/with-auth';
 import { IStats } from 'interfaces/state.interfaces/coronavirus-interface';
-import { wrapper } from 'store/store';
+import { wrapper } from 'storage';
 
 const serializeStatsList = R.compose<IStats, any, [string, number][]>(
   R.dropLast(1),

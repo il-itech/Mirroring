@@ -3,7 +3,7 @@ import { NextPage } from 'next';
 import { Index as IndexLayout } from 'layouts';
 import { withAuth } from 'helpers/with-auth';
 import withResolveActions from 'helpers/with-resolve-actions';
-import { wrapper } from 'store/store';
+import { wrapper } from 'storage';
 import { UnknownObjectType } from 'interfaces';
 
 const Index: NextPage<UnknownObjectType> = IndexLayout;

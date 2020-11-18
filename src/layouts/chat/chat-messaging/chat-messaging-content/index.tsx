@@ -7,7 +7,7 @@ import * as R from 'ramda';
 import { IChatUser } from 'interfaces/state.interfaces/chat-interface';
 import { Props } from './types';
 
-import './chat-messaging-content.scss';
+import './index.scss';
 
 const ChatMessagingContentUI: FC<Props> = ({
   profileId,

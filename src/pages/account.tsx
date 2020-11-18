@@ -2,8 +2,8 @@ import { NextPage } from 'next';
 
 import { withAuth } from 'helpers/with-auth';
 import withResolveActions from 'helpers/with-resolve-actions';
-import { Account as AccountLayout } from 'layouts/account/account';
-import { wrapper } from 'store/store';
+import { Account as AccountLayout } from 'layouts/account';
+import { wrapper } from 'storage';
 import { UnknownObjectType } from 'interfaces';
 
 const Account: NextPage<UnknownObjectType> = AccountLayout;

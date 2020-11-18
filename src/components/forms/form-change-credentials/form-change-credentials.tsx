@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import { changeCredentials } from 'actions/auth';
 import { useFormSubmit } from 'hooks/use-form-submit';
 import { FormElement } from 'components/form-element/form-element';
-import { CircularLoader } from 'components/progress-bar/circular-loader/circular-loader';
+import { CircularLoader } from 'components/progress-bar/circular-loader';
 import { isEmptyOrNil } from 'helpers/utils';
 import { Props } from './types';
 

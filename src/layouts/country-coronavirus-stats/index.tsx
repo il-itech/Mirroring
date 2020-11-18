@@ -2,10 +2,10 @@ import { FC, useMemo } from 'react';
 import { Typography } from '@material-ui/core';
 import * as R from 'ramda';
 
-import { Main } from 'components/main/main';
-import { Header } from 'components/header/header';
-import { DrawerSideBar } from 'components/drawers/drawer-side-bar/drawer-side-bar';
-import { PaperList } from 'components/paper-list/paper-list';
+import { Main } from 'components/main';
+import { Header } from 'components/header';
+import { DrawerSideBar } from 'components/drawers/drawer-side-bar';
+import { PaperList } from 'components/paper-list';
 import { IStats } from 'interfaces/state.interfaces/coronavirus-interface';
 
 interface Props {

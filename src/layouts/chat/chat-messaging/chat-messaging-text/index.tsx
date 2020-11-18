@@ -7,7 +7,7 @@ import { useShallowSelector } from 'hooks/use-shallow-selector';
 import { FormElement } from 'components/form-element/form-element';
 import { Props } from './types';
 
-import './chat-messaging-text.scss';
+import './index.scss';
 
 export const ChatMessagingTextUI: FC<Props> = ({
   roomId,

@@ -2,7 +2,7 @@ import Drawer from '@material-ui/core/Drawer';
 import NoSsr from '@material-ui/core/NoSsr';
 
 import { useDrawer } from 'hooks/use-drawer';
-import { ChatMessaging } from 'layouts/chat/chat-messaging/chat-messaging';
+import { ChatMessaging } from 'layouts/chat/chat-messaging';
 import { Props } from './types';
 
 export const DrawerChatMessaging = (props: Props) => {

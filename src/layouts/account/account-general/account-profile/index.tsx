@@ -4,7 +4,7 @@ import { useShallowSelector } from 'hooks/use-shallow-selector';
 import { FormChangeCredentials } from 'components/forms/form-change-credentials/form-change-credentials';
 import CONFIG from 'config/config';
 
-import './account-profile.scss';
+import './index.scss';
 
 const { FORM_TYPE, FIELDS } = CONFIG?.FORMS?.CHANGE_CREDENTIALS;
 
