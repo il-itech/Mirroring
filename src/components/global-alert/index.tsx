@@ -6,7 +6,7 @@ import clasnames from 'classnames';
 
 import { Props } from './types';
 
-import './global-alert.scss';
+import './index.scss';
 
 export const GlobalAlertUI: FC<Props> = ({
   dismissGlobalAlert,

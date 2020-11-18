@@ -7,7 +7,7 @@ import * as R from 'ramda';
 import { useDrawer } from 'hooks/use-drawer';
 import { Props } from './types';
 
-import './chat-messaging-title.scss';
+import './index.scss';
 
 export const ChatMessagingTitleUI: FC<Props> = ({
   roomId,

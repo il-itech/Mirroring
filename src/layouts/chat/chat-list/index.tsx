@@ -4,11 +4,11 @@ import Typography from '@material-ui/core/Typography';
 import * as R from 'ramda';
 
 import { toggleDrawer } from 'actions/drawers';
-import { ChatLink } from 'components/chat-link/chat-link';
+import { ChatLink } from 'components/chat-link';
 import { getLastMessage } from 'helpers/chat';
 import { Props } from './types';
 
-import './chat-list.scss';
+import './index.scss';
 
 export const ChatListUI: FC<Props> = ({ allUserList, messages, matchesSM }) => {
   const dispatch = useDispatch();

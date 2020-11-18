@@ -7,13 +7,13 @@ import * as R from 'ramda';
 
 import { useShallowSelector } from 'hooks/use-shallow-selector';
 import { clearErrors } from 'actions/system';
-import { ErrorBoundary } from 'components/error-boundary/error-boundary';
-import { GlobalAlert } from 'components/global-alert/global-alert';
+import { ErrorBoundary } from 'components/error-boundary';
+import { GlobalAlert } from 'components/global-alert';
 import { isEmptyOrNil } from 'helpers/utils';
 import { MEDIA_QUERIES } from 'enums';
 import { Props } from './types';
 
-import './main.scss';
+import './index.scss';
 
 export const MainUI: FC<Props> = ({
   children,

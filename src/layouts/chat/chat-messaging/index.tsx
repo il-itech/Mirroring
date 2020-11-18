@@ -1,11 +1,11 @@
 import { FC } from 'react';
 
-import { ChatMessagingTitle } from './chat-messaging-title/chat-messaging-title';
-import { ChatMessagingContent } from './chat-messaging-content/chat-messaging-content';
-import { ChatMessagingText } from './chat-messaging-text/chat-messaging-text';
+import { ChatMessagingTitle } from './chat-messaging-title';
+import { ChatMessagingContent } from './chat-messaging-content';
+import { ChatMessagingText } from './chat-messaging-text';
 import { Props } from './types';
 
-import './chat-messaging.scss';
+import './index.scss';
 
 export const ChatMessaging: FC<Props> = ({
   roomId,

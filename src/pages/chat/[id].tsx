@@ -2,12 +2,12 @@ import { useRouter } from 'next/router';
 
 import { getAllUsers } from 'actions/chat';
 import { useShallowSelector } from 'hooks/use-shallow-selector';
-import { useChat } from 'hooks/chat/use-chat';
-import { Chat as ChatLayout } from 'layouts/chat/chat';
+import { useChat } from 'hooks/use-chat';
+import { Chat as ChatLayout } from 'layouts/chat';
 import withResolveActions from 'helpers/with-resolve-actions';
 import { withAuth } from 'helpers/with-auth';
 import { getQueryString } from 'helpers/utils';
-import { wrapper } from 'store/store';
+import { wrapper } from 'storage';
 
 const Chat = () => {
   const { query: { id } } = useRouter();

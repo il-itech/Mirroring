@@ -8,7 +8,7 @@ import * as R from 'ramda';
 import { clearState } from 'actions/common';
 import { clearNotification } from 'actions/system';
 import { useShallowSelector } from 'hooks/use-shallow-selector';
-import { LinearLoader } from 'components/progress-bar/linear-loader/linear-loader';
+import { LinearLoader } from 'components/progress-bar/linear-loader';
 import { isEmptyOrNil } from 'helpers/utils';
 import { REDUCER_TYPES } from 'enums';
 

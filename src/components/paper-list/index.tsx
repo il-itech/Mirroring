@@ -6,7 +6,7 @@ import * as R from 'ramda';
 import { getMonetaryValue } from 'helpers/utils';
 import { Props } from './types';
 
-import './paper-list.scss';
+import './index.scss';
 
 export const PaperList: FC<Props> = ({ list }) => (
   <div className="mt-1 paper-list">

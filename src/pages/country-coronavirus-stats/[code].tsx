@@ -5,7 +5,7 @@ import { getCoronavirusCountryStats } from 'actions/coronavirus';
 import { CountryCoronavirusStats as CountryCoronavirusStatsLayout } from 'layouts/country-coronavirus-stats';
 import { Props } from 'interfaces/pages.interfaces/country-coronavirus-stats.interface';
 import { withAuth } from 'helpers/with-auth';
-import { wrapper } from 'store/store';
+import { wrapper } from 'storage';
 
 const CountryStats: NextPage<Props> = ({
   coronavirus: {

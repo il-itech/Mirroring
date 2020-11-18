@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import Typography from '@material-ui/core/Typography';
 
-import { Main } from 'components/main/main';
-import { BackHome } from 'components/back-home/back-home';
+import { Main } from 'components/main';
+import { BackHome } from 'components/back-home';
 import { FormSignUp } from 'components/forms/form-sign-up/form-sign-up';
 import { ISignUpFormData } from 'interfaces/state.interfaces/forms.interfaces/form-sign-up.interface';
 import { ISignUpFieldsConfig } from 'interfaces/config.interfaces/form-config-sign-up.interface';
