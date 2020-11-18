@@ -4,7 +4,7 @@ import Head from 'next/head';
 import { SnackbarProvider } from 'notistack';
 
 import { GeneralProvider } from 'providers/general-provider';
-import { wrapper } from 'store/store';
+import { wrapper } from 'storage';
 
 import '../customizations/entrypoints.scss';
 

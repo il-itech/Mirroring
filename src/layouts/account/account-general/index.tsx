@@ -1,6 +1,6 @@
 import { useShallowSelector } from 'hooks/use-shallow-selector';
-import { AccountAvatar } from './account-avatar/account-avatar';
-import { AccountProfile } from './account-profile/account-profile';
+import { AccountAvatar } from './account-avatar';
+import { AccountProfile } from './account-profile';
 
 export const AccountGeneral = () => {
   const {

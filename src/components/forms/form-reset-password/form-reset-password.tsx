@@ -10,7 +10,7 @@ import { resetPassword } from 'actions/auth';
 import { clearForm } from 'actions/forms/common';
 import { useFormSubmit } from 'hooks/use-form-submit';
 import { FormElement } from 'components/form-element/form-element';
-import { CircularLoader } from 'components/progress-bar/circular-loader/circular-loader';
+import { CircularLoader } from 'components/progress-bar/circular-loader';
 import { isEmptyOrNil } from 'helpers/utils';
 import CONFIG from 'config/config';
 import { FORM_TYPES } from 'enums';

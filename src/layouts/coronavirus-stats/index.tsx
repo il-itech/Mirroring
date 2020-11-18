@@ -1,12 +1,12 @@
 import { FC } from 'react';
 import { Typography } from '@material-ui/core';
 
-import { Main } from 'components/main/main';
-import { Header } from 'components/header/header';
-import { DrawerSideBar } from 'components/drawers/drawer-side-bar/drawer-side-bar';
-import { PaperList } from 'components/paper-list/paper-list';
+import { Main } from 'components/main';
+import { Header } from 'components/header';
+import { DrawerSideBar } from 'components/drawers/drawer-side-bar';
+import { PaperList } from 'components/paper-list';
 import { IStats } from 'interfaces/state.interfaces/coronavirus-interface';
-import { CoronavirusCountryStatsTable } from './coronavirus-country-stats-table/coronavirus-country-stats-table';
+import { CoronavirusCountryStatsTable } from './coronavirus-country-stats-table';
 
 interface Props {
   statsList: [string, number][];
