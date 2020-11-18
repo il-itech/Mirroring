@@ -3,7 +3,7 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 
 import { Props } from './types';
 
-import './linear-loader.scss';
+import './index.scss';
 
 export const LinearLoader: FC<Props> = ({
   bgColor = 'bg-blue',

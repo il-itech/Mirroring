@@ -1,8 +1,8 @@
-import { CustomRadio } from './radio/radio';
-import { CustomSelect } from './select/select';
-import { CustomSwitch } from './switch/switch';
-import { CustomCheckbox } from './checkbox/checkbox';
-import { CustomTextField } from './text-field/text-field';
+import { CustomRadio } from './radio';
+import { CustomSelect } from './select';
+import { CustomSwitch } from './switch';
+import { CustomCheckbox } from './checkbox';
+import { CustomTextField } from './text-field';
 
 export default {
   CustomRadio,

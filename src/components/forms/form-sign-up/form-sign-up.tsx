@@ -6,10 +6,10 @@ import classnames from 'classnames';
 
 import { signUp } from 'actions/auth';
 import { useFormSubmit } from 'hooks/use-form-submit';
-import { BackHome } from 'components/back-home/back-home';
+import { BackHome } from 'components/back-home';
 import { FormElement } from 'components/form-element/form-element';
-import { RouteLink } from 'components/route-link/route-link';
-import { CircularLoader } from 'components/progress-bar/circular-loader/circular-loader';
+import { RouteLink } from 'components/route-link';
+import { CircularLoader } from 'components/progress-bar/circular-loader';
 import { isEmptyOrNil } from 'helpers/utils';
 import { Props } from './types';
 

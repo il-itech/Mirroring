@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import { useFile } from 'hooks/use-file';
 import { Props } from './types';
 
-import './account-avatar.scss';
+import './index.scss';
 
 export const AccountAvatar: FC<Props> = ({
   profile: { firstname, lastname, avatar },

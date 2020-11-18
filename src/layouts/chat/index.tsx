@@ -2,14 +2,14 @@ import { FC, useMemo } from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import * as R from 'ramda';
 
-import { Main } from 'components/main/main';
-import { Header } from 'components/header/header';
-import { DrawerSideBar } from 'components/drawers/drawer-side-bar/drawer-side-bar';
-import { DrawerChatMessaging } from 'components/drawers/drawer-chat-messaging/drawer-chat-messaging';
+import { Main } from 'components/main';
+import { Header } from 'components/header';
+import { DrawerSideBar } from 'components/drawers/drawer-side-bar';
+import { DrawerChatMessaging } from 'components/drawers/drawer-chat-messaging';
 import { IChatUser } from 'interfaces/state.interfaces/chat-interface';
 import { MEDIA_QUERIES } from 'enums';
-import { ChatList } from './chat-list/chat-list';
-import { ChatMessaging } from './chat-messaging/chat-messaging';
+import { ChatList } from './chat-list';
+import { ChatMessaging } from './chat-messaging';
 import { Props } from './types';
 
 const getCurrentChatUser = (

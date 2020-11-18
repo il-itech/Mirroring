@@ -2,10 +2,10 @@ import { FC } from 'react';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
-import { RouteLink } from 'components/route-link/route-link';
+import { RouteLink } from 'components/route-link';
 import { Props } from './types';
 
-import './profile-menu.scss';
+import './index.scss';
 
 const PROFILE_MENU = [
   { id: 1, value: 'Account', href: '/account' },

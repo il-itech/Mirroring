@@ -10,12 +10,12 @@ import * as R from 'ramda';
 
 import { useShallowSelector } from 'hooks/use-shallow-selector';
 import { useDrawer } from 'hooks/use-drawer';
-import { RouteLink } from 'components/route-link/route-link';
+import { RouteLink } from 'components/route-link';
 import { isEmptyOrNil } from 'helpers/utils';
 import { DRAWERS, MEDIA_QUERIES } from 'enums';
 import { RouteList } from './types';
 
-import './drawer-side-bar.scss';
+import './index.scss';
 
 const getRoutesList = (profileId: string | null): RouteList[] => ([
   {

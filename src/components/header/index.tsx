@@ -10,13 +10,13 @@ import * as R from 'ramda';
 import { useShallowSelector } from 'hooks/use-shallow-selector';
 import { useMenu } from 'hooks/use-menu';
 import { useDrawer } from 'hooks/use-drawer';
-import { RouteLink } from 'components/route-link/route-link';
-import { ProfileMenu } from 'components/profile-menu/profile-menu';
+import { RouteLink } from 'components/route-link';
+import { ProfileMenu } from 'components/profile-menu';
 import { IconLogo } from 'components/icons/icon-logo';
 import { isEmptyOrNil } from 'helpers/utils';
 import { DRAWERS, MEDIA_QUERIES } from 'enums';
 
-import './header.scss';
+import './index.scss';
 
 export const HeaderUI = () => {
   const {

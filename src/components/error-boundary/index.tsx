@@ -1,7 +1,7 @@
 import { ErrorInfo, PureComponent } from 'react';
 
 import { logError } from 'helpers/logger';
-import { GlobalAlert } from '../global-alert/global-alert';
+import { GlobalAlert } from '../global-alert';
 import { Props } from './types';
 
 export class ErrorBoundary extends PureComponent<Props> {

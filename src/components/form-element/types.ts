@@ -21,7 +21,7 @@ export interface Props {
     InputProps?: InputProps;
     selectedValue?: string;
     placeholder?: string;
-    variant?: string;
+    variant?: 'filled' | 'outlined' | 'standard';
     options?: {
       id: string;
       value: string | number;
