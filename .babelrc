@@ -21,6 +21,8 @@
         "layouts": "./src/layouts",
         "services": "./src/services",
         "interfaces": "./src/interfaces",
+        "__tests__": "./src/__tests__",
+        "enums": "./src/enums",
         "constants": "./src/constants.js"
       }
     }]

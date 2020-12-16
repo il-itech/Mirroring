@@ -22,6 +22,7 @@ export const ChatLink: FC<Props> = ({
         root: 'd-flex justify-content-start w-100 py-1_5 px-2 text-white text-capitalize link-hover',
       }}
       onClick={handleToggleDrawer}
+      data-test-id="Button"
     >
       <Avatar src={avatar} />
       <div className="d-flex flex-column align-items-start ml-2 text-truncate">

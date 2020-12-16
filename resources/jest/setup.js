@@ -1,13 +1,15 @@
-import Enzyme, { shallow, render, mount } from 'enzyme';
-import React from 'react';
-import Adapter from 'enzyme-adapter-react-16';
+const Enzyme = require('enzyme');
+const Adapter = require('@wojtekmaj/enzyme-adapter-react-17');
 
-// React 16 Enzyme adapter
+/**
+ * React 17 Enzyme adapter
+ */
 Enzyme.configure({ adapter: new Adapter() });
 
-// Make Enzyme functions available in all test files without importing
-global.shallow = shallow;
-global.render = render;
-global.mount = mount;
-global.React = React;
-global.APP_CONFIG = {};
+/**
+ * Make Enzyme functions available in all test files without importing
+ */
+// global.shallow = shallow;
+// global.render = render;
+// global.mount = mount;
+// global.React = React;

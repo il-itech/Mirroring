@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ChatLink /> should match snapshot 1`] = `
+<Link
+  href="/"
+>
+  <WithStyles(ForwardRef(Button))
+    classes={
+      Object {
+        "root": "d-flex justify-content-start w-100 py-1_5 px-2 text-white text-capitalize link-hover",
+      }
+    }
+    data-test-id="Button"
+    onClick={[MockFunction]}
+  >
+    <WithStyles(ForwardRef(Avatar))
+      src="avatarHref"
+    />
+    <div
+      className="d-flex flex-column align-items-start ml-2 text-truncate"
+    >
+      <WithStyles(ForwardRef(Typography))
+        variant="body1"
+      >
+        Zakk
+         
+        Wylde
+      </WithStyles(ForwardRef(Typography))>
+      <WithStyles(ForwardRef(Typography))
+        className="text-left text-mischka text-truncate"
+        variant="body2"
+      >
+        How that going ?
+      </WithStyles(ForwardRef(Typography))>
+    </div>
+  </WithStyles(ForwardRef(Button))>
+</Link>
+`;
