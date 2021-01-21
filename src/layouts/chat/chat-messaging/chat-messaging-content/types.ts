@@ -6,5 +6,5 @@ export interface Props {
   profileId: string | null;
   messages: IChatMessage[];
   allUserList: IChatUser[];
-  chatContentRef: MutableRefObject<HTMLDivElement>;
+  chatContentRef: MutableRefObject<HTMLDivElement | undefined>;
 }

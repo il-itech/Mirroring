@@ -21,6 +21,7 @@ export const FormElement: FC<Props> = ({
   isChecked,
 }) => {
   const { type: elementType, validation } = elementProps;
+  // @ts-ignore
   const Element = getElement(elementType)!;
   const dispatch = useDispatch();
 
@@ -31,6 +32,7 @@ export const FormElement: FC<Props> = ({
       ({
         target: {
           name,
+          // @ts-ignore TODO: should be fixed:
           [FORM_TARGET_VALUES_SERIALIZE[elementType]]: formValue,
         },
       }: ChangeEvent<{

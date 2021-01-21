@@ -36,6 +36,7 @@ export const ChatMessagingTextUI: FC<Props> = ({
           InputProps: {
             classes: {
               root: 'text-white',
+              // @ts-ignore
               notchedOutline: 'border-white-23',
             },
           },

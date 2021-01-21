@@ -29,6 +29,7 @@ export const getMuiTheme = (): Theme =>
           cursor: 'pointer',
         },
       },
+      // @ts-ignore
       MUIDataTableSelectCell: {
         headerCell: {
           backgroundColor: ebony,

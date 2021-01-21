@@ -52,6 +52,7 @@ export const FormChangePassword = () => {
                 InputProps: {
                   classes: {
                     input: 'text-white input-custom-autocomplete',
+                    // @ts-ignore
                     notchedOutline: classnames({
                       'border-white-23': !hasError,
                       'border-cinnabar': hasError,

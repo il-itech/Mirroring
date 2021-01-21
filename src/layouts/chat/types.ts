@@ -6,7 +6,7 @@ export interface Props {
   roomId: string;
   chat: IChat;
   profileId: string | null;
-  chatContentRef: MutableRefObject<HTMLDivElement>;
+  chatContentRef: MutableRefObject<HTMLDivElement | undefined>;
   handleSubmit: MouseEventHandler<HTMLButtonElement>;
   handleKeyPress: (event: KeyboardEvent<HTMLFormElement>) => void;
 }

@@ -1,4 +1,6 @@
-import { useEffect, memo, FC } from 'react';
+import {
+  useEffect, memo, FC, RefObject,
+} from 'react';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import classnames from 'classnames';
@@ -16,13 +18,15 @@ const ChatMessagingContentUI: FC<Props> = ({
   chatContentRef,
 }) => {
   useEffect(() => {
-    const { scrollHeight } = chatContentRef.current;
+    // const { scrollHeight } = chatContentRef?.current!;
 
-    chatContentRef.current.scrollTop = scrollHeight;
+    chatContentRef?.current?.scrollTop = chatContentRef?.current.scrollHeight;
+
+    // chatContentRef?.current?.scrollTop = scrollHeight;
   });
 
   return (
-    <div ref={chatContentRef} className="h-100 p-2 overflow-auto chat-messaging-content">
+    <div ref={chatContentRef as RefObject<HTMLDivElement>} className="h-100 p-2 overflow-auto chat-messaging-content">
       {messages.map(({ sender: senderId, message, date }) => {
         const { firstname, lastname } = R.find<IChatUser>(R.propEq('_id', senderId))(allUserList) || {};
         const isAuthorMessage = profileId === senderId;

@@ -26,7 +26,7 @@ interface IUseChat {
   chat: IChat;
   socket: any;
   roomHash: string;
-  chatContentRef: MutableRefObject<HTMLDivElement>;
+  chatContentRef: MutableRefObject<HTMLDivElement | undefined>;
   handleSubmit: MouseEventHandler<HTMLButtonElement>;
   handleKeyPress: (event: KeyboardEvent<HTMLFormElement>) => void;
 }
